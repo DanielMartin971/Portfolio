@@ -1,0 +1,247 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Shop</title>
+    <link rel='shortcut icon' type='image/x-icon' href='favico2.ico'>
+    <link rel='stylesheet' href='../css/main.css'>
+    <link rel='stylesheet' href='../css/fontawesome-free-5.7.2-web/css/all.min.css'>
+  </head>
+  <body>
+    <h1>Shop</h1>
+    <h5 id='extras' class=''></h5>
+    
+    <section name='shop'>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>Specs <i class='fas fa-skull-crossbones'></i></th>
+              <th colspan='3'>
+                <h3>
+                  <img src='../css/dig.svg' width='15px'> 
+                  Weapons 
+                  <img src='../css/hammer.svg' width='15px'>
+                </h3>
+                <em>Quality Weapons</em>
+              </th>
+              <th colspan='3'>
+                <h3>Armor <i class='fas fa-swords'></i></h3>
+                <em>Defense of the vile</em>
+              </th>
+              <th>
+                <h3>Flasks Refill <i class='fas fa-flask'></i></h3>
+                <em>Healing serum</em>
+                <!-- Working on shop-->
+              </th>
+              <th>
+                <h3>Flasks <i class='fas fa-flask'></i></h3>
+                <em>Empty Flasks</em>
+                <!-- Working on shop-->
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class='money'>
+              <td>Price <i class='fas fa-coins'></i></td>
+              <td><i class='fas fa-coins'></i> <span name='w-price'>0</span></td>
+              <td><i class='fas fa-coins'></i> <span name='w1-price'>0</span></td>
+              <td><i class='fas fa-coins'></i> <span name='w2-price'>0</span></td>
+              <td><i class='fas fa-coins'></i> <span name='a-price'>0</span></td>
+              <td><i class='fas fa-coins'></i> <span name='a1-price'>0</span></td>
+              <td><i class='fas fa-coins'></i> <span name='a2-price'>0</span></td>
+              <td><i class='fas fa-coins'></i> 500</td>
+              <td><i class='fas fa-coins'></i> 2000</td>
+            </tr>
+            <tr class='race'>
+              <td>Name <i class='fas fa'></i></td>
+              <td name='w-name'>Weapon Name</td>
+              <td name='w1-name'>Weapon Name</td>
+              <td name='w2-name'>Weapon Name</td>
+              <td name='a-name'>Armor Name</td>
+              <td name='a1-name'>Armor Name</td>
+              <td name='a2-name'>Armor Name</td>
+              <td>Refill</td>
+              <td>Empty Flask</td>
+            </tr>
+            <tr class='def'>
+              <td>Defense <i class='fas fa-shield-alt'></i></td>
+              <td><span name='w-defense'>0</span> <i class='fas fa-shield-alt'></i></td>
+              <td><span name='w1-defense'>0</span> <i class='fas fa-shield-alt'></i></td>
+              <td><span name='w2-defense'>0</span> <i class='fas fa-shield-alt'></i></td>
+              <td><span name='a-defense'>0</span> <i class='fas fa-shield-alt'></i></td>
+              <td><span name='a1-defense'>0</span> <i class='fas fa-shield-alt'></i></td>
+              <td><span name='a2-defense'>0</span> <i class='fas fa-shield-alt'></i></td>
+              <td>n/a</td>
+              <td>n/a</td>
+            </tr>
+            <tr class='hp'>
+              <td>Health <i class='fas fa-heart'></i></td>
+              <td><span name='w-health'>0</span> <i class='fas fa-heart'></i></td>
+              <td><span name='w1-health'>0</span> <i class='fas fa-heart'></i></td>
+              <td><span name='w2-health'>0</span> <i class='fas fa-heart'></i></td>
+              <td><span name='a-health'>0</span> <i class='fas fa-heart'></i></td>
+              <td><span name='a1-health'>0</span> <i class='fas fa-heart'></i></td>
+              <td><span name='a2-health'>0</span> <i class='fas fa-heart'></i></td>
+              <td>n/a</td>
+              <td>n/a</td>
+            </tr>
+            <tr class='mgk'>
+              <td>Magic <i class='fas fa-scroll'></i></td>
+              <td><span name='w-magic'>0</span> <i class='fas fa-scroll'></i></td>
+              <td><span name='w1-magic'>0</span> <i class='fas fa-scroll'></i></td>
+              <td><span name='w2-magic'>0</span> <i class='fas fa-scroll'></i></td>
+              <td><span name='a-magic'>0</span> <i class='fas fa-scroll'></i></td>
+              <td><span name='a1-magic'>0</span> <i class='fas fa-scroll'></i></td>
+              <td><span name='a2-magic'>0</span> <i class='fas fa-scroll'></i></td>
+              <td>n/a</td>
+              <td>n/a</td>
+            </tr>
+            <tr class='spd'>
+              <td>Speed <i class='fas fa-feather-alt'></i></td>
+              <td><span name='w-speed'>0</span> <i class='fas fa-feather-alt'></i></td>
+              <td><span name='w1-speed'>0</span> <i class='fas fa-feather-alt'></i></td>
+              <td><span name='w2-speed'>0</span> <i class='fas fa-feather-alt'></i></td>
+              <td><span name='a-speed'>0</span> <i class='fas fa-feather-alt'></i></td>
+              <td><span name='a1-speed'>0</span> <i class='fas fa-feather-alt'></i></td>
+              <td><span name='a2-speed'>0</span> <i class='fas fa-feather-alt'></i></td>
+              <td>n/a</td>
+              <td>n/a</td>
+            </tr>
+            <tr class='str'>
+              <td>Strength <i class='fas fa-fist-raised'></i></td>
+              <td><span name='w-strength'>0</span> <i class='fas fa-fist-raised'></i></td>
+              <td><span name='w1-strength'>0</span> <i class='fas fa-fist-raised'></i></td>
+              <td><span name='w2-strength'>0</span> <i class='fas fa-fist-raised'></i></td>
+              <td><span name='a-strength'>0</span> <i class='fas fa-fist-raised'></i></td>
+              <td><span name='a1-strength'>0</span> <i class='fas fa-fist-raised'></i></td>
+              <td><span name='a2-strength'>0</span> <i class='fas fa-fist-raised'></i></td>
+              <td>n/a</td>
+              <td>n/a</td>
+            </tr>
+            <tr class='selection'>
+              <td>Select <i class='far fa-swords'></i></td>
+              <td><button name='weapon'>Select</button></td>
+              <td><button name='weapon1'>Select</button></td>
+              <td><button name='weapon2'>Select</button></td>
+              <td><button name='armor'>Select</button></td>
+              <td><button name='armor1'>Select</button></td>
+              <td><button name='armor2'>Select</button></td>
+              <td><button name='r-flask'>Select</button></td>
+              <td><button name='flask'>Select</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    
+    <section name='player'>
+      <div name='flask and gold'>
+        <h5 class='money'>Gold: 
+          <span class='gold'>0</span>
+          <i class='fas fa-coins'></i>
+        </h5>
+        
+        <h5 class='flask'>Flasks: 
+          <span id='flask'>0</span>
+          <i class='fas fa-flask'></i>
+        </h5>
+      </div>
+      
+      <div name='self'>
+        <!-- DO NOT ADD MORE SPANS -->
+        <ul class='self'>
+          <li class='race'>Race: 
+            <span id='species' name='type'></span>
+          </li>
+          <li  class='def'>Defense:  
+            <span name='defense'></span>
+            <i class='fas fa-shield-alt'></i>
+          </li>
+          <li   class='hp'>Health:
+            <span name='health'></span>
+            <i class='fas fa-heart'></i>
+          </li>
+          <li  class='mgk'>Magic:
+            <span name='magic'></span>
+            <i class='fas fa-scroll'></i>
+          </li>
+          <li  class='spd'>Speed:
+            <span name='speed'></span>
+            <i class='fas fa-feather-alt'></i>
+          </li>
+          <li  class='str'>Strength:
+            <span name='strength'></span>
+            <i class='fas fa-fist-raised'></i>
+            <!-- Working on icons and also going to add a 2nd line of items-->
+          </li>
+        </ul>
+        <button class='sell' name='sell'>Sell?</button>
+        <button class='leave' name='leave'>Leave?</button>
+        <button class='kit'   name='kit'>Check kit?</button>
+      </div>
+    </section>
+    
+    <section name='weapon'>
+      <ul class='equipment'>
+        <li class='race'>Name:     
+          <span name='name'></span>
+        </li>
+        <li class='def'>Defense:  
+          <span name='defense'></span>
+          <i class='fas fa-shield-alt'></i>
+        </li>
+        <li class='hp'>Health:   
+          <span name='health'></span>
+          <i class='fas fa-heart'></i>
+        </li>
+        <li class='mgk'>Magic:    
+          <span name='magic'></span>
+          <i class='fas fa-scroll'></i>
+        </li>
+        <li class='spd'>Speed:    
+          <span name='speed'></span>
+          <i class='fas fa-feather-alt'></i>
+        </li>
+        <li class='str'>Strength: 
+          <span name='strength'></span>
+          <i class='fas fa-fist-raised'></i>
+        </li>
+        <li class='type'>Type: 
+          <span name='type'></span>
+        </li>
+      </ul>
+    </section>
+    <section name='armor'>
+      <ul class='equipment1'>
+        <li class='race'>Name:     
+          <span name='type'></span>
+        </li>
+        <li class='def'>Defense:  
+          <span name='defense'></span>
+          <i class='fas fa-shield-alt'></i>
+        </li>
+        <li class='hp'>Health:   
+          <span name='health'></span>
+          <i class='fas fa-heart'></i>
+        </li>
+        <li class='mgk'>Magic:    
+          <span name='magic'></span>
+          <i class='fas fa-scroll'></i>
+        </li>
+        <li class='spd'>Speed:    
+          <span name='speed'></span>
+          <i class='fas fa-feather-alt'></i>
+        </li>
+        <li class='str'>Strength: 
+          <span name='strength'></span>
+          <i class='fas fa-fist-raised'></i>
+        </li>
+      </ul>
+    </section>
+    
+    <script src='../js/contructors/weapons.js'></script>
+    <script src='../js/contructors/armors.js'></script>
+    <script src='../js/shop.js'></script>
+    <script src='../js/icon.js'></script>
+  </body>
+</html>

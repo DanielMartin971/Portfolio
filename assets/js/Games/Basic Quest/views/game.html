@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Quest</title>
+    <link rel='shortcut icon' type='image/x-icon' href='favico.ico'>
+    <link rel='stylesheet' href='../css/main.css'>
+    <link rel='stylesheet' href='../css/fontawesome-free-5.7.2-web/css/all.min.css'>
+  </head>
+  
+  <body id='game'>
+    <div class='story'>
+      <h2>Story: <span id='action'></span></h2>
+      <h5 id='extras' class=''></h5>
+    </div>
+    
+    <!-- DO NOT USE NAME ANYMORE -->
+    
+    <div class='player'>
+      <h4 class='race'>Race:    <span id='species'></span> <span class='icon'></span></h4>
+      <ul>
+        <li>Armor: <span class='armor'></span></li>
+        <li>Weapon: <span class='weapon'></span></li>
+      </ul>
+      <h4 class='hp'>Health:    <span id='health'>0</span> <i class='fas fa-heartbeat'></i></h4>
+      <h4 class='flask'>Flasks: <span id='flasks'>0</span> <i class='fas fa-flask'></i></h4>
+      <h4 class='money'>Gold:   <span id='gold'>0</span>   <i class='fas fa-coins'></i></h4>
+      <a href='#' id='kit'>Check Kit?</a>
+    </div>
+    
+    <div class='enemy'>
+      <h4>Enemy:  <span id='eSpecies'></span></h4>
+      <h4 class='hp'>Health: <span id='eHealth'>0</span> <i class='fas fa-heart'></i></h4>
+    </div>
+    
+    <button id='start'>Start</button>
+    
+    <div class='actions'>
+      <button name='attack'>Attack</button>
+      <button name='magic'>Magic</button>
+      <button name='heal'>Heal</button>
+      <button name='defend'>Defend</button>
+      <button name='run'>Run</button>
+      <button name='search'>Search</button>
+    </div>
+    
+    <script src='../js/contructors/armors.js'></script>
+    <script src='../js/contructors/weapons.js'></script>
+    <script src='../js/contructors/hectic.js'></script>
+    <script src='../js/contructors/enemies.js'></script>
+    <script src='../js/game.js'></script>
+    <script src='../js/icon.js'></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

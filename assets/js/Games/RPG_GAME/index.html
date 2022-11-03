@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <title>Issac's Survial</title>
+        <style type='text/css'>
+            body{
+              margin-top:25px;
+            }
+            canvas{
+              border:1px solid #000;
+            }
+            h3{
+              margin:0;
+            }
+            #hp{
+              color:green;
+            }
+            #ks{
+              color:#FD34A4;
+            }
+            #last{
+              color:#FD34A4;
+            }
+        </style>
+    </head>
+    <body>
+      <audio src='music/a7xAfterlife.mp3' loop autoplay controls></audio>
+      
+      <div id='hp'><h3>Hp: <span id='health'>10</span></h3></div>
+      <div id='s' >Score:  <span id='score'>0</span></div>
+      <div id='ks'>Kills:  <span id='kills'>0</span></div>
+      <div id='last'>Devils Killed:  <span id='dKills'>0</span></div>
+      
+      
+      <canvas></canvas>
+        
+      <script src="js/entities.js"></script>
+      <script src="js/canvas.js"></script>
+        
+    </body>
+</html>

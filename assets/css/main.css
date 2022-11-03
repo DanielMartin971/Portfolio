@@ -1,0 +1,642 @@
+/*
+  --Just casual things--
+*/
+*{
+  color:#f2f2f2;
+}
+body{
+  background:#E1E8ED; /*Spring Green	#00FF7F*/  /*A dark shade #292F33*/
+  margin-top:100px;
+  overflow-x:hidden;
+}
+.container{
+  border-radius:1em;
+}
+
+/*
+  --Affects the particles background--
+*/
+canvas{
+  background:#000000;
+}
+h1{
+  text-align:center;
+}
+#particles-js {
+  width: 100%;
+  height: 3500px;
+  background-color: #E1E8ED;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+/*
+  --This is for the jumbotrons--
+*/
+.jumbotron{
+  background:#FF9900;
+  background: radial-gradient(#c77802, #FF9900);
+  box-shadow: 0px 1px 11px 1px black;
+}
+.jumbotron h1 i:last-child{
+  margin-left:-30px;
+}
+
+/*
+  --This is for the description of the games and their image--
+*/
+#bottom{
+  margin-bottom:0;
+}
+
+#bottom .container{
+  margin-bottom: 300px;
+}
+
+.g-divider{
+  margin-top:50px;
+  margin-bottom:50px;
+}
+.container ul{
+  text-align:center;
+}
+.container .btn-outline-info{
+  border:1px solid #55ACEE;
+  color:#55ACEE;
+  margin-left:25%;
+  width:50%!important;
+}
+#bottom .btn:hover{
+  background:#55ACEE;
+  color:#fff;
+}
+
+#bottom img{
+  box-shadow:1px 1px 1px #55ACEE;
+}
+
+.featurette h2, .featurette p{
+  color:#FF9900;
+}
+.featurette span{
+  color:#55ACEE!important;
+}
+
+.snake{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*--------------------------------------------------*/
+
+/*
+  --This is for the navs--
+*/
+#showcase .nav-item{
+  margin-top:5px;
+}
+.nav-link{
+  color:#fff!important;
+  text-shadow: 1px 1px black;
+}
+.nav-link:hover,.navbar-brand:hover{
+  transition:0.2s ease-in;
+  color:#FF9900!important;
+}
+
+
+.navbar-brand{
+  font-weight:bold;
+  text-align:center;
+  font-size:30pt;
+  /*text-shadow: 2px 1px 15px black;*/
+  text-shadow:1px 1px 4px black; 
+  color:#fff!important;
+}
+
+.dropdown-item:hover{
+  color:#FF9900;
+} 
+
+/*-------------------------------------------*/
+
+/*
+  --This is for the about part only, nothing else--
+*/
+#about-j{
+  margin-top:400px;
+  margin-bottom: 100px;
+  position:relative;
+  z-index:1;
+}
+
+.about-feature{
+  text-align:center;
+  margin: 0 auto;
+}
+.about-feature .lead{
+  color:#55ACEE;
+}
+.about-divider{
+  margin-top:50px;
+  margin-bottom:50px;
+}
+
+/*------------------------------------*/
+
+/*
+  --For Font Awesome Icons--
+*/
+.fa-wolf-pack-battalion{
+  color:#B26B00;
+}
+/* ------------------------- */
+
+
+/* Showcase (The top part with the nav and jumbotron) */
+#showcase {
+  color:black;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  position: relative;
+}
+#showcase .container .navbar-brand{
+  float:left;
+  font-size:20pt;
+}
+#showcase .container {
+  margin-top: -320vh;
+}
+#showcase .container ul{
+  padding-left:20px;
+  display:inline;
+}
+#showcase .container .nav-link{
+  float:left;
+  margin-left:25px;
+}
+
+#line{
+  margin-top:50vh;
+}
+.jumbo-1{
+  background:transparent;
+  width: 100%;
+  position: relative;
+  margin-top: 93.5vh;
+  cursor:default;
+  box-shadow:none;
+  padding:0;
+}
+.jumbo-1 h1{
+  vertical-align:middle;
+}
+
+.jumbotron p{
+  text-align:center;
+}
+
+#arrow{
+  font-size:40pt;
+  cursor:pointer;
+}
+.jumbo-1 a{
+  margin-left:50%;
+}
+
+/*------------------------------------*/
+
+
+
+
+/* Footer */
+footer{
+  margin-top: 100px;
+}
+
+.g-main-color{
+  background: #55ACEE;
+  background: -webkit-radial-gradient(#30648C, #55ACEE);
+  background: -o-radial-gradient(#30648C, #55ACEE);
+  background: -moz-radial-gradient(#30648C, #55ACEE);
+  background: linear-gradient(#30648C, #55ACEE);
+}
+
+.b-sec-color{
+  background:#FF9900;
+  background: linear-gradient(#55ACEE, #FF9900);
+}
+.b-sec-color a{
+  color:#fff;
+}
+
+#footer-btn{
+  background:#B26B00;
+  color:#ffffff;
+}
+#footer-btn:hover{
+  background:#ce7c00;
+}
+
+.email{
+  color:rgba(255,255,255,0.8);
+}
+.email:hover{
+  color:#fff
+}
+
+.u-line{
+  border-bottom:1px solid #d48002;
+}
+
+/*------------------------------*/
+
+/* --This is for the hamburger navbar-- */
+.hamburger{
+  margin-left:20px;
+  margin-top:20px;
+  color:#000;
+  background:#FF9900;
+  z-index:70;
+  position:fixed;
+  display:inline-block;
+  border-radius:.4rem;
+  display: none;
+}
+
+.hamburgerBtn{
+  width:35px;
+  cursor:pointer;
+}
+
+.bar1, .bar2, .bar3{
+  width:35px;
+  height:5px;
+  background:#fff;
+  margin:6px 0;
+  transition:0.4s;
+}
+
+.change .bar1{
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+  transform: rotate(-45deg) translate(-9px, 6px) ;
+}
+.change .bar2{
+  opacity: 0;
+}
+.change .bar3{
+  -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+  transform: rotate(45deg) translate(-8px, -8px) ;
+}
+
+.ham-navbar ul{
+  list-style:none;
+}
+.ham-navbar ul .navbar-brand{
+  font-size:15pt;
+}
+
+.hamburger .hide{
+  visibility:hidden;
+  height:0;
+  width:0;
+}
+
+/* ------------------------------------ */
+
+/* need to make a btn for the navbar */
+/* @media (max-width: 320px){
+  .jumbo-1{
+    margin-top:0;
+  }
+  #showcase .container{
+    margin-top:0;
+  }
+  #line{
+    margin-top:0;
+  }
+  #nav{
+    visibility:hidden
+  }
+} */
+/* @media (max-width: 500px){
+  #showcase .container{
+    visibility:hidden;
+  }
+  
+  #particles-js{
+    height:2600px;
+  }
+  
+  .jumbo-1{
+    margin-top:-320vh;
+    margin-left:10px;
+  }
+  .jumbo-1 i{
+    visibility:hidden;
+  }
+  .jumbo-1 p{
+    margin-top:-70px;
+    margin-left:150px;
+    width:200px;
+  }
+  .jumbo-1 a{
+    margin-left:230px;
+  }
+  #arrow{
+    visibility:visible;
+  }
+  
+  #line{
+    margin-bottom:400px;
+  }
+  
+  .row .col-md-5, #bottom img{
+    visibility:hidden;
+    height:0;
+  }
+  
+  #about-j{
+    margin-top:10px;
+  }
+  #about-j .display-3{
+    font-size:30pt;
+  }
+  #about-j .lead{
+    font-size:10pt;
+  }
+  #about-j i{
+    visibility:hidden;
+  }
+  
+  .about-feature{
+    width:100%;
+    margin-left:0;
+  }
+  
+  .marketing{
+    text-align:center;
+  }
+  .container .btn-outline-info{
+    margin-left:0;
+  }
+  .marketing p{
+    font-size:10pt;
+  }
+  
+  footer .container img{
+    margin-left:25%;
+  }
+  
+} */
+/* @media (max-width: 576px){
+  #showcase .container .navbar-brand{
+    margin-right:150px;
+  }
+  
+  .jumbo-1{
+    margin-top:-320vh;
+    margin-left:10%;
+  }
+  .jumbo-1 i{
+    visibility:hidden;
+  }
+  .jumbo-1 p{
+    margin-top:-70px;
+    margin-left:150px;
+    width:200px;
+  }
+  .jumbo-1 a{
+    margin-left:230px;
+  }
+  #arrow{
+    visibility:visible;
+  }
+  
+  #bottom{
+    text-align:center;
+  }
+  #bottom a{
+    margin-left:0;
+  }
+  
+  #about-j{
+    margin-top:150px;
+  }
+  #about-j .display-3{
+    font-size:35pt;
+  }
+  #about-j i{
+    visibility:hidden;
+  }
+  
+  .about-feature{
+    margin-left:5%;
+  }
+} */
+
+/* this is for the ipad, and ipad pro */
+/* @media (max-width: 768px){
+  p, a, span, address, small{
+    font-size:15pt;
+  }
+  #particles-js{
+    height:2750px;
+  }
+  
+  .jumbo-1{
+    margin-top:-325vh;
+    margin-left:0;
+    width:100%;
+  }
+  .jumbo-1 i{
+    visibility:visible;
+  }
+  .jumbo-1 div{
+    margin-top:90px;
+    margin-left:130px;
+  }
+  
+  #line{
+    margin-top:410px;
+  }
+  
+  #about-j{
+    margin-top:25px;
+  }
+  #about-j .display-3{
+    font-size:40pt;
+  }
+  #about-j .lead{
+    font-size:14pt;
+  }
+  
+  .about-feature{
+    margin-left:30px;
+  }
+  
+  
+} */
+/* @media (max-width: 1024px){
+  #particles-js{
+    height:2700px;
+  }
+
+  #nav{
+    visibility:visible; 
+  }
+
+  .hamburger{
+    visibility:hidden;
+  }
+  
+  p, a, span, address, small{
+    font-size:10pt;
+  }
+  
+  #showcase .container{
+    visibility:visible;
+    margin-top:-10vh;
+  }
+  #showcase .container .navbar-brand{
+    margin-right:50px;
+  }
+  #showcase .container .nav-link{
+    font-size:10pt;
+  }
+  
+  .jumbo-1{
+    margin-top:-320vh;
+  }
+  .jumbo-1 div{
+    margin-left:25%;
+  }
+  
+  #line{
+    margin-top:420px;
+  }
+  
+  .marketing div{
+    text-align:left;
+  }
+  
+  .row .col-md-5, #bottom img{
+    visibility:visible;
+    height:auto;
+  }
+  
+  .about-feature{
+    margin-left:50px;
+  }
+  
+  address{
+    width:290px;
+  }
+} */
+/* ---------------------------------- */
+
+/* @media (max-width: 1200px){
+  #particles-js{
+    height:3000px;
+  }
+  
+  .marketing p,.marketing span{
+    font-size:13pt;
+  }
+  .row .col-md-5, #bottom img{
+    visibility:visible;
+    height:auto;
+  }
+  #bottom{
+    text-align:left;
+  }
+  
+  .jumbo-1{
+    margin-top:-360vh;
+    margin-left:3.5%;
+  }
+  .jumbo-1 div{
+    margin-left:28%;
+  }
+  
+  #line{
+    margin-bottom:430px;
+  }
+} */
+/* need to redo the rest after this point */
+/* @media (max-width: 1440px){
+  #particles-js{
+    height:3100px;
+  }
+  
+  #showcase .container .nav-link{
+    margin-left:5%;
+  }
+  
+  .jumbo-1 div{
+    margin-left:32%;
+  }
+  
+  #about-j{
+    margin-top:100px;
+  }
+  
+  .about-feature{
+    margin-left:150px;
+  }
+} */
+/* @media (max-width: 1864px){
+  .jumbo-1{
+    margin-left:0;
+  }
+  .jumbo-1 div{
+    margin-left:35%;
+  }
+  
+  #line{
+    margin-bottom:500px;
+  }
+  
+  .about-feature{
+    margin-left:350px;
+  }
+} */
+/* @media (max-width: 1920px){
+  .jumbo-1{
+    margin-top:-265vh;
+  }
+  #particles-js{
+    height:3200px;
+  }
+  
+  #nav{
+    padding-top:20px;
+  }
+} */
+/* @media (min-width: 2560px){
+  
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

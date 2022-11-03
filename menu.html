@@ -1,0 +1,340 @@
+<!DOCTYPE HTML>
+<html>
+  <!-- Gotta work on responsiveness -->
+  <head>
+    <title>My Portfolio</title>
+    <link rel='shortcut icon' type='image/x-icon' href='favicon.ico'/>
+    <link rel='stylesheet' href='assets/css/fontawesome-free-5.4.1-web/css/all.min.css'>
+    <link rel='stylesheet' href='assets/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='assets/css/unify.css'>
+    <link rel='stylesheet' href='assets/css/font.css'>
+    <link rel='stylesheet' href='assets/css/main.css'>
+  </head>
+  
+  <body style='margin-top:0px'>
+    <div class='hamburger'>
+      <div class='hamburgerBtn' onclick='dropBtn(this)'>
+        <div class='bar1'></div>
+        <div class='bar2'></div>
+        <div class='bar3'></div>
+      </div>
+      
+      <div class='ham-navbar hide'>
+        <ul>
+          <a class="navbar-brand" href="#particles-js">Daniel Martin</a>
+          <li class="nav-item">
+            <a class="nav-link" href="#particles-js">Main Menu<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about-j">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact-j">Contact</a>
+          </li>
+          <li class='nav-item dropdown'>
+            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Animations?
+              <i class='fa fa-angle-right'></i>
+            </a>
+            <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
+              <a class='dropdown-item' href='assets/js/Canvas/Circles_Animation/index.html'>Circles Animation</a>
+              <a class='dropdown-item' href='assets/js/Canvas/Circular_Motion/index.html'>Circular Motion</a>
+              <a class='dropdown-item' href='assets/js/Canvas/Coding_Gravity/index.html'>Coding Gravity</a>
+              <a class='dropdown-item' href='assets/js/Canvas/Collision_Detection/index.html'>Collision Detection</a>
+            </div>
+          </li>
+          <li class='nav-item'>
+            <a class='nav-link' href='assets/js/Drawing_App/views/index.html'>Draw?</a>
+          </li>
+        </ul>
+      </div>
+      
+    </div>
+    
+    <div id="particles-js"></div>
+    
+    <div id='showcase'>
+      
+      <div class='container'>
+        <ul class="navbar-nav fixed-top" id='nav'>
+          <a class="navbar-brand" id='n-link' href="#particles-js">Daniel Martin</a>
+          <li class="nav-item">
+            <a class="nav-link" id='m-link' href="#particles-js">Main Menu<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id='a-link' href="#about-j">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id='c-link' href="#contact-j">Contact</a>
+          </li>
+          <li class='nav-item dropdown'>
+            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Animations?
+              <i class='fa fa-angle-right'></i>
+            </a>
+            <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
+              <a class='dropdown-item' href='assets/js/Canvas/Circles_Animation/index.html'>Circles Animation</a>
+              <a class='dropdown-item' href='assets/js/Canvas/Circular_Motion/index.html'>Circular Motion</a>
+              <a class='dropdown-item' href='assets/js/Canvas/Coding_Gravity/index.html'>Coding Gravity</a>
+              <a class='dropdown-item' href='assets/js/Canvas/Collision_Detection/index.html'>Collision Detection</a>
+            </div>
+          </li>
+          <li class='nav-item'>
+            <a class='nav-link' href='assets/js/Drawing_App/views/index.html'>Draw?</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="jumbotron jumbo-1">
+      <h1 class="display-3"><i class='fab fa-wolf-pack-battalion' id='f-wolf'></i> Welcome! <i class='fab fa-wolf-pack-battalion' id='s-wolf'></i></h1>
+      <div>
+        <p class="lead">Welcome to my palace, explore and have a look around!</p>
+        <a href='#bottom' id="scroller" ><i  id='arrow' class='fa'></i></a>
+      </div>
+    </div>
+    
+    <div id='line'></div>
+    
+    <section name='games'>
+    
+      <div class="marketing" id='bottom'>
+        
+        <div class="row featurette container float-right">
+          <div class="col-md-5 order-md-1 showcase-right">
+            <img class="featurette-image img-fluid mx-auto float-right" src="assets/img/quest.png">
+          </div>
+          <div class="col-md-7 order-md-2 showcase-right">
+            <h2 class="featurette-heading">Basic Quest
+            <br><span class="text-muted">Smite everyone?</span></h2>
+            <p class="lead">There's a dungeon somewhere below, filled up with merchants, enemies, knights, and dragons. Treasure calls thy name, waiting for someone to claim it.</p>
+            <a class="btn btn-outline-info btn-md" href="assets/js/Games/Basic Quest/views/main.html" role="button">Take the quest?</a>
+          </div>
+        </div>
+
+        <hr class="featurette-divider g-divider">
+
+        <div class="row featurette container">
+          <div class="col-md-7 showcase-left">
+            <h2 class="featurette-heading">Issac's Survival
+            <br><span class="text-muted">Can you survive?</span></h2>
+            <p class="lead">You are Issac, and his nightmares have left his head to come and attack him at his house. Lots of demon spawns come at you from all sides and all you have is your gun. Potions come here and there and you hope that you'll obtain more health before the onslaught continues. How long can you survive before you are overwhelmed by the demons?</p>
+            <a class="btn btn-outline-info btn-md" href="assets/js/Games/RPG_GAME/index.html" role="button">Take Issac's Call?</a>
+          </div>
+          <div class="col-md-5 showcase-left">
+            <img class="featurette-image img-fluid mx-auto" src="assets/img/field.png">
+          </div>
+        </div>
+
+        <hr class="featurette-divider g-divider">
+
+        <div class="row featurette container float-right">
+          <div class="col-md-5 order-md-1 showcase-right">
+            <img class="featurette-image img-fluid mx-auto float-right" src="assets/img/ss.png">
+          </div>
+          <div class="col-md-7 order-md-2 showcase-right">
+            <h2 class="featurette-heading">Simple Survival
+            <br><span class="text-muted">Can you be simple?</span></h2>
+            <p class="lead">In this game, you are stuck being in a box, your objective: SURVIVE AS LONG AS POSSIBLE!!! Move around and collect the orange blocks to gain some health back. Your score is the amount of seconds you are alive for. How long can you survive for?</p>
+            <a class="btn btn-outline-info btn-md" href="assets/js/Games/Simple_Survival/survival.html" role="button">Be simple?</a>
+          </div>
+        </div>
+
+        <hr class="featurette-divider g-divider">
+
+        <div class="row featurette container">
+          <div class="col-md-7 showcase-left">
+            <h2 class="featurette-heading">Mission Impossible
+            <br><span class="text-muted">How long can you run?</span></h2>
+            <p class="lead">
+              There is no end to this game, you keep jumping and try not allow the squares to kill the last circle. Your jump height slowly increases and the squares become slightly faster the longer you survive. Your score increases with each moment that you are still alive. At some point, the circle won't be able to run anymore.</p>
+              <a class="btn btn-outline-info btn-md" href="assets/js/Games/Mission_Impossible/index.html" role="button">Mission accepted?</a>
+          </div>
+          <div class="col-md-5 showcase-left">
+            <img class="featurette-image img-fluid mx-auto" src="assets/img/mi.png">
+          </div>
+        </div>
+
+        <hr class="featurette-divider g-divider">
+        
+        <div class="row featurette container snake">
+          <div class="col-md-5 showcase-right">
+            <img class="featurette-image img-fluid mx-auto float-right" src="assets/img/snake.png">
+          </div>
+          <div class="col-md-7 showcase-right">
+            <h2 class="featurette-heading">Snake
+            <br><span class="text-muted">The Classics</span></h2>
+            <p class="lead">This is the simple Snake game that you are a snake and you collect white blocks to become larger. The higher the score, the faster you become. It will be harder to turn and to keep your pace. How long will you grow before you eat yourself or touch a wall?</p>
+            <a class="btn btn-outline-info btn-md" href="assets/js/Games/Snake/index.html" role="button">Be the snake?</a>
+          </div>
+        </div>
+    </div>
+    
+    </section>
+    
+    <section name='about-me'>
+      
+      <div class="jumbotron" id='about-j'>
+        <h1 class="display-3"><i class='fab fa-wolf-pack-battalion'></i>About Me!<i class='fab fa-wolf-pack-battalion'></i></h1>
+        <p class="lead">This is the part of the page has a bit of information on myself!</p>
+      </div>
+    
+      <div class="row featurette about-feature container">
+        <div class="col-md-6 showcase-left">
+            <h2 class="featurette-heading">Why do I like to code?</h2>
+            <p class="lead">I code because it is a lot of fun and has been challenging at moments. I've also wanted to make video games ever since I was a kid...or be paid to play them.</p>
+          </div>
+        <div class="col-md-6 showcase-right">
+          <h2 class="featurette-heading">What is a goal of mine?</h2>
+          <p class="lead">I want to be able to work with some of the major video game companies and make something amazing that everyone will want to play.</p>
+        </div>
+      </div>
+        
+      <hr class="featurette-divider about-divider">
+        
+      <div class="row featurette about-feature container">
+        <div class="col-md-6 showcase-left">
+          <h2 class="featurette-heading">What got me here?</h2>
+          <p class="lead">I started coding in a program called 'The Last Mile.' And that got me a open door into the coding world, giving me a chance to do what I wanted to do when I was younger.</p>
+        </div>
+        <div class="col-md-6 showcase-right">
+          <h2 class="featurette-heading">What is my favorite food?</h2>
+          <p class="lead">There are some people who may not consider this a food but, my most favorite food in the whole world has got to be Hot Cheetos, I love 'em!</p>
+        </div>
+      </div>
+    
+    </section>
+    
+    <footer>
+    <!-- Footer -->
+      <div class="g-main-color g-color-white-opacity-0_8 g-py-60">
+        <div class="container">
+          <div class="row">
+            <!-- Footer Content -->
+            <div class="col-lg-3 col-md-6 g-mb-40 g-mb-0--lg">
+              <a class="d-block g-mb-20" href="#">
+                <img class="img-fluid" src="assets/img/catch.jpeg" width='50%'>
+              </a>
+              <p>This is the arcade with video games that are fun to play! You even have a little interactive thing to play with at the top.</p>
+          </div>
+            <!-- End Footer Content -->
+      
+            <!-- Footer Content -->
+            <div class="col-lg-3 col-md-6 g-mb-40 g-mb-0--lg">
+              <div class="u-heading-v3-1 g-brd-white-opacity-0_3 g-mb-25">
+                <h2 class="u-heading-v3__title h6 text-uppercase u-line">Useful Links</h2>
+              </div>
+      
+              <nav class="text-uppercase1">
+                <ul class="list-unstyled g-mt-minus-10 mb-0">
+                  <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
+                    <h4 class="h6 g-pr-20 mb-0">
+      
+                      <a class="g-color-white-opacity-0_8 g-color-white--hover" id='fc-link' href="#about-j">About Me</a>
+      
+                      <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
+      
+                    </h4>
+                  </li>
+                  <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
+                    <h4 class="h6 g-pr-20 mb-0">
+      
+                      <a class="g-color-white-opacity-0_8 g-color-white--hover" id='fm-link' href="#particles-js">Particles</a>
+      
+                      <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
+      
+                    </h4>
+                  </li>
+                  <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
+                    <h4 class="h6 g-pr-20 mb-0">
+      
+                      <a class="g-color-white-opacity-0_8 g-color-white--hover" href="https://github.com/DanielMartin971">Github</a>
+      
+                      <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
+                    </h4>
+                  </li>
+                  <li class="g-pos-rel g-brd-white-opacity-0_1 g-py-10">
+                    <h4 class="h6 g-pr-20 mb-0">
+      
+                      <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#">Instagram</a>
+      
+                      <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
+                    </h4>
+                  </li>
+                </ul>
+              </nav>
+          </div>
+            <!-- End Footer Content -->
+      
+            <!-- Footer Content -->
+            <div class="col-lg-3 col-md-6" id='contact-j'>
+              <div class="u-heading-v3-1 g-brd-white-opacity-0_3 g-mb-25">
+                <h2 class="u-heading-v3__title h6 text-uppercase u-line">Contact</h2>
+              </div>
+      
+              <address class="g-bg-no-repeat g-line-height-2 g-mt-minus-4">
+      
+                California, US
+      
+                <br>
+      
+                Github: D_Marty-Mar
+      
+                <br>
+      
+                Phone: (442) 288 5658
+      
+                <br>
+      
+                Email:
+      
+                <a href="mailto:danielMartin971337@gmail.com" class="email">danielMartin971337@gmail.com</a>
+                
+                <br>
+                
+                <a id='footer-btn' class="btn btn-md u-btn-3d  g-mr-10 g-mb-15" href="assets/img/dMartinResume.pdf" role="button">Download Resume?</a>
+      
+              </address>
+          </div>
+            <!-- End Footer Content -->
+          </div>
+        </div>
+      </div>
+      <!-- End Footer -->
+      
+      <!-- Copyright Footer -->
+      <div class="b-sec-color g-py-20">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 text-center text-md-left g-mb-15 g-mb-0--md">
+              <div class="d-lg-flex">
+                <small class="d-block g-font-size-default g-mr-10 g-mb-10 g-mb-0--md">2018 © All Rights Reserved.</small>
+                <ul class="u-list-inline">
+                  <li class="list-inline-item">
+                    <a href="#!">Privacy Policy</a>
+                  </li>
+                  <li class="list-inline-item">
+                    <span>|</span>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#!">Terms of Use</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Copyright Footer -->
+    </footer>
+
+      
+    <script src='assets/js/jquery-3.2.1.js'></script>
+    <script src='assets/js/popper.min.js'></script>
+    <script src='assets/js/bootstrap.min.js'></script>
+    <script src='assets/js/scrollreveal.min.js'></script>
+    <script src='assets/js/particles/particles.js'></script>
+    <script src='assets/js/particles/app.js'></script>
+    <script src='assets/js/script.js'></script>
+  </body>
+</html>

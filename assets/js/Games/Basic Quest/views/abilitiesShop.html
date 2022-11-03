@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Abilities Shop</title>
+    <link rel='shortcut icon' type='image/x-icon' href='favico5.ico'>
+    <link rel='stylesheet' href='../css/main.css'>
+    <link rel='stylesheet' href='../css/fontawesome-free-5.7.2-web/css/all.min.css'>
+  </head>
+  <body>
+    <h1>Abilities Shop</h1>
+    <h5 id='extras' class=''></h5>
+    
+    <section name='shop'>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th colspan='4'>
+                <h3>
+                  <img src='../css/dig.svg' width='15px'> 
+                  Abilities 
+                  <img src='../css/hammer.svg' width='15px'>
+                </h3>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class='money'>
+              <td>Price <i class='fas fa-coins'></i></td>
+              <td><i class='fas fa-coins'></i> <span name='price1'>0</span></td>
+              <td><i class='fas fa-coins'></i> <span name='price2'>0</span></td>
+              <td><i class='fas fa-coins'></i> <span name='price3'>0</span></td>
+            </tr>
+            <tr class='race'>
+              <td>Name <i class='fas fa'></i></td>
+              <td name='name1' class='name'>Ability Name</td>
+              <td name='name2' class='name'>Ability Name</td>
+              <td name='name3' class='name'>Ability Name</td>
+            </tr>
+            <tr class='def'>
+              <td class='desc'>Description <i class='fas fa-book'></i></td>
+              <td class='desc'><span name='desc1'></span></td>
+              <td class='desc'><span name='desc2'></span></td>
+              <td class='desc'><span name='desc3'></span></td>
+            </tr>
+            <tr class='selection'>
+              <td>Select <i class='far fa-swords'></i></td>
+              <td><button name='ability1'>Ability</button></td>
+              <td><button name='ability2'>Ability</button></td>
+              <td><button name='ability3'>Ability</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    
+    <section name='player'>
+      <div name='flask and gold'>
+        <h5 class='money'>Gold: 
+          <span class='gold'>0</span>
+          <i class='fas fa-coins'></i>
+        </h5>
+        
+        <h5 class='flask'>Flasks: 
+          <span id='flask'>0</span>
+          <i class='fas fa-flask'></i>
+        </h5>
+      </div>
+      
+      <div name='self'>
+        <!-- DO NOT ADD MORE SPANS -->
+        <ul class='self'>
+          <li class='race'>Race: 
+            <span id='species' name='type'></span>
+          </li>
+          <li class='def'>Defense:  
+            <span name='defense'></span>
+            <i class='fas fa-shield-alt'></i>
+          </li>
+          <li class='hp'>Health:
+            <span name='health'></span>
+            <i class='fas fa-heart'></i>
+          </li>
+          <li class='mgk'>Magic:
+            <span name='magic'></span>
+            <i class='fas fa-scroll'></i>
+          </li>
+          <li class='spd'>Speed:
+            <span name='speed'></span>
+            <i class='fas fa-feather-alt'></i>
+          </li>
+          <li class='str'>Strength:
+            <span name='strength'></span>
+            <i class='fas fa-fist-raised'></i>
+            <!-- Working on icons and also going to add a 2nd line of items-->
+          </li>
+          <li class='ability'>Ability1:
+            <span name='ability1'></span>
+            <i class='fas fa-fist-raised'></i>
+            <!-- Working on icons and also going to add a 2nd line of items-->
+          </li>
+          <li class='ability'>Ability2:
+            <span name='ability2'></span>
+            <i class='fas fa-fist-raised'></i>
+            <!-- Working on icons and also going to add a 2nd line of items-->
+          </li>
+          <li class='ability'>Ability3:
+            <span name='ability3'></span>
+            <i class='fas fa-fist-raised'></i>
+            <!-- Working on icons and also going to add a 2nd line of items-->
+          </li>
+          <li>
+            <input type='text' placeholder="Type in ability you'd like to trade">
+            <input type='submit'>
+          </li>
+        </ul>
+        <button class='leave' name='leave'>Leave?</button>
+        <button class='kit'   name='kit'>Check kit?</button>
+      </div>
+    </section>
+    
+    <script src='../js/contructors/abilities.js'></script>
+    <script src='../js/shopAble.js'></script>
+    <script src='../js/icon.js'></script>
+  </body>
+</html>

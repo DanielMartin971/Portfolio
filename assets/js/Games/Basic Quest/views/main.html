@@ -1,0 +1,421 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Basic Quest</title>
+    <link rel='shortcut icon' type='image/x-icon' href='favico3.ico'>
+    <link rel='stylesheet' href='../css/bootstrap.min.css'>
+    <link rel='stylesheet' href='../css/main.css'>
+    <link rel='stylesheet' href='../css/fontawesome-free-5.7.2-web/css/all.min.css'>
+  </head>
+  <body>
+    <h1 id='main'>Basic Quest</h1>
+    <!-- create: grim reaper, priest-->
+    <div class='players'>
+      <table>
+        <thead>
+          <tr>
+            <th class='race'  data-toggle='tooltip' data-placement='left' title='Races to choose from'>Classes <i class='fas fa-skull-crossbones'></i></th>
+            <th class='def'   data-toggle='tooltip' data-placement='right' title='Defense decreases enemy damage'>Defense <i class='fas fa-shield-alt'></i></th>
+            <th class='money' data-toggle='tooltip' data-placement='left' title='Used with merchants to buy items'>Gold <i class='fas fa-coins'></i></th>
+            <th class='hp'    data-toggle='tooltip' data-placement='left' title='Take more damage'>Health <i class='fas fa-heart'></i></th>
+            <th class='mgk'   data-toggle='tooltip' data-placement='left' title='Deals magic damage'>Magic <i class='fas fa-scroll'></i></th>
+            <th class='spd'   data-toggle='tooltip' data-placement='left' title='Get to strike first'>Speed <i class='fas fa-feather'></i></th>
+            <th class='str'   data-toggle='tooltip' data-placement='left' title='Deals physical damage'>Strength <i class='fas fa-fist-raised'></i></th>
+            <th class='equip' data-toggle='tooltip' data-placement='left' title='Increases your stats'>Equipment <i class=''></i></th>
+            <th>Select</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class='race'><i class='fas fa-fire'></i> Archangel</th>
+            <td class='def'>2</td>
+            <td class='money'>1000 <i class='fas fa-coins'></i></td>
+            <td class='hp'>40</td>
+            <td class='mgk'>5</td>
+            <td class='spd'>2</td>
+            <td class='str'>9</td>
+            <td class='equip' data-toggle='tooltip' data-placement='left' data-html='true' title="Angelic Sword: +2 Health, +3 Magic, -2 Speed, +3 Strength
+Halo: +1 Defense, +5 Health
+Abilities: Devils'sMan,
+Suffering,
+Hellfire">
+              <ul>
+                <li>Angelic Sword</li>,
+                <li>Halo</li>
+              </ul>
+            </td>
+            <td><button name='archangel'>Select</button></td>
+          </tr>
+          <tr>
+            <th class='race'><i class='fas fa-frog'></i> Argonian</th>
+            <td class='def'>4</td>
+            <td class='money'>1000 <i class='fas fa-coins'></i></td>
+            <td class='hp'>15</td>
+            <td class='mgk'>2.5</td>
+            <td class='spd'>5</td>
+            <td class='str'>5</td>
+            <td class='equip' data-toggle='tooltip' data-placement='left' data-html='true' title='Shiv: +0.5 Speed, +1 Strength
+Reptilian Scales: +5 Defense, +5 Health, +2 Speed, +3 Strength
+Abilities: Charisma,
+WaterBreather,
+SwordsMaster'>
+              <ul>
+                <li>Shiv</li>,
+                <li>Reptilian Scales</li>
+              </ul>
+            </td>
+            <td><button name='argonian'>Select</button></td>
+          </tr>
+          <tr>
+            <th class='race'><i class='fas fa-dove'></i> Assassin</th>
+            <td class='def'>1.5</td>
+            <td class='money'>1000 <i class='fas fa-coins'></i></td>
+            <td class='hp'>15</td>
+            <td class=mgk>4</td>
+            <td class='spd'>7</td>
+            <td class='str'>10</td>
+            <td class='equip' data-toggle='tooltip' data-placement='left' title="Hidden Blade: +1 Defense, +5 Health, +1 Speed, +3 Strength
+Assassin's Cloak: +2.5 Defense, +4 Health, +1.5 Speed, +1 Strength
+Abilities: EagleEye,
+SpecialsMaster,
+SlipperyFeet">
+              <ul>
+                <li>Hidden Blade</li>,
+                <li>Assassin's Cloak</li>
+              </ul>
+            </td>
+            <td><button name='assassin'>Select</button></td>
+          </tr>
+          <tr>
+            <th class='race'><i class='fab fa-studiovinari'></i> Azetic</th>
+            <td class='def'>5</td>
+            <td class='money'>1500 <i class='fas fa-coins'></i></td>
+            <td class='hp'>15</td>
+            <td class='mgk'>2</td>
+            <td class='spd'>5</td>
+            <td class='str'>8</td>
+            <td class='equip' data-toggle='tooltip' data-placement='left' data-html='true' title="MIDA MultiTool: +1 Defense, +1 Health, +2 Speed, +4 Strength
+Azetic's Cloak: +1 Defense, +3 Health, +1 Magic, +1.5 Strength
+Abilities: LMFS,
+BloodThirsty,
+SunSinger">
+              <ul>
+                <li>MIDA MultiTool</li>,
+                <li>Azetic's Cloak</li>
+              </ul>
+            </td>
+            <td><button name='azetic'>Select</button></td>
+          </tr>
+          <tr>
+            <th class='race'><i class='fab fa-grunt'></i> Barbarian</th>
+            <td class='def'>6</td>
+            <td class='money'>1000 <i class='fas fa-coins'></i></td>
+            <td class='hp'>20</td>
+            <td class='mgk'>1.5</td>
+            <td class='spd'>3</td>
+            <td class='str'>8</td>
+            <td class='equip' data-toggle='tooltip' data-placement='left' title='Club: +1 Strength
+Nomad Armor: +3 Defense, +7 Health, +1 Speed, +1.5 Strength
+Abilities: Rampage,
+BluntsMaster,
+BDCH'>
+              <ul>
+                <li>Club</li>,
+                <li>Nomad Armor</li>
+              </ul>
+            </td>
+            <td><button name='barbarian'>Select</button></td>
+          </tr>
+          <tr>
+            <th class='race'><i class='fas fa-dice-d20'></i> Elf</th>
+            <td class='def'>2</td>
+            <td class='money'>1000 <i class='fas fa-coins'></i></td>
+            <td class='hp'>18</td>
+            <td class='mgk'>10</td>
+            <td class='spd'>4</td>
+            <td class='str'>1.5</td>
+            <td class='equip' data-toggle='tooltip' data-placement='left' title='Magic Missle: +1 Defense, +5 Magic, +1 Strength
+Robe: +0.5 Defense, +1 Health
+Abilities: StaffMaster,
+MagicBlood,
+SunSinger
+            '>
+              <ul>
+                <li>Magic Missle</li>,
+                <li>Robe</li>
+              </ul>
+            </td>
+            <td><button name='elf'>Select</button></td>
+          </tr>
+          <tr>
+            <th class='race'><i class='fas fa-crow'></i> Fenny</th>
+            <td class='def'>6</td>
+            <td class='money'>1000 <i class='fas fa-coins'></i></td>
+            <td class='hp'>20</td>
+            <td class='mgk'>3</td>
+            <td class='spd'>7</td>
+            <td class='str'>4</td>
+            <td class='equip' data-toggle='tooltip' data-placement='left' data-html='true' title="Valyrian Sword: +0.5 Defense, +4 Health, +1 Speed, +3 Strength
+Fenny's Armor: +4 Defense, +6 Health, +3 Magic
+Abilities: EagleEye,
+SunSinger,
+SlipperyFeet">
+              <ul>
+                <li>Valyrian Sword</li>,
+                <li>Fenny's Armor</li>
+              </ul>
+            </td>
+            <td><button name='fenny'>Select</button></td>
+          </tr>
+          <tr>
+            <th class='race'><i class='fas fa-fist-raised'></i> Gentleman</th>
+            <td class='def'>6</td>
+            <td class='money'>2000 <i class='fas fa-coins'></i></td>
+            <td class='hp'>28</td>
+            <td class='mgk'>3</td>
+            <td class='spd'>4</td>
+            <td class='str'>6</td>
+            <td class='equip' data-toggle='tooltip' data-placement='left' title='Canesword: +1 Defense, +4 Health, +1 Magic, +1 Speed, +3 Strength
+Fine Tailored Suit: +1.5 Defense, +2 Health, +2 Speed
+Abilities: ExoticGent,
+NSOWM,
+SodaFlask'>
+              <ul>
+                <li>Canesword</li>,
+                <li>Fine Tailored Suit</li>
+              </ul>
+            </td>
+            <td><button name='gentleman'>Select</button></td>
+          </tr>
+          <tr>
+            <th class='race'><i class='fas fa-fist-raised'></i> Goblin</th>
+            <td class='def'>4</td>
+            <td class='money'>3000 <i class='fas fa-coins'></i></td>
+            <td class='hp'>12</td>
+            <td class='mgk'>6.5</td>
+            <td class='spd'>5</td>
+            <td class='str'>3</td>
+            <td class='equip' data-toggle='tooltip' data-placement='left' title='Dagger: +1.5 Strength
+Cloth: +1 Speed, +1 Health
+Abilities: CorpseShaker,
+BYOG,
+SlipperyFeet'>
+              <ul>
+                <li>Dagger</li>,
+                <li>Cloth</li>
+              </ul>
+            </td>
+            <td><button name='goblin'>Select</button></td>
+          </tr>
+          <tr>
+            <th class='race'><i class='fas fa-fist-raised'></i> Gorphin</th>
+            <td class='def'>8</td>
+            <td class='money'>1000 <i class='fas fa-coins'></i></td>
+            <td class='hp'>25</td>
+            <td class='mgk'>1</td>
+            <td class='spd'>3</td>
+            <td class='str'>8</td>
+            <td class='equip' data-toggle='tooltip' data-placement='left' title='Stick: +0.2 Strength
+Mytheral Armor: +2 Defense, +7 Health, +2 Magic,
++1 Speed, +2 Strength
+Abilities: DemonSlayer,
+CorpseShaker,
+DragonSlayer'>
+              <ul>
+                <li>Stick</li>,
+                <li>Mytheral Armor</li>
+              </ul>
+            </td>
+            <td><button name='gorphin'>Select</button></td>
+          </tr>
+          <tr>
+            <th class='race'><i class='fas fa-cat'></i> Khajiit</th>
+            <td class='def'>2.5</td>
+            <td class='money'>1250 <i class='fas fa-coins'></i></td>
+            <td class='hp'>15</td>
+            <td class='mgk'>3.5</td>
+            <td class='spd'>7</td>
+            <td class='str'>5</td>
+            <td class='equip' data-toggle='tooltip' data-placement='left' title='Taloc: +1 Defense, +4 Health, +2 Magic, +3 Strength
+Cloak of Darkness: +1.5 Strength, +2 Health,  +1.5 Magic
+Abilities: CorpseShaker,
+EagleEye,
+KnifesMaster'>
+              <ul>
+                <li>Taloc</li>,
+                <li>Cloak of D.</li>
+              </ul>
+            </td>
+            <td><button name='khajiit'>Select</button></td>
+          </tr>
+          <tr>
+            <th class='race'><i class='fas fa-shield-alt'></i> Knight</th>
+            <td class='def'>7</td>
+            <td class='money'>2000 <i class='fas fa-coins'></i></td>
+            <td class='hp'>25</td>
+            <td class='mgk'>2</td>
+            <td class='spd'>4</td>
+            <td class='str'>6</td>
+            <td class='equip' data-toggle='tooltip' data-placement='left' title='Sword: +1.5 Strength
+Knight Armor: +5 Defense, +7 Health, -2.5 Speed
+Abilities: SwordsMaster,
+LMFS,
+DragonSlayer'>
+              <ul>
+                <li>Sword</li>,
+                <li>Knight Armor</li>
+              </ul>
+            </td>
+            <td><button name='knight'>Select</button></td>
+          </tr>
+          <tr>
+            <th class='race'><i class='fas fa-coins'></i> Merchant</th>
+            <td class='def'>4</td>
+            <td class='money'>10000 <i class='fas fa-coins'></i></td>
+            <td class='hp'>20</td>
+            <td class='mgk'>1</td>
+            <td class='spd'>5</td>
+            <td class='str'>2</td>
+            <td class='equip' data-toggle='tooltip' data-placement='left' data-html='true' title='Glade: +5 Health, +2 Magic, +2 Speed, +1 Strength
+Suit: +0.5 Defense, +2 Speed
+Abilities: SharedTrade,
+MyVodka!,
+ShoppingSpree'>
+              <ul>
+                <li>Glade</li>,
+                <li>Suit</li>
+              </ul>
+            </td>
+            <td><button name='merchant'>Select</button></td>
+          </tr>
+          <tr>
+            <th class='race'><i class='fas fa-kiwi-bird'></i> Ninja</th>
+            <td class='def'>2</td>
+            <td class='money'>1000 <i class='fas fa-coins'></i></td>
+            <td class='hp'>20</td>
+            <td class='mgk'>4</td>
+            <td class='spd'>8</td>
+            <td class='str'>4</td>
+            <td class='equip' data-toggle='tooltip' data-placement='left' title='Katana: +1 Defense, +2 Health, +1 Magic, +2.5 Strength
+Ninja Robe: +2.5 Defense, +5 Health, + 2 Speed, +1.5 Strength
+Abilities: Charisma,
+DeathStare,
+DemonSlayer'>
+              <ul>
+                <li>Katana</li>,
+                <li>Ninja Robe</li>
+              </ul>
+            </td>
+            <td><button name='ninja'>Select</button></td>
+          </tr>
+          <tr>
+            <th class='race'><i class='fas fa-kiwi-bird'></i> Skinwalker</th>
+            <td class='def'>3</td>
+            <td class='money'>0 <i class='fas fa-coins'></i></td>
+            <td class='hp'>50</td>
+            <td class='mgk'>5</td>
+            <td class='spd'>2</td>
+            <td class='str'>9</td>
+            <td class='equip' data-toggle='tooltip' data-placement='left' title='Soulbane: +1 Defense, +3 Health, +3 Strength
+Shadow: +3 Health, +3 Magic, +4 Speed, +3 Strength
+Abilities: PhaseWalker,
+DeadAgain,
+TBTFM'>
+              <ul>
+                <li>Soulbane</li>,
+                <li>Shadow</li>
+              </ul>
+            </td>
+            <td><button name='skinwalker'>Select</button></td>
+          </tr>
+          <tr>
+            <th class='race'><i class='fas fa-kiwi-bird'></i> Werewolf</th>
+            <td class='def'>8</td>
+            <td class='money'>0 <i class='fas fa-coins'></i></td>
+            <td class='hp'>40</td>
+            <td class='mgk'>4</td>
+            <td class='spd'>7</td>
+            <td class='str'>15</td>
+            <td class='equip' data-toggle='tooltip' data-placement='left' title='Wolf Hide: +2 Defense, +3 Health
+Abilities: BloodThirsty,
+BromptonCocktail,
+Suffering
+(Cannot have weapons)'>
+              <ul>
+                <li>None</li>,
+                <li>Wolf Hide</li>
+              </ul>
+            </td>
+            <td><button name='werewolf'>Select</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class='legend' name='Legend'>
+      <h5>Legend of Abilities <i class='fas fa-book-dead'></i></h5>
+
+      <ul>
+        <li><h6>BDCH (Being dumb comes in handy):</h6> Get a 5% discount in the shop</li>
+        <li><h6>BluntsMasters:</h6> Do 10% more damage with blunts</li>
+        <li><h6>Charisma:</h6> Get a 10% discount in the shop</li>
+        <li><h6>DeathStare:</h6> 5% chance to instantly kill enemy</li>
+        <li><h6>DemonSlayer:</h6> Do 5% more damage to hectic and normal enemies</li>
+        <li><h6>DragonSlayer:</h6> Do 10% more damage to hectic enemies and 20% more damage to the dragon</li>
+        <li><h6>EagleEye:</h6> +20% Critical Hit Rate</li>
+        <li><h6>Greedy:</h6> Recieve 10% more gold</li>
+        <li><h6>KnifesMaster:</h6> Do 10% more damage with knifes</li>
+        <li><h6>LMFS(Last motha'fuckin' stand):</h6> When your health is less than 25%, your defense increases by 50%</li>
+        <li><h6>MagicBlood:</h6> Take 10% less damage from magic attacks</li>
+        <li><h6>Rampage:</h6> When your health is less than 25%, your strength increases by 50%</li>
+        <li><h6>SlipperyFeet:</h6> 15% increased chance to dodge a attack</li>
+        <li><h6>SpecialsMaster:</h6> Do 10% more damage with specials</li>
+        <li><h6>StaffsMaster:</h6> Do 10% more damage with staffs</li>
+        <li><h6>SunSinger:</h6> 5% chance to come back to life after death</li>
+        <li><h6>SwordsMaster:</h6> Do 10% more damage with swords</li>
+      </ul>
+      
+      <h5>Update of Abilities (April 15th, 2019)</h5>
+      <ul>
+        <li><h6>AbyssSurvivor:</h6>Do 10% increased damage to AbyssWalker and take 25% less damage from him</li>
+        <li><h6>Afterlife:</h6> 30% to come back to life as a Archangel</li>
+        <li><h6>BloodThirsty:</h6> Every kill gives you 5 hp</li>
+        <li><h6>BromptonCocktail:</h6> Flasks only give you 25% hp but your dodge % increases by 50</li>
+        <li><h6>Buffalo Power:</h6> Increase flask slots by 1, 10% increased attack, 5% increase defense, 10% increase in sale prices</li>
+        <li><h6>BYOG(Bring Your Own Gold):</h6> 2% chance to steal item in shop (You cannot steal abilites nor stats)</li>
+        <li><h6>CanceredBlood:</h6> Lose 1 hp every 5 seconds but increase strength and magic by 4</li>
+        <li><h6>CheapShot:</h6> 20% to hit enemy without receiving damage but 10% increase in prices</li>
+        <li><h6>(revised)CorpseShaker(renamed from: Greedy):</h6> Receive 10% more gold and 5% increased chance to find loot</li>
+        <li><h6>CrossFaded:</h6> 10% increase in prices, take 10% more damage, deal 10% more damage, and 10% chance to not use a flask</li>
+        <li><h6>CursedSoul:</h6> Decrease all stats by 1 and increase maxHp by 10</li>
+        <li><h6>DeadAgain:</h6> 10% chance to come back to life with 1 hp and 1 flask slot</li>
+        <li><h6>Devil'sMan:</h6> Increase all stats by 1 and lose 10 maxHp</li>
+        <li><h6>ExoticGent:</h6> 15% decrease in prices and 5% increase damage to hectics</li>
+        <li><h6>FAN(Fuckin' Annoying Nerd):</h6> Do 20% more magic damage and take 5% less magic damage</li>
+        <li><h6>Hellfire:</h6> Do 10% increase damage with all weapon types</li>
+        <li><h6>Heretic:</h6> Decrease flasks slots by 1 and increase heal rate by 15%</li>
+        <li><h6>HopelessRomantic:</h6> -50% hp but increase dodge % by 50</li>
+        <li><h6>Medic!:</h6> 10% increase heal rate</li>
+        <li><h6>MyVodka!:</h6> Increase loot chance by 10%</li>
+        <li><h6>NaturalBarterer:</h6> Get 20% more gold for items sold</li>
+        <li><h6>NSOWM(No Shoes is Okay With Me):</h6> Increase flasks slots by 3 (max is usually 9)</li>
+        <li><h6>OneManArmy:</h6> Lose 25% maxHp and when hp is less than 25%, increase strength and defense by 50%</li>
+        <li><h6>PhaseWalker:</h6> 50% increased chance to dodge but lose 50% of your flask slots</li>
+        <li><h6>RebornAgain:</h6> 10% chance to come back to life with full hp and no flasks</li>
+        <li><h6>RoyalBlood:</h6> 20% decrease in prices and take 5% more damage</li>
+        <li><h6>SharedTrade:</h6> 40% decreased prices and get 5% more gold for items sold</li>
+        <li><h6>ShoppingSpree:</h6> 10% increased chance to get merchants to spawn</li>
+        <li><h6>(revised)SlipperyFeet:</h6> 20% increased chance to dodge but 10% chance to miss attacks</li>
+        <li><h6>SodaFlask:</h6> 15% chance to not use a flask when healing</li>
+        <li><h6>Suffering:</h6> When hp is less than 25%, your attack increases by 75% but your defense decreases by 50%</li>
+        <li><h6>(revised)SunSinger:</h6> 5% chance to come back to life with full hp and flasks</li>
+        <li><h6>TBTFM(The Bell Tolls For Me):</h6>10% chance to kill enemy upon death and revive with full hp</li>
+      </ul>
+    </div>
+    
+    <script src='../js/scripts/jquery-3.2.1.js'></script>
+    <script src='../js/scripts/popper.min.js'></script>
+    <script src='../js/scripts/bootstrap.min.js'></script>
+    <script src='../js/main.js'></script>
+  </body>
+</html>

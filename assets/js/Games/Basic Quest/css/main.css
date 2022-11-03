@@ -1,0 +1,543 @@
+
+/* latin-ext */
+@font-face {
+  font-family: 'Black Ops One';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Black Ops One Regular'), local('BlackOpsOne-Regular'), url(black_ops/black1.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Black Ops One';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Black Ops One Regular'), local('BlackOpsOne-Regular'), url(black_ops/black2.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* latin */
+@font-face {
+  font-family: 'Quantico';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Quantico'), local('Quantico-Regular'), url(quantico/quantico.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+
+/*
+  --Colors--
+  Timberwolf:#D9D6CF
+  Onyx:#353839
+  Eerie Black:#1B1B1B
+  Smoke:#738276
+  Aztec Gold:#C39953
+  Scarlet:#FD0E35
+  Metallic Sunburst:#9C7C38
+  Sunglow:#FFCC33
+  Indigo:#4F69C6
+  Shiny Shamrock:#5FA778
+  Rusty Red:#DA2C43
+*/
+
+*{
+  margin:0;
+  padding:0;
+  font-family:'Quantico';
+}
+
+body::-webkit-scrollbar{
+  display:none;
+}
+
+body{
+  background:#1B1B1B;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#game{
+  background:#fff;
+}
+
+
+h1,h2{
+  text-align:center;
+  font-size:2em;
+  font-weight:bold;
+  color:#738276;
+  background:#1B1B1B;
+}
+#game h1,h2{
+  margin-bottom:0;
+}
+
+#main{
+  margin-bottom:30px;
+}
+
+.story{
+  padding:30px;
+  background:#1B1B1B;
+  border: 1px solid transparent;
+  margin-bottom:20px;
+}
+
+
+a{
+  color:#D6D9CF;
+  text-decoration:none;
+  background:#1b1b1b;
+  border-radius:.2rem;
+  padding:2px 8px;
+}
+a:hover{
+  transition:0.3s ease;
+  background:#D6D9CF;
+  color:#1b1b1b;
+}
+
+
+
+table{
+  width:100%;
+  display:table;
+  border-spacing:2px;
+  color:#D9D6CF;
+  background:#1B1B1B;
+  border-collapse:collapse;
+}
+table td{
+  border-top:1px solid transparent;
+  vertical-align:auto;
+  padding:8px;
+}
+th{
+  padding:.60rem;
+}
+tr{
+  text-align:center;
+  border-top:1px solid transparent;
+  border-bottom:1px solid transparent;
+}
+td button{
+  border:none;
+  border-radius:.2rem;
+  background:#D9D6CF;
+  padding:5px 8px;
+}
+td button:hover{
+  cursor:pointer;
+  transition:0.3s ease;
+  background:#353839;
+  color:#D9D6CF;
+}
+table ul{
+  margin:0;
+}
+table ul li{
+  display:inline-block;
+}
+
+.players{
+  height:100%;
+}
+
+
+button:focus{
+  outline:none!important;
+}
+
+.actions{
+  margin-top:50px;
+  text-align:center;
+}
+
+.actions button:first-child{
+  margin-left:20px;
+}
+.actions button{
+  margin-left:50px;
+  padding:8px 15px 8px 15px;
+  border-radius:.2rem;
+  font-weight:1000;
+  font-size:14pt;
+  border-bottom:solid 3px rgba(0,0,0,0.2);
+  border-right: solid 3px rgba(0,0,0,0.2);
+  background:  #999999;
+}
+.actions button:hover{
+  border-color:#bfbfbf;
+  background:  #bfbfbf;
+}
+.actions button:focus{
+  border-color:green;
+  outline:transparent!important;
+}
+
+#start{
+  margin-left: 50%;
+  margin-right:50%;
+  margin-top:100px;
+}
+#start:focus{
+  outline:none!important;
+}
+
+.player{
+  float:left;
+  margin-left:20px;
+}
+.player ul li,.player ul h4{
+  font-weight:bold;
+  color:#738276;
+  list-style:none;
+}
+
+.enemy{
+  float:right;
+  margin-right:20px;
+}
+
+/*------This is for the legend on the main page-------*/
+
+.legend{
+  /* margin-top:20px; */
+  display:flex;
+  width: 100%;
+  color:#D9D6CF;
+  height:300px;
+  justify-content: space-around;
+}
+
+.legend h5{
+  text-align: center;
+  margin-left: 0px;
+  margin-bottom: 0px;
+  border-bottom:1px solid #D9D6CF;
+  border-right:1px solid #D9D6CF;
+  width:8%;
+}
+
+.legend ul{
+  list-style-type: none;
+  border-right: 1px solid #D9D6CF;
+  border-bottom: 1px solid #D9D6CF;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  overflow: scroll;
+}
+
+.legend ul::-webkit-scrollbar{
+  display:none;
+}
+
+.legend li{
+  margin-bottom: 5px;
+}
+
+h6{
+  font-weight: 600;
+  float: left;
+  margin-right: 5px;
+  font-style: italic;
+  color: #C39953;
+}
+
+/*---------------------------------------------------*/
+
+/*--------------------------Font Awesome Icon------------------------*/
+.race{
+  color:#738276;
+}
+
+
+.money{
+  color:#C39953;
+}
+.hp{
+  color:#FD0E35;
+}
+.flask{
+  color:#9C7C38;
+}
+
+/*-------------------------------------------------------------------*/
+
+
+#extras{
+  color:#738276;
+  text-align:center;
+  visibility:hidden;
+  margin-bottom:30px;
+}
+.story #extras{
+  margin-bottom:0;
+}
+
+.hidden{
+  transition:1s;
+  text-align:center;
+  visibility:hidden;
+  height:0;
+}
+.show{
+  text-align:center;
+  height:auto;
+  visibility:visible;
+}
+
+/*----------------Shop CSS----------------*/
+section div ul{
+  margin-left:20px;
+  list-style:none;
+}
+section h5{
+  margin-left:20px;
+}
+
+section table td{
+  border-right:1px solid #D9D6CF;
+}
+section table td:last-child{
+  border:none;
+}
+
+th.race:first-child{
+  text-align:left;
+}
+
+section ul li{
+  background:transparent;
+  border:1px solid transparent;
+  border-collapse:collapse;
+  border-bottom:none;
+}
+
+section ul li.race{
+  margin-top:20px;
+}
+
+.equipment{
+  list-style:none;
+  float:left;
+  margin-left:170px;
+  margin-top:-165px;
+}
+.equipment1{
+  position:absolute;
+  list-style:none;
+  float:left;
+  margin-left:500px;
+  margin-top:-165px;
+}
+
+.def{
+  color:#ffcc33;
+}
+.mgk{
+  color:#4F69C6;
+}
+.spd{
+  color:#5FA778;
+}
+.str{
+  color:#DA2C43;
+}
+.type{
+  color:#6D9BC3;
+}
+
+
+h5.money{
+  border:1px solid transparent;
+  background:#1B1B1B;
+}
+
+div.race{
+  margin-top:10px;
+}
+
+
+thead tr, thead th{
+  border-bottom:1px solid #D9D6CF;
+}
+tbody tr:last-child th, tbody tr:last-child td{
+  border-bottom:1px solid #D9D6CF;
+}
+tbody td{
+  border-left:1px solid #D9D6CF;
+}
+tbody td:first-child{
+  border:none;
+}
+
+.leave,
+.kit,
+.sell,
+.shop,
+.quest{
+  float:right;
+  margin-top:-100px;
+  margin-right:100px;
+  
+  border:none;
+  border-radius:.2rem;
+  width:100px;
+  /*738276*/
+  background:#D9D6CF;
+  padding:5px 8px;
+}
+.leave:hover,
+.kit:hover,
+.sell:hover,
+.shop:hover,
+.quest:hover{
+  cursor:pointer;
+  transition:0.3s ease;
+  background:#353839;
+  color:#D9D6CF;
+}
+
+.kit,
+.sell,
+.shop{
+  margin-top:-60px;
+}
+.sell{
+  margin-top:-140px;
+}
+/*----------------------------------------------------*/
+
+/*--------This is for the kit page--------------------*/
+
+.shop{
+  visibility:hidden;
+}
+
+.listA{
+  float:left;
+}
+
+.listA,
+.listW{
+  height:250px;
+  overflow:scroll;
+}
+
+.listA::-webkit-scrollbar,
+.listW::-webkit-scrollbar{
+  display:none;
+}
+
+.listA li,
+.listW li{
+  width:150px;
+  color:#1b1b1b;
+  background:#D9D6CF;
+  padding:5px 8px;
+  border:1px solid #D9D6CF;
+  border-radius:.2rem;
+  margin-bottom:4px;
+  text-align:center;
+}
+
+
+.listA li:hover,
+.listW li:hover{
+  color:#D9D6CF;
+  background:#1b1b1b;
+  cursor:pointer;
+}
+
+
+.listA li:first-child,
+.listW li:first-child{
+  background:#1b1b1b;
+  color:#D9D6CF;
+  border:none;
+}
+.listA li:first-child:hover,
+.listW li:first-child:hover{
+  cursor:default;
+}
+
+.listW{
+  float:right;
+  margin-right:20px;
+}
+/*----------------------------------------------------*/
+/*--------This is for the abilities shop--------------*/
+.ability{
+  color:#00755E;
+}
+
+.name{
+  font-size:14pt;
+  font-weight:500;
+}
+.desc{
+  width:40px;
+}
+
+/*----------------------------------------------------*/
+/*working on table font-size during responsive stuff*/
+
+
+
+@media (min-width: 383px) {
+  body{
+    overflow:visible;
+  }
+}
+@media (min-width: 575px) {
+  body{
+    overflow:visible;
+  }
+}
+@media (min-width: 767px) {
+  body{
+    overflow:hidden;
+  }
+  table{
+    font-size:9pt;
+  }
+}
+@media (min-width: 991px) {
+  section table{
+    font-size:10.15pt;
+  }
+}
+@media (min-width: 1199px) {
+  section table{
+    font-size:20pt;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Kit</title>
+    <link rel='shortcut icon' type='image/x-icon' href='favico4.ico'>
+    <link rel='stylesheet' href='../css/main.css'>
+    <link rel='stylesheet' href='../css/fontawesome-free-5.7.2-web/css/all.min.css'>
+  </head>
+  <body>
+    <h1>Kit</h1>
+    <h5 id='extras' class=''></h5>
+    
+    <section name='equipment'>
+      <div>
+        <ul class='listW'>
+          <li class='list-w'>Weapons:<br></li>
+        </ul>
+        <ul class='listA'>
+          <li class='list-a'>Armors:<br></li>
+        </ul>
+      </div>
+    </section>
+    
+    <section name='player' style='margin-top:300px'>
+      <div name='flask and gold'>
+        <h5 class='money'>Gold: 
+          <span class='gold'>0</span>
+          <i class='fas fa-coins'></i>
+        </h5>
+        
+        <h5 class='flask'>Flasks: 
+          <span id='flask'>0</span>
+          <i class='fas fa-flask'></i>
+        </h5>
+      </div>
+      
+      <div name='self'>
+        <!-- DO NOT ADD MORE SPANS -->
+        <ul class='self'>
+          <li class='race'>Race: 
+            <span id='species' name='type'></span>
+          </li>
+          <li  class='def'>Defense:  
+            <span name='defense'></span>
+            <i class='fas fa-shield-alt'></i>
+          </li>
+          <li   class='hp'>Health:
+            <span name='health'></span>
+            <i class='fas fa-heart'></i>
+          </li>
+          <li  class='mgk'>Magic:
+            <span name='magic'></span>
+            <i class='fas fa-scroll'></i>
+          </li>
+          <li  class='spd'>Speed:
+            <span name='speed'></span>
+            <i class='fas fa-feather-alt'></i>
+          </li>
+          <li  class='str'>Strength:
+            <span name='strength'></span>
+            <i class='fas fa-fist-raised'></i>
+            <!-- Working on icons and also going to add a 2nd line of items-->
+          </li>
+        </ul>
+        <button class='quest' name='quest'>Back to quest?</button>
+        <button class='shop'  name='shop'>Back to shop?</button>
+      </div>
+    </section>
+    
+    <section name='weapon'>
+      <ul class='equipment'>
+        <li class='race'>Name:     
+          <span name='name'></span>
+        </li>
+        <li class='def'>Defense:  
+          <span name='defense'></span>
+          <i class='fas fa-shield-alt'></i>
+        </li>
+        <li class='hp'>Health:   
+          <span name='health'></span>
+          <i class='fas fa-heart'></i>
+        </li>
+        <li class='mgk'>Magic:    
+          <span name='magic'></span>
+          <i class='fas fa-scroll'></i>
+        </li>
+        <li class='spd'>Speed:    
+          <span name='speed'></span>
+          <i class='fas fa-feather-alt'></i>
+        </li>
+        <li class='str'>Strength: 
+          <span name='strength'></span>
+          <i class='fas fa-fist-raised'></i>
+        </li>
+        <li  class='type'>Type:
+            <span name='type'></span>
+        </li>
+      </ul>
+    </section>
+    <section name='armor'>
+      <ul class='equipment1'>
+        <li class='race'>Name:     
+          <span name='type'></span>
+        </li>
+        <li class='def'>Defense:  
+          <span name='defense'></span>
+          <i class='fas fa-shield-alt'></i>
+        </li>
+        <li class='hp'>Health:   
+          <span name='health'></span>
+          <i class='fas fa-heart'></i>
+        </li>
+        <li class='mgk'>Magic:    
+          <span name='magic'></span>
+          <i class='fas fa-scroll'></i>
+        </li>
+        <li class='spd'>Speed:    
+          <span name='speed'></span>
+          <i class='fas fa-feather-alt'></i>
+        </li>
+        <li class='str'>Strength: 
+          <span name='strength'></span>
+          <i class='fas fa-fist-raised'></i>
+        </li>
+      </ul>
+    </section>
+    
+    <script src='../js/contructors/weapons.js'></script>
+    <script src='../js/contructors/armors.js'></script>
+    <script src='../js/kit.js'></script>
+    <script src='../js/icon.js'></script>
+  </body>
+</html>
