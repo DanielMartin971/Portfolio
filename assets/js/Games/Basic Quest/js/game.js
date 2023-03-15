@@ -1,7 +1,7 @@
 
 
 //This is used for removing text and getting rid of the timeout
-var timeout;
+let timeout;
 //////////////////////////////////////////
 
 
@@ -33,7 +33,7 @@ var timeout;
 
 //Abilities-----------------------------------------------//
 //this sets all abilities to false so theyre not active from start of game
-var abilities = {
+let abilities = {
   //these are revive abilities
   aflife: false,
   deadA:  false,
@@ -88,21 +88,21 @@ var abilities = {
   --ItemsW has the equipment weapons that the player owns--
 */
 
-var flask  = JSON.parse(localStorage.getItem('flask'));
-var gold   = JSON.parse(localStorage.getItem('gold'));
-var itemsA = [];
-var itemsW = [];
-var kit    = JSON.parse(localStorage.getItem('kit'));
+let flask  = JSON.parse(localStorage.getItem('flask'));
+let gold   = JSON.parse(localStorage.getItem('gold'));
+let itemsA = [];
+let itemsW = [];
+let kit    = JSON.parse(localStorage.getItem('kit'));
 
 //This is for the iteration loop when increasing difficulty of enemies so they won't keep increasing difficulty
-var iterat = 0;
+let iterat = 0;
 
 
 
 /////////////////////////////////////////////////////////////////
 
 //this sets the btns on screen and gives a 'HUD' to player
-var doc = {
+let doc = {
   actions: document.getElementById('action'),
   armor:   document.querySelector('span.armor'),
   click:   "Click 'start' to start the game",
@@ -120,7 +120,7 @@ var doc = {
 
 //little intros 
 //needs different greetings and ques for bosses
-var greetings ={
+let greetings ={
   welcome: 'Welcome to Basic Quest',
   shop: 'Welcome back to Basic Quest',
   intro: 'You see a cave entrance...',
@@ -128,14 +128,14 @@ var greetings ={
 
 
 //sets enemy
-var enemy;
-var enemyDocSpecies = document.getElementById('eSpecies');
-var enemyDocHp      = document.getElementById('eHealth');
+let enemy;
+let enemyDocSpecies = document.getElementById('eSpecies');
+let enemyDocHp      = document.getElementById('eHealth');
 
-var actions = document.querySelectorAll('[name]');
+let actions = document.querySelectorAll('[name]');
 
 //this gives the btn prompts actions when clicked on
-var btns = {
+let btns = {
   attack: 'attack',
   blank:  'blank',
   defend: 'defend',
@@ -146,13 +146,13 @@ var btns = {
 };
 
 //sets player, kills, abilites and equipment is reset to 0 per reset and coming back from kit
-var p1    = JSON.parse(localStorage.getItem('race'));
+let p1    = JSON.parse(localStorage.getItem('race'));
 console.log(p1);
 console.log(JSON.parse(localStorage.getItem('race')));
-var slain = JSON.parse(localStorage.getItem('kills'));
-var self;
-var ability   = [];
-var equipment = {
+let slain = JSON.parse(localStorage.getItem('kills'));
+let self;
+let ability   = [];
+let equipment = {
   defense: 0,
   maxHealth: 0,
   magic: 0,
@@ -161,26 +161,26 @@ var equipment = {
 };
 
 
-var story      = [
+let story      = [
   'You see a stranger in the distance',
   'A enemy appeared!',
   "There's a merchant selling items!",
 ];
 //whenever the dice roll gives a merchant or enemy or random 
-var events     = {
+let events     = {
   enemy: story[1],
   merchant: story[2],
   stranger: story[0],
 };
 //difficulty modifier for amount of enemies slain that increases enemy defense
-var difficulty = {
+let difficulty = {
   defense: 0,
 };
 
 //This function brings all the stats into play and updates everything after you come back from the shop
 function Init(type,defense,health,maxHealth,magic,speed,strength,armor,weapon,currency,ability1,ability2,ability3){
   //var loc just checks current location of player 
-  var loc = localStorage.getItem('location').toLowerCase();
+  let loc = localStorage.getItem('location').toLowerCase();
   console.log(loc);
   
   //this runs through to ses if player is in a shop and gets a greeting
@@ -213,8 +213,8 @@ function Init(type,defense,health,maxHealth,magic,speed,strength,armor,weapon,cu
   ability.push(self.ability2.toLowerCase());
   ability.push(self.ability3.toLowerCase());
   
-  //this checks to see if self has some abilities or not
-  for(var i = 0; i < ability.length; i++){
+  // This for loop is checking to see what abilites the player has, setting to true and applying them during the character creation
+  for(let i = 0; i < ability.length; i++){
     if(ability[i] == 'hopelessromantic'){
       abilities.hopRom = true;
     }
@@ -295,27 +295,23 @@ function Init(type,defense,health,maxHealth,magic,speed,strength,armor,weapon,cu
     flask.max -= Math.floor(flask.max * 0.5);
   }
   
-  //these for loops go through the equipments and adds the stats to equipment
-  for(var i = 0; i < armors.length; i++){
+  // These for loops go through the equipments and adds the stats to equipment
+  for(let i = 0; i < armors.length; i++){
     if(self.armor.toLowerCase() == armors[i].name.toLowerCase()){
       equipment.defense     += armors[i].defense;
       equipment.maxHealth   += armors[i].health;
       equipment.magic       += armors[i].magic;
       equipment.speed       += armors[i].speed;
       equipment.strength    += armors[i].strength;
-      
-      // console.log('Armor',armors[i]);
     }
   }
-  for(var j = 0; j < weapons.length; j++){
+  for(let j = 0; j < weapons.length; j++){
     if(self.weapon.toLowerCase() == weapons[j].name.toLowerCase()){
       equipment.defense     += weapons[j].defense;
       equipment.maxHealth   += weapons[j].health;
       equipment.magic       += weapons[j].magic;
       equipment.speed       += weapons[j].speed;
       equipment.strength    += weapons[j].strength;
-      
-      // console.log('Weapon',weapons[j]);
     }
   }
   
@@ -355,7 +351,6 @@ function Init(type,defense,health,maxHealth,magic,speed,strength,armor,weapon,cu
   }
   
   //This part just adds the equipment stats////////////////////
-  
   self.defense   += equipment.defense;
   self.maxHealth += equipment.maxHealth;
   self.magic     += equipment.magic;
@@ -375,21 +370,21 @@ function Init(type,defense,health,maxHealth,magic,speed,strength,armor,weapon,cu
   
   
   //This is to seperate the armors from weapons
-  for(i = 0; i < kit.length; i++){
-    for(var o = 0; o < armors.length; o++){
+  for(let i = 0; i < kit.length; i++){
+    for(let o = 0; o < armors.length; o++){
       if(kit[i].toLowerCase() == armors[o].name.toLowerCase()){
         itemsA.push(kit[i]);
       }
     }
-    for(var z = 0; z < weapons.length; z++){
+    for(let z = 0; z < weapons.length; z++){
       if(kit[i].toLowerCase() == weapons[z].name.toLowerCase()){
         itemsW.push(kit[i]);
       }
     }
   }
   
-  //enemies difficulty increase stats
-  for(var z = 0; z < enemies.length; z++){
+  // The more slain enemies, the higher the difficulty becomes with this for loop
+  for(let z = 0; z < enemies.length; z++){
     if(slain > 100){
       if(enemies[z].type.toLowerCase() == 'elf'){
         enemies[z].magic  += 30;
@@ -463,7 +458,7 @@ function Init(type,defense,health,maxHealth,magic,speed,strength,armor,weapon,cu
   }
   difficulty.defense += 2.5;
   
-  //this just puts the health on the html doc if you come back from your kit
+  // This just puts the health on the html doc when you come back from the kit page
   if(loc == 'kit'){
     self.health      = p1.health;
     doc.hp.innerHTML = self.health;
