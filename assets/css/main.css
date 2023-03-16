@@ -62,9 +62,8 @@ h1{
   margin-top:50px;
   margin-bottom:50px;
 }
-.container ul{
-  text-align:center;
-}
+
+
 .container .btn-outline-info{
   border:1px solid #55ACEE;
   color:#55ACEE;
@@ -108,6 +107,9 @@ h1{
   color:#FF9900!important;
 }
 
+.container ul{
+  /* text-align:center; */
+}
 
 .navbar-brand{
   font-weight:bold;
