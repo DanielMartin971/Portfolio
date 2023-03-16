@@ -1,4 +1,3 @@
-
 localStorage.setItem('location','shopS');
 
 let gold  = JSON.parse(localStorage.getItem('gold'));
@@ -19,15 +18,14 @@ doc.extras.style.height     = 'auto';
 doc.extras.style.visibility = 'visible';
 
 doc.extras.innerHTML = 'Welcome to the shop!';
-remove();
 
-var kit = JSON.parse(localStorage.getItem('kit'));
+let kit = JSON.parse(localStorage.getItem('kit'));
 
 doc.gold.innerHTML  = gold.owned;
 
 const selection = document.querySelectorAll('tbody button');
 
-var timeout;
+let timeout;
 function remove(){
   clearTimeout(timeout);
   timeout = setTimeout(() => {
@@ -35,7 +33,7 @@ function remove(){
     doc.extras.innerHTML = '';
   }, 3000);
 }
-
+remove();
 
 
 doc.leave.addEventListener('click', () => {
@@ -87,68 +85,68 @@ selection.forEach((select) => {
     }
     else{
       if(e.target.attributes.name.value.toLowerCase() == 'defense'){
-        if(stat.defense >= 5){
+        if(stat.def >= 5){
           doc.extras.innerHTML = "You can't increase that stat anymore";
-          self.defense = self.defense;
+          self.def = self.def;
         }
         else{
           gold.owned -= 5000;
           gold.spent += 5000;
-          self.defense++;
-          stat.defense++;
+          self.def++;
+          stat.def++;
           doc.extras.innerHTML = "You increased your defense";
         }
     }
       else if(e.target.attributes.name.value.toLowerCase() == 'health'){
-        if(stat.health >= 5){
+        if(stat.hp >= 5){
           doc.extras.innerHTML = "You can't increase that stat anymore";
-          self.health = self.maxHealth;
+          self.hp = self.maxHp;
         }
         else{
           gold.owned -= 5000;
           gold.spent += 5000;
-          self.maxHealth++;
-          stat.health++;
+          self.maxHp++;
+          stat.hp++;
           doc.extras.innerHTML = "You increased your health";
         }
       }
       else if(e.target.attributes.name.value.toLowerCase() == 'magic'){
-        if(stat.magic >= 5){
+        if(stat.mag >= 5){
           doc.extras.innerHTML = "You can't increase that stat anymore";
-          self.magic = self.magic;
+          self.mag = self.mag;
         }
         else{
           gold.owned -= 5000;
           gold.spent += 5000;
-          self.magic++;
-          stat.magic++;
+          self.mag++;
+          stat.mag++;
           doc.extras.innerHTML = "You increased your magic";
         }
       }
       else if(e.target.attributes.name.value.toLowerCase() == 'speed'){
-        if(stat.speed >= 5){
+        if(stat.spd >= 5){
           doc.extras.innerHTML = "You can't increase that stat anymore";
-          self.speed = self.speed;
+          self.spd = self.spd;
         }
         else{
           gold.owned -= 5000;
           gold.spent += 5000;
-          self.speed++;
-          stat.speed++;
+          self.spd++;
+          stat.spd++;
           doc.extras.innerHTML = "You increased your speed";
         }
       }
       else if(e.target.attributes.name.value.toLowerCase() == 'strength'){
         if(gold.owned < 5000){doc.extras.innerHTML = "You don't have enough gold";}
-        else if(stat.strength >= 5){
+        else if(stat.str >= 5){
           doc.extras.innerHTML = "You can't increase that stat anymore";
-          self.strength = self.strength;
+          self.str = self.str;
         }
         else{
           gold.owned -= 5000;
           gold.spent += 5000;
-          self.strength++;
-          stat.strength++;
+          self.str++;
+          stat.str++;
           
           doc.extras.innerHTML = "You increased your strength";
         }
@@ -157,23 +155,23 @@ selection.forEach((select) => {
       doc.gold.innerHTML = gold.owned;
       specs.forEach((spec) => {
         if(spec.attributes.name.value == 'type'){
-          spec.innerHTML = self.type.toUpperCase();
+          spec.innerHTML = self.name.toUpperCase();
         }
         else if(spec.attributes.name.value == 'defense'){
-          spec.innerHTML = self.defense;
+          spec.innerHTML = self.def;
         }
         else if(spec.attributes.name.value == 'health'){
-          self.health = self.maxHealth;
-          spec.innerHTML = self.health;
+          self.hp = self.maxHp;
+          spec.innerHTML = self.hp;
         }
         else if(spec.attributes.name.value == 'magic'){
-          spec.innerHTML = self.magic;
+          spec.innerHTML = self.mag;
         }
         else if(spec.attributes.name.value == 'speed'){
-          spec.innerHTML = self.speed;
+          spec.innerHTML = self.spd;
         }
         else if(spec.attributes.name.value == 'strength'){
-          spec.innerHTML = self.strength;
+          spec.innerHTML = self.str;
         }
       });
     }
@@ -191,23 +189,23 @@ selection.forEach((select) => {
 window.addEventListener('load', () => {
   specs.forEach((spec) => {
     if(spec.attributes.name.value == 'type'){
-      spec.innerHTML = self.type.toUpperCase();
+      spec.innerHTML = self.name.toUpperCase();
     }
     else if(spec.attributes.name.value == 'defense'){
-      spec.innerHTML = self.defense;
+      spec.innerHTML = self.def;
     }
     else if(spec.attributes.name.value == 'health'){
-      self.health = self.maxHealth;
-      spec.innerHTML = self.health;
+      self.hp = self.maxHp;
+      spec.innerHTML = self.hp;
     }
     else if(spec.attributes.name.value == 'magic'){
-      spec.innerHTML = self.magic;
+      spec.innerHTML = self.mag;
     }
     else if(spec.attributes.name.value == 'speed'){
-      spec.innerHTML = self.speed;
+      spec.innerHTML = self.spd;
     }
     else if(spec.attributes.name.value == 'strength'){
-      spec.innerHTML = self.strength;
+      spec.innerHTML = self.str;
     }
   });
 });
