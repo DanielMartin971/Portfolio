@@ -1,52 +1,52 @@
 
-var species = document.querySelector('#species');
+let species = document.querySelector('#species');
 
-var player = JSON.parse(localStorage.getItem('race'));
+let player = JSON.parse(localStorage.getItem('race'));
 
-if(player.type.toLowerCase() == 'argonian'){
+if(player.name.toLowerCase() == 'argonian'){
   species.classList.add('fas');
   species.classList.add('fa-frog');
   // species.classList.add('fa-2x');
 }
-else if(player.type.toLowerCase() == 'assassin'){
+else if(player.name.toLowerCase() == 'assassin'){
   species.classList.add('fas');
   species.classList.add('fa-dove');
 }
-else if(player.type.toLowerCase() == 'azetic'){
+else if(player.name.toLowerCase() == 'azetic'){
   species.classList.add('fab');
   species.classList.add('fa-studiovinari');
 }
-else if(player.type.toLowerCase() == 'barbarian'){
+else if(player.name.toLowerCase() == 'barbarian'){
   species.classList.add('fab');
   species.classList.add('fa-grunt');
   // species.classList.add('fa-2x');
 }
-else if(player.type.toLowerCase() == 'elf'){
+else if(player.name.toLowerCase() == 'elf'){
   species.classList.add('fas');
   species.classList.add('fa-dice-d20');
   // species.classList.add('fa-2x');
 }
-else if(player.type.toLowerCase() == 'fenny'){
+else if(player.name.toLowerCase() == 'fenny'){
   species.classList.add('fas');
   species.classList.add('fa-crow');
   // species.classList.add('fa-2x');
 }
-else if(player.type.toLowerCase() == 'goblin'){
+else if(player.name.toLowerCase() == 'goblin'){
   species.classList.add('fas');
   species.classList.add('fa-fist-raised');
   // species.classList.add('fa-2x');
 }
-else if(player.type.toLowerCase() == 'khajiit'){
+else if(player.name.toLowerCase() == 'khajiit'){
   species.classList.add('fas');
   species.classList.add('fa-cat');
   // species.classList.add('fa-2x');
 }
-else if(player.type.toLowerCase() == 'knight'){
+else if(player.name.toLowerCase() == 'knight'){
   species.classList.add('fas');
   species.classList.add('fa-shield-alt');
   // species.classList.add('fa-2x');
 }
-else if(player.type.toLowerCase() == 'ninja'){
+else if(player.name.toLowerCase() == 'ninja'){
   species.classList.add('fas');
   species.classList.add('fa-kiwi-bird');
   // species.classList.add('fa-2x');
