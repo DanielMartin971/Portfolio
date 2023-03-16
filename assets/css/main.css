@@ -48,6 +48,10 @@ h1{
 */
 #bottom{
   margin-bottom:0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex-direction: row-reverse;
 }
 
 #bottom .container{
@@ -109,7 +113,6 @@ h1{
   font-weight:bold;
   text-align:center;
   font-size:30pt;
-  /*text-shadow: 2px 1px 15px black;*/
   text-shadow:1px 1px 4px black; 
   color:#fff!important;
 }
@@ -123,10 +126,10 @@ h1{
   --This is for the about part only, nothing else--
 */
 #about-j{
-  margin-top:400px;
   margin-bottom: 100px;
   position:relative;
   z-index:1;
+  padding: 20px;
 }
 
 .about-feature{
@@ -163,7 +166,7 @@ h1{
   font-size:20pt;
 }
 #showcase .container {
-  margin-top: -360vh;
+  margin-top: -265vh;
 }
 #showcase .container ul{
   padding-left:20px;
@@ -181,7 +184,6 @@ h1{
   background:transparent;
   width: 100%;
   position: relative;
-  margin-top: 93.5vh;
   cursor:default;
   box-shadow:none;
   padding:0;

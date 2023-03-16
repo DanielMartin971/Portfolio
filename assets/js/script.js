@@ -8,7 +8,8 @@ function dropBtn(x){
 
 
 /*
-  --This is for the transition of the navbar and changing its colors--
+  --This is for the transition of the navbar and changing its colors
+  once it hits a certain pixel of 3130 on the htmlpage--
 */
 $(window).scroll(() => {
   if ($(window).scrollTop() >= 3130) {
@@ -20,7 +21,8 @@ $(window).scroll(() => {
 });
 
 /*
-  --This is for the fontAwesome animation with the arrows at the welcome--
+  --This is for the fontAwesome animation with the arrows at the welcome
+    allowing the arrow to swap from 1 arrow to 2 down arrows--
 */
 function swapping(){
   let arrow = document.getElementById('arrow');
@@ -47,8 +49,8 @@ $('#scroller').on('click', function(e){
     e.preventDefault();
     const hash = this.hash;
     $('html, body').animate({
-      scrollTop: $(hash).offset().top-100
-    },2000,
+      scrollTop: $(hash).offset().top-200
+    },1000,
     function() {
       window.location.hash = hash;
     });
@@ -164,6 +166,7 @@ $('#gm-link').on('click',  function(e){
   --This is for the scroll revealing--
 */
 window.sr = ScrollReveal();
+
 sr.reveal('.showcase-left', {
   duration:3000,
   origin:'left',
