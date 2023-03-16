@@ -386,7 +386,7 @@ function Init(name, def, hp, maxHp, mag, spd, str, armor, weapon, currency, abil
     }
   }
   
-  // The more slain enemies, the higher the difficulty becomes with this for loop
+  // The more slain enemies, the higher the difficulty becomes with this for loop (i.e. it just increases hp, dmg, and def)
   for(let z = 0; z < enemies.length; z++){
     if(slain > 100){
       if(enemies[z].type.toLowerCase() == 'elf'){
