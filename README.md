@@ -11,3 +11,6 @@ This is to just view my portfolio and see some of the projects I've personally w
 
 ## Deployment
 To view the portfolio, follow the link:  https://danielmartin971.github.io/Portfolio/
+
+## Updates
+Recently update the code for Basic Quest and changed the constructor functions to using classes with ES6+
