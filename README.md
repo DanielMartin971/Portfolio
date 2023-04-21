@@ -7,4 +7,7 @@ Hello! Welcome to the portfolio of mine. In this place, it contains some of my p
 To install the portfolio, you must git clone the page then paste onto your favorite webbrowser or open a live server with VSCode!
 
 ## Usage
+This is to just view my portfolio and see some of the projects I've personally worked on. It also has a interactive particles!
+
+## Deployment
 To view the portfolio, follow the link:  https://danielmartin971.github.io/Portfolio/
