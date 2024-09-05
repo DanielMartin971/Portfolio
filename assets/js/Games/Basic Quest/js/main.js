@@ -1,18 +1,18 @@
 
 
-var flask = {
+let flask = {
   amount: 3,
   color: document.querySelector('.flask'),
   empty: 0,
   heal: 0,
   max : 9,
 };
-var gold  = {
+let gold  = {
   owned: 0,
   spent: 0,
 };
 
-var stat = {
+let stat = {
   defense: 0,
   health:  0,
   magic:   0,
@@ -20,14 +20,14 @@ var stat = {
   strength:0,
 };
 
-var kit = [];
+let kit = [];
 
 //this grabs the btn prompt from start and makes this to an array length with all names
-var races = document.querySelectorAll('[name]');
+let races = document.querySelectorAll('[name]');
 //console.log(races.length);
-console.log(races.toLowerCase);
+// console.log(races.toLowerCase);
 
-var archangel    = {
+let archangel    = {
   type: 'Archangel',
   defense: 2,
   health: 40,
@@ -42,7 +42,7 @@ var archangel    = {
   ability2: 'Suffering',
   ability3: 'Hellfire',
 };
-var argonian     = {
+let argonian     = {
   type: 'Argonian',
   defense: 4,
   health: 15,
@@ -57,7 +57,7 @@ var argonian     = {
   ability2: 'WaterBreather',
   ability3: 'SwordsMaster',
 };
-var assassin     = {
+let assassin     = {
   type: 'Assassin',
   defense: 1.5,
   health: 15,
@@ -72,7 +72,7 @@ var assassin     = {
   ability2: 'SpecialsMaster',
   ability3: 'SlipperyFeet',
 };
-var azetic       = {
+let azetic       = {
   type: 'Azetic',
   defense: 5,
   health: 15,
@@ -87,7 +87,7 @@ var azetic       = {
   ability2: 'BloodThirsty',
   ability3: 'SunSinger',
 };
-var barbarian    = {
+let barbarian    = {
   type: 'Barbarian',
   defense: 6,
   health: 20,
@@ -102,7 +102,7 @@ var barbarian    = {
   ability2: 'BluntsMaster',
   ability3: 'BDCH',
 };
-var elf          = {
+let elf          = {
   type: 'Elf',
   defense: 2,
   health: 18,
@@ -117,7 +117,7 @@ var elf          = {
   ability2: 'MagicBlood',
   ability3: 'SunSinger',
 };
-var fenny        = {
+let fenny        = {
   type: 'Fenny',
   defense: 6,
   health: 20,
@@ -132,7 +132,7 @@ var fenny        = {
   ability2: 'SunSinger',
   ability3: 'SlipperyFeet',
 };
-var gentleman    = {
+let gentleman    = {
   type: 'Gentleman',
   defense: 6,
   health: 28,
@@ -147,7 +147,7 @@ var gentleman    = {
   ability2: 'NSOWM',
   ability3: 'SodaFlask',
 };
-var goblin       = {
+let goblin       = {
   type: 'Goblin',
   defense: 4,
   health: 12,
@@ -162,7 +162,7 @@ var goblin       = {
   ability2: 'BYOG',
   ability3: 'SlipperyFeet',
 };
-var gorphin      = {
+let gorphin      = {
   type: 'Gorphin',
   defense: 8,
   health: 25,
@@ -177,7 +177,7 @@ var gorphin      = {
   ability2: 'CorpseShaker',
   ability3: 'DragonSlayer',
 };
-var khajiit      = {
+let khajiit      = {
   type: 'Khajiit',
   defense: 2.5,
   health: 15,
@@ -192,7 +192,7 @@ var khajiit      = {
   ability2: 'EagleEye',
   ability3: 'KnifesMaster',
 };
-var knight       = {
+let knight       = {
   type: 'Knight ',
   defense: 7,
   health: 25,
@@ -207,7 +207,7 @@ var knight       = {
   ability2: 'LMFS',
   ability3: 'DragonSlayer',
 };
-var merchant     = {
+let merchant     = {
   type: 'Merchant ',
   defense: 4,
   health: 20,
@@ -222,7 +222,7 @@ var merchant     = {
   ability2: 'MyVodka',
   ability3: 'ShoppingSpree',
 };
-var ninja        = {
+let ninja        = {
   type: 'Ninja',
   defense: 2,
   health: 20,
@@ -237,7 +237,7 @@ var ninja        = {
   ability2: 'DeathStare',
   ability3: 'DemonSlayer',
 };
-var skinwalker   = {
+let skinwalker   = {
   type: 'Skinwalker',
   defense: 3,
   health: 50,
@@ -252,7 +252,7 @@ var skinwalker   = {
   ability2: 'DeadAgain',
   ability3: 'TBTFM',
 };
-var werewolf     = {
+let werewolf     = {
   type: 'Werewolf',
   defense: 8,
   health: 40,
@@ -269,12 +269,12 @@ var werewolf     = {
 };
 
 //the characters being set into an array for easy selction
-var types = [
+let types = [
   archangel,argonian,assassin,azetic,barbarian,elf,fenny,gentleman,goblin,gorphin,khajiit,knight,merchant,ninja,skinwalker,werewolf
 ];
 
 //setting base stats for no overlapping of other characters and having accidental stacking
-var stat = {
+stat = {
   defense: 0,
   health: 0,
   magic: 0,
@@ -285,12 +285,12 @@ var stat = {
 
 //fuction constructor to call the character choosen by player
 function species(race){
-  var type = race;
-  console.log(type);
-  console.log(type.name + " This should be the type name");
+  let type = race;
+  // console.log(type);
+  // console.log(type.name + " This should be the type name");
 
   
-  for(var i = 0; i < types.length; i++){
+  for(let i = 0; i < types.length; i++){
     if(type === types[i].type.toLowerCase().trim()){
       gold.owned = types[i].gold;
       kit.push(types[i].weapon);

@@ -1,7 +1,7 @@
 
 
 //This is used for removing text and getting rid of the timeout
-var timeout;
+let timeout;
 //////////////////////////////////////////
 
 
@@ -22,7 +22,7 @@ var timeout;
   --work on taking dmg from enemy while about to be killed but not 100%--
   --Ability:Destiny--
   --increase merchant rate of spawn--
-  --make the random chances change with a var instead of manual change everytime--
+  --make the random chances change with a let instead of manual change everytime--
   --fix up self.things to have loop--
   --need to make a sell function for the shop--
   --need to make a abilities merchant and stats merchant--
@@ -33,7 +33,7 @@ var timeout;
 
 //Abilities-----------------------------------------------//
 //this sets all abilities to false so theyre not active from start of game
-var abilities = {
+let abilities = {
   //these are revive abilities
   aflife: false,
   deadA:  false,
@@ -88,21 +88,21 @@ var abilities = {
   --ItemsW has the equipment weapons that the player owns--
 */
 
-var flask  = JSON.parse(localStorage.getItem('flask'));
-var gold   = JSON.parse(localStorage.getItem('gold'));
-var itemsA = [];
-var itemsW = [];
-var kit    = JSON.parse(localStorage.getItem('kit'));
+let flask  = JSON.parse(localStorage.getItem('flask'));
+let gold   = JSON.parse(localStorage.getItem('gold'));
+let itemsA = [];
+let itemsW = [];
+let kit    = JSON.parse(localStorage.getItem('kit'));
 
 //This is for the iteration loop when increasing difficulty of enemies so they won't keep increasing difficulty
-var iterat = 0;
+let iterat = 0;
 
 
 
 /////////////////////////////////////////////////////////////////
 
 //this sets the btns on screen and gives a 'HUD' to player
-var doc = {
+let doc = {
   actions: document.getElementById('action'),
   armor:   document.querySelector('span.armor'),
   click:   "Click 'start' to start the game",
@@ -120,7 +120,7 @@ var doc = {
 
 //little intros 
 //needs different greetings and ques for bosses
-var greetings ={
+let greetings ={
   welcome: 'Welcome to Basic Quest',
   shop: 'Welcome back to Basic Quest',
   intro: 'You see a cave entrance...',
@@ -128,14 +128,14 @@ var greetings ={
 
 
 //sets enemy
-var enemy;
-var enemyDocSpecies = document.getElementById('eSpecies');
-var enemyDocHp      = document.getElementById('eHealth');
+let enemy;
+let enemyDocSpecies = document.getElementById('eSpecies');
+let enemyDocHp      = document.getElementById('eHealth');
 
-var actions = document.querySelectorAll('[name]');
+let actions = document.querySelectorAll('[name]');
 
 //this gives the btn prompts actions when clicked on
-var btns = {
+let btns = {
   attack: 'attack',
   blank:  'blank',
   defend: 'defend',
@@ -146,13 +146,13 @@ var btns = {
 };
 
 //sets player, kills, abilites and equipment is reset to 0 per reset and coming back from kit
-var p1    = JSON.parse(localStorage.getItem('race'));
+let p1    = JSON.parse(localStorage.getItem('race'));
 console.log(p1);
 console.log(JSON.parse(localStorage.getItem('race')));
-var slain = JSON.parse(localStorage.getItem('kills'));
-var self;
-var ability   = [];
-var equipment = {
+let slain = JSON.parse(localStorage.getItem('kills'));
+let self = {};
+let ability   = [];
+let equipment = {
   defense: 0,
   maxHealth: 0,
   magic: 0,
@@ -161,26 +161,26 @@ var equipment = {
 };
 
 
-var story      = [
+const story      = [
   'You see a stranger in the distance',
   'A enemy appeared!',
   "There's a merchant selling items!",
 ];
 //whenever the dice roll gives a merchant or enemy or random 
-var events     = {
+let events     = {
   enemy: story[1],
   merchant: story[2],
   stranger: story[0],
 };
 //difficulty modifier for amount of enemies slain that increases enemy defense
-var difficulty = {
+let difficulty = {
   defense: 0,
 };
 
 //This function brings all the stats into play and updates everything after you come back from the shop
 function Init(type,defense,health,maxHealth,magic,speed,strength,armor,weapon,currency,ability1,ability2,ability3){
-  //var loc just checks current location of player 
-  var loc = localStorage.getItem('location').toLowerCase();
+  //let loc just checks current location of player 
+  let loc = localStorage.getItem('location').toLowerCase();
   console.log(loc);
   
   //this runs through to ses if player is in a shop and gets a greeting
@@ -192,7 +192,7 @@ function Init(type,defense,health,maxHealth,magic,speed,strength,armor,weapon,cu
   //shows amount of flasks owned
   doc.flasks.innerHTML  = flask.amount;
   
-  //instead of using var "p1", now we use var "self" for the player
+  //instead of using let "p1", now we use let "self" for the player
   self = {
     type: p1.type.trim(),
     armor: p1.armor,
@@ -214,7 +214,7 @@ function Init(type,defense,health,maxHealth,magic,speed,strength,armor,weapon,cu
   ability.push(self.ability3.toLowerCase());
   
   //this checks to see if self has some abilities or not
-  for(var i = 0; i < ability.length; i++){
+  for(let i = 0; i < ability.length; i++){
     if(ability[i] == 'hopelessromantic'){
       abilities.hopRom = true;
     }
@@ -296,7 +296,7 @@ function Init(type,defense,health,maxHealth,magic,speed,strength,armor,weapon,cu
   }
   
   //these for loops go through the equipments and adds the stats to equipment
-  for(var i = 0; i < armors.length; i++){
+  for(let i = 0; i < armors.length; i++){
     if(self.armor.toLowerCase() == armors[i].name.toLowerCase()){
       equipment.defense     += armors[i].defense;
       equipment.maxHealth   += armors[i].health;
@@ -307,7 +307,7 @@ function Init(type,defense,health,maxHealth,magic,speed,strength,armor,weapon,cu
       // console.log('Armor',armors[i]);
     }
   }
-  for(var j = 0; j < weapons.length; j++){
+  for(let j = 0; j < weapons.length; j++){
     if(self.weapon.toLowerCase() == weapons[j].name.toLowerCase()){
       equipment.defense     += weapons[j].defense;
       equipment.maxHealth   += weapons[j].health;
@@ -376,12 +376,12 @@ function Init(type,defense,health,maxHealth,magic,speed,strength,armor,weapon,cu
   
   //This is to seperate the armors from weapons
   for(i = 0; i < kit.length; i++){
-    for(var o = 0; o < armors.length; o++){
+    for(let o = 0; o < armors.length; o++){
       if(kit[i].toLowerCase() == armors[o].name.toLowerCase()){
         itemsA.push(kit[i]);
       }
     }
-    for(var z = 0; z < weapons.length; z++){
+    for(let z = 0; z < weapons.length; z++){
       if(kit[i].toLowerCase() == weapons[z].name.toLowerCase()){
         itemsW.push(kit[i]);
       }
@@ -389,7 +389,7 @@ function Init(type,defense,health,maxHealth,magic,speed,strength,armor,weapon,cu
   }
   
   //enemies difficulty increase stats
-  for(var z = 0; z < enemies.length; z++){
+  for(let z = 0; z < enemies.length; z++){
     if(slain > 100){
       if(enemies[z].type.toLowerCase() == 'elf'){
         enemies[z].magic  += 30;
@@ -477,8 +477,8 @@ Init(self.type,self.defense,self.health,self.maxHealth,self.magic,self.speed,sel
 
 //this just sets the enemies up if loaded from the kit
 window.addEventListener('load',() => {
-  var loc = localStorage.getItem('location').toLowerCase();
-  var en  = localStorage.getItem('recEnemy').toLowerCase();
+  let loc = localStorage.getItem('location').toLowerCase();
+  let en  = localStorage.getItem('recEnemy').toLowerCase();
   
   if(loc == 'kit'){
     console.log('Kit confirmed...');
@@ -833,14 +833,14 @@ function run(action){
 //fix attack
 function enemyAttack(action){
   const random = Math.random() * 1;
-  var damage   = 0;
+  let damage   = 0;
   console.log('You called enemyAttack()');
   
-  var mgkBlood = false;
-  var lmfs     = false;
-  var cheapy   = false;
+  let mgkBlood = false;
+  let lmfs     = false;
+  let cheapy   = false;
   
-  for(var i = 0; i < ability.length; i++){
+  for(let i = 0; i < ability.length; i++){
     if(ability[i] == 'magicblood'){
       console.log('mgkblood');
       mgkBlood = true;
@@ -971,18 +971,18 @@ function attack(action){
   doc.extras.style.visibility = 'visible';
   
   const random    = Math.random() * 1;
-  var chance      = 0.92;
-  var damage      = 0;
+  let chance      = 0.92;
+  let damage      = 0;
   
   //these are abilities
-  var mastery      = false;
-  var mgkmstry     = false;
-  var rampage      = false;
-  var demonSlayer  = false;
-  var deathStare   = false;
-  var dragonSlayer = false;
-  var eagle        = false;
-  var masteries    = [
+  let mastery      = false;
+  let mgkmstry     = false;
+  let rampage      = false;
+  let demonSlayer  = false;
+  let deathStare   = false;
+  let dragonSlayer = false;
+  let eagle        = false;
+  let masteries    = [
     'swordsmaster',
     'specialsmaster',
     'knifesmaster',
@@ -992,9 +992,9 @@ function attack(action){
   ];
   
   //make loop shorter
-  for(var i = 0; i < masteries.length; i++){
+  for(let i = 0; i < masteries.length; i++){
     if(ability[i] == masteries[0]){
-      for(var i = 0; i < weapons.length; i++){
+      for(let i = 0; i < weapons.length; i++){
         if(self.weapon.toLowerCase() == weapons[i].name.toLowerCase()
         && weapons[i].type.toLowerCase() == 'sword'){
           mastery = true;
@@ -1002,7 +1002,7 @@ function attack(action){
       }
     }
     else if(ability[i] == masteries[1]){
-      for(var i = 0; i < weapons.length; i++){
+      for(let i = 0; i < weapons.length; i++){
         if(self.weapon.toLowerCase() == weapons[i].name.toLowerCase()
         && weapons[i].type.toLowerCase() == 'special'){
           console.log('special');
@@ -1011,7 +1011,7 @@ function attack(action){
       }
     }
     else if(ability[i] == masteries[2]){
-      for(var i = 0; i < weapons.length; i++){
+      for(let i = 0; i < weapons.length; i++){
         if(self.weapon.toLowerCase() == weapons[i].name.toLowerCase()
         && weapons[i].type.toLowerCase() == 'knife'){
           console.log('knife');
@@ -1020,7 +1020,7 @@ function attack(action){
       }
     }
     else if(ability[i] == masteries[3]){
-      for(var i = 0; i < weapons.length; i++){
+      for(let i = 0; i < weapons.length; i++){
         if(self.weapon.toLowerCase() == weapons[i].name.toLowerCase()
         && weapons[i].type.toLowerCase() == 'blunt'){
           console.log('blunt');
@@ -1029,7 +1029,7 @@ function attack(action){
       }
     }
     else if(ability[i] == masteries[4]){
-      for(var i = 0; i < weapons.length; i++){
+      for(let i = 0; i < weapons.length; i++){
         if(self.weapon.toLowerCase() == weapons[i].name.toLowerCase()
         && weapons[i].type.toLowerCase() == 'staff'){
           console.log('staff');
@@ -1038,7 +1038,7 @@ function attack(action){
       }
     }
     else if(ability[i] == masteries[5]){
-      for(var i = 0; i < weapons.length; i++){
+      for(let i = 0; i < weapons.length; i++){
         if(self.weapon.toLowerCase() == weapons[i].name.toLowerCase()
         && weapons[i].type.toLowerCase() == 'scythe'){
           console.log('scythe');
@@ -1048,7 +1048,7 @@ function attack(action){
     }
   }
   
-  for(var i = 0; i < ability.length; i++){
+  for(let i = 0; i < ability.length; i++){
     if(ability[i] == 'demonslayer'){
       demonSlayer = true;
     }
@@ -1151,7 +1151,7 @@ function attack(action){
     damage += damage * 0.05;
   }
   if(dragonSlayer == true){
-    for(var i = 0; i < hectics.length; i++){
+    for(let i = 0; i < hectics.length; i++){
       if(enemy.type.toLowerCase() == 'dragon'){
         damage += damage * 0.2;
         break;
@@ -1163,7 +1163,7 @@ function attack(action){
     }
   }
   else if(dragonSlayer == true && demonSlayer == true){
-    for(var i = 0; i < hectics.length; i++){
+    for(let i = 0; i < hectics.length; i++){
       if(enemy.type.toLowerCase() == 'dragon'){
         damage += damage * 0.20;
         break;
@@ -1199,7 +1199,7 @@ function attack(action){
   }
   
   if(abilities.exoGen == true){
-    for(var i = 0; i < hectics.length; i++){
+    for(let i = 0; i < hectics.length; i++){
       if(enemy.type.toLowerCase() == hectics[i].type.toLowerCase()){
         damage += damage * 0.05;
       }
@@ -1228,9 +1228,9 @@ function attack(action){
 function generateEnemy(action){
   //enemies are the enemies
   //heretics are basically bosses and often have more health and defense
-  var random  = Math.random() * 1;
-  var random2 = Math.floor(Math.random() * enemies.length);
-  var random3 = Math.floor(Math.random() * hectics.length);
+  let random  = Math.random() * 1;
+  let random2 = Math.floor(Math.random() * enemies.length);
+  let random3 = Math.floor(Math.random() * hectics.length);
   
   if(random <= 0.96){
     enemy = enemies[random2];
@@ -1271,7 +1271,7 @@ function generateTreasure(){
   let randomA  = Math.floor(Math.random() * armors.length);
   
   //every time they kill a hectic, they'll get 10,000 gold
-  for(var i = 0; i < hectics.length; i++){
+  for(let i = 0; i < hectics.length; i++){
     if(enemy.type.toLowerCase() == hectics[i].type.toLowerCase()){
       randomG = 10000;
     }
@@ -1331,9 +1331,9 @@ function generateTreasure(){
 //This is a function to check if the player has 0 health and to declare that the game is over 
 //Or if I feel like making some type of game over other than dying
 function gameOver(){
-  var random = Math.random() * 1;
+  let random = Math.random() * 1;
   
-  for(var i = 0; i < ability.length; i++){
+  for(let i = 0; i < ability.length; i++){
     if(ability[i] === 'tbtfm' && random <= 0.1){
       abilities.tbtfm = true;
     }
@@ -1359,7 +1359,7 @@ function gameOver(){
     doc.hp.innerHTML      = self.health;
     doc.flasks.innerHTML  = flask.amount;
     doc.actions.innerHTML = 'The sun sang to your blood';
-    var time = setInterval(() => {
+    let time = setInterval(() => {
       doc.actions.innerHTML += '.';
     },600);
     
