@@ -49,7 +49,6 @@ for(let i = 0; i < kit.length; i++){
     }
   }
   for(let z = 0; z < weapons.length; z++){
-  for(let z = 0; z < weapons.length; z++){
     if(kit[i].toLowerCase() == weapons[z].name.toLowerCase()){
       itemsW.push(kit[i]);
     }
@@ -426,19 +425,4 @@ window.addEventListener('load', () => {
       ment.innerHTML = body.str;
     }
   });
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+})
