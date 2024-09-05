@@ -30,9 +30,9 @@ doc.extras.style.visibility = 'visible';
 
 
 let ability = [
-  self.ability1.toLowerCase(),
-  self.ability2.toLowerCase(),
-  self.ability3.toLowerCase(),
+  self.ability1.name.toLowerCase(),
+  self.ability2.name.toLowerCase(),
+  self.ability3.name.toLowerCase(),
 ];
 
 let buffPow = false;
@@ -85,84 +85,81 @@ for(let i = 0; i < ability.length; i++){
   
 if(buffPow == true){
   doc.extras.innerHTML = 'You damned buffalos...';
-}
-else if(cheapy == true){
-  doc.extras.innerHTML = "You're a cheapshot, I hate your kind";
-}
-else{
-  doc.extras.innerHTML = 'Welcome to the shop!';
+} else if(cheapy == true){
+    doc.extras.innerHTML = "You're a cheapshot, I hate your kind";
+} else{
+    doc.extras.innerHTML = 'Welcome to the shop!';
 }
 //working on stealing BYOG
-remove();
 
-var weapStat   = {
-  defense:  document.querySelector("[name=w-defense]"),
-  health:   document.querySelector("[name=w-health]"),
-  magic:    document.querySelector("[name=w-magic]"),
-  name:     document.querySelector("[name=w-name]"),
-  price:    document.querySelector("[name=w-price]"),
-  speed:    document.querySelector("[name=w-speed]"),
-  strength: document.querySelector("[name=w-strength]"),
+let weapStat   = {
+  def:   document.querySelector("[name=w-defense]"),
+  hp:    document.querySelector("[name=w-health]"),
+  mag:   document.querySelector("[name=w-magic]"),
+  name:  document.querySelector("[name=w-name]"),
+  price: document.querySelector("[name=w-price]"),
+  spd:   document.querySelector("[name=w-speed]"),
+  str:   document.querySelector("[name=w-strength]"),
 };
-var weapStat1  = {
-  defense:  document.querySelector("[name=w1-defense]"),
-  health:   document.querySelector("[name=w1-health]"),
-  magic:    document.querySelector("[name=w1-magic]"),
-  name:     document.querySelector("[name=w1-name]"),
-  price:    document.querySelector("[name=w1-price]"),
-  speed:    document.querySelector("[name=w1-speed]"),
-  strength: document.querySelector("[name=w1-strength]"),
+let weapStat1  = {
+  def:   document.querySelector("[name=w1-defense]"),
+  hp:    document.querySelector("[name=w1-health]"),
+  mag:   document.querySelector("[name=w1-magic]"),
+  name:  document.querySelector("[name=w1-name]"),
+  price: document.querySelector("[name=w1-price]"),
+  spd:   document.querySelector("[name=w1-speed]"),
+  str:   document.querySelector("[name=w1-strength]"),
 };
-var weapStat2  = {
-  defense:  document.querySelector("[name=w2-defense]"),
-  health:   document.querySelector("[name=w2-health]"),
-  magic:    document.querySelector("[name=w2-magic]"),
-  name:     document.querySelector("[name=w2-name]"),
-  price:    document.querySelector("[name=w2-price]"),
-  speed:    document.querySelector("[name=w2-speed]"),
-  strength: document.querySelector("[name=w2-strength]"),
+let weapStat2  = {
+  def:   document.querySelector("[name=w2-defense]"),
+  hp:    document.querySelector("[name=w2-health]"),
+  mag:   document.querySelector("[name=w2-magic]"),
+  name:  document.querySelector("[name=w2-name]"),
+  price: document.querySelector("[name=w2-price]"),
+  spd:   document.querySelector("[name=w2-speed]"),
+  str:   document.querySelector("[name=w2-strength]"),
 };
-var armorStat  = {
-  defense:  document.querySelector("[name=a-defense]"),
-  health:   document.querySelector("[name=a-health]"),
-  magic:    document.querySelector("[name=a-magic]"),
-  name:     document.querySelector("[name=a-name]"),
-  price:    document.querySelector("[name=a-price]"),
-  speed:    document.querySelector("[name=a-speed]"),
-  strength: document.querySelector("[name=a-strength]"),
+let armorStat  = {
+  def:   document.querySelector("[name=a-defense]"),
+  hp:    document.querySelector("[name=a-health]"),
+  mag:   document.querySelector("[name=a-magic]"),
+  name:  document.querySelector("[name=a-name]"),
+  price: document.querySelector("[name=a-price]"),
+  spd:   document.querySelector("[name=a-speed]"),
+  str:   document.querySelector("[name=a-strength]"),
 };
-var armorStat1 = {
-  defense:  document.querySelector("[name=a1-defense]"),
-  health:   document.querySelector("[name=a1-health]"),
-  magic:    document.querySelector("[name=a1-magic]"),
-  name:     document.querySelector("[name=a1-name]"),
-  price:    document.querySelector("[name=a1-price]"),
-  speed:    document.querySelector("[name=a1-speed]"),
-  strength: document.querySelector("[name=a1-strength]"),
+let armorStat1 = {
+  def:   document.querySelector("[name=a1-defense]"),
+  hp:    document.querySelector("[name=a1-health]"),
+  mag:   document.querySelector("[name=a1-magic]"),
+  name:  document.querySelector("[name=a1-name]"),
+  price: document.querySelector("[name=a1-price]"),
+  spd:   document.querySelector("[name=a1-speed]"),
+  str:   document.querySelector("[name=a1-strength]"),
 };
-var armorStat2 = {
-  defense:  document.querySelector("[name=a2-defense]"),
-  health:   document.querySelector("[name=a2-health]"),
-  magic:    document.querySelector("[name=a2-magic]"),
-  name:     document.querySelector("[name=a2-name]"),
-  price:    document.querySelector("[name=a2-price]"),
-  speed:    document.querySelector("[name=a2-speed]"),
-  strength: document.querySelector("[name=a2-strength]"),
+let armorStat2 = {
+  def:   document.querySelector("[name=a2-defense]"),
+  hp:    document.querySelector("[name=a2-health]"),
+  mag:   document.querySelector("[name=a2-magic]"),
+  name:  document.querySelector("[name=a2-name]"),
+  price: document.querySelector("[name=a2-price]"),
+  spd:   document.querySelector("[name=a2-speed]"),
+  str:   document.querySelector("[name=a2-strength]"),
 };
 
-var kit = JSON.parse(localStorage.getItem('kit'));
+let kit = JSON.parse(localStorage.getItem('kit'));
 
 let itemsA = [];
 let itemsW = [];
 
 //This loop seperates the kit by armor and weapon
 for(i = 0; i < kit.length; i++){
-  for(var o = 0; o < armors.length; o++){
+  for(let o = 0; o < armors.length; o++){
     if(kit[i].toLowerCase() == armors[o].name.toLowerCase()){
       itemsA.push(kit[i]);
     }
   }
-  for(var z = 0; z < weapons.length; z++){
+  for(let z = 0; z < weapons.length; z++){
     if(kit[i].toLowerCase() == weapons[z].name.toLowerCase()){
       itemsW.push(kit[i]);
     }
@@ -176,39 +173,40 @@ doc.flask.innerHTML = flask.amount;
 
 const selection = document.querySelectorAll('button');
 
-var timeout;
+let timeout;
 function remove(){
   clearTimeout(timeout);
   timeout = setTimeout(() => {
     doc.extras.style.visibility = 'hidden';
   }, 3000);
 }
+remove();
 
 //need to find a way to make this function smaller
 //items() displays the items of the shop
 function items(){
-  var armorChoice = Math.floor(Math.random() * armors.length);
-  var weapChoice  = Math.floor(Math.random() * weapons.length);
-  var first;
-  var second;
+  let armorChoice = Math.floor(Math.random() * armors.length);
+  let weapChoice  = Math.floor(Math.random() * weapons.length);
+  let first;
+  let second;
   
   
   //this part decreases shop prices by 10% if they have the ability
   if(charm === true){
-    for(var i = 0; i < weapons.length; i++){
+    for(let i = 0; i < weapons.length; i++){
       weapons[i].price -= weapons[i].price * 0.1;
     }
-    for(var i = 0; i < armors.length; i++){
+    for(let i = 0; i < armors.length; i++){
       armors[i].price -= armors[i].price * 0.1;
     }
   }
   /////////////////////////////////////////////////////////////////
   //this part decreases shop prices by 5% if they have the ability
   if(bdch === true){
-    for(var i = 0; i < weapons.length; i++){
+    for(let i = 0; i < weapons.length; i++){
       weapons[i].price -= Math.floor(weapons[i].price * 0.05);
     }
-    for(var i = 0; i < armors.length; i++){
+    for(let i = 0; i < armors.length; i++){
       armors[i].price -= Math.floor(armors[i].price * 0.05);
     }
   }
@@ -217,10 +215,10 @@ function items(){
   if(buffPow === true
   || cheapy  === true
   || xfaded  === true){
-    for(var i = 0; i < weapons.length; i++){
+    for(let i = 0; i < weapons.length; i++){
       weapons[i].price += Math.floor(weapons[i].price * 0.1);
     }
-    for(var i = 0; i < armors.length; i++){
+    for(let i = 0; i < armors.length; i++){
       armors[i].price += Math.floor(armors[i].price * 0.1);
     }
     if(buffPow === true){
@@ -235,43 +233,43 @@ function items(){
   ////////////////////////////////////////////////////////////////
   //this part increases the prices by 15%
   if(exoGen === true){
-    for(var i = 0; i < weapons.length; i++){
+    for(let i = 0; i < weapons.length; i++){
       weapons[i].price -= Math.floor(weapons[i].price * 0.15);
     }
-    for(var i = 0; i < armors.length; i++){
+    for(let i = 0; i < armors.length; i++){
       armors[i].price -= Math.floor(armors[i].price * 0.15);
     }
   }
   /////////////////////////////////////////////////////////////
   //this part increases the prices by 20%
   if(royBlo === true){
-    for(var i = 0; i < weapons.length; i++){
+    for(let i = 0; i < weapons.length; i++){
       weapons[i].price -= Math.floor(weapons[i].price * 0.2);
     }
-    for(var i = 0; i < armors.length; i++){
+    for(let i = 0; i < armors.length; i++){
       armors[i].price -= Math.floor(armors[i].price * 0.2);
     }
   }
   /////////////////////////////////////////////////////////////
   //this part increases the prices by 40%
   if(shaeTre === true){
-    for(var i = 0; i < weapons.length; i++){
+    for(let i = 0; i < weapons.length; i++){
       weapons[i].price -= Math.floor(weapons[i].price * 0.4);
     }
-    for(var i = 0; i < armors.length; i++){
+    for(let i = 0; i < armors.length; i++){
       armors[i].price -= Math.floor(armors[i].price * 0.4);
     }
   }
   /////////////////////////////////////////////////////////////
   
-  weapStat.defense.innerHTML   = weapons[weapChoice].defense;
-  weapStat.health.innerHTML    = weapons[weapChoice].health;
-  weapStat.magic.innerHTML     = weapons[weapChoice].magic;
-  weapStat.name.innerHTML      = weapons[weapChoice].name.trim();
-  weapStat.price.innerHTML     = weapons[weapChoice].price;
-  weapStat.speed.innerHTML     = weapons[weapChoice].speed;
-  weapStat.strength.innerHTML  = weapons[weapChoice].strength;
-  weapStat.type                = weapons[weapChoice].type;
+  weapStat.def.innerHTML   = weapons[weapChoice].def;
+  weapStat.hp.innerHTML    = weapons[weapChoice].hp;
+  weapStat.mag.innerHTML   = weapons[weapChoice].mag;
+  weapStat.name.innerHTML  = weapons[weapChoice].name.trim();
+  weapStat.price.innerHTML = weapons[weapChoice].price;
+  weapStat.spd.innerHTML   = weapons[weapChoice].spd;
+  weapStat.str.innerHTML   = weapons[weapChoice].str;
+  weapStat.type            = weapons[weapChoice].type;
   
   first        = weapChoice;
   second       = weapChoice;
@@ -281,14 +279,14 @@ function items(){
     weapChoice = Math.floor(Math.random() * weapons.length);
   }
   
-  weapStat1.defense.innerHTML   = weapons[weapChoice].defense;
-  weapStat1.health.innerHTML    = weapons[weapChoice].health;
-  weapStat1.magic.innerHTML     = weapons[weapChoice].magic;
-  weapStat1.name.innerHTML      = weapons[weapChoice].name.trim();
-  weapStat1.price.innerHTML     = weapons[weapChoice].price;
-  weapStat1.speed.innerHTML     = weapons[weapChoice].speed;
-  weapStat1.strength.innerHTML  = weapons[weapChoice].strength;
-  weapStat1.type                = weapons[weapChoice].type;
+  weapStat1.def.innerHTML   = weapons[weapChoice].def;
+  weapStat1.hp.innerHTML    = weapons[weapChoice].hp;
+  weapStat1.mag.innerHTML   = weapons[weapChoice].mag;
+  weapStat1.name.innerHTML  = weapons[weapChoice].name.trim();
+  weapStat1.price.innerHTML = weapons[weapChoice].price;
+  weapStat1.spd.innerHTML   = weapons[weapChoice].spd;
+  weapStat1.str.innerHTML   = weapons[weapChoice].str;
+  weapStat1.type            = weapons[weapChoice].type;
   
   first       = weapChoice;
   weapChoice  = Math.floor(Math.random() * weapons.length);
@@ -297,22 +295,22 @@ function items(){
     weapChoice = Math.floor(Math.random() * weapons.length);
   }
   
-  weapStat2.defense.innerHTML   = weapons[weapChoice].defense;
-  weapStat2.health.innerHTML    = weapons[weapChoice].health;
-  weapStat2.magic.innerHTML     = weapons[weapChoice].magic;
-  weapStat2.name.innerHTML      = weapons[weapChoice].name.trim();
-  weapStat2.price.innerHTML     = weapons[weapChoice].price;
-  weapStat2.speed.innerHTML     = weapons[weapChoice].speed;
-  weapStat2.strength.innerHTML  = weapons[weapChoice].strength;
-  weapStat2.type                = weapons[weapChoice].type;
+  weapStat2.def.innerHTML   = weapons[weapChoice].def;
+  weapStat2.hp.innerHTML    = weapons[weapChoice].hp;
+  weapStat2.mag.innerHTML   = weapons[weapChoice].mag;
+  weapStat2.name.innerHTML  = weapons[weapChoice].name.trim();
+  weapStat2.price.innerHTML = weapons[weapChoice].price;
+  weapStat2.spd.innerHTML   = weapons[weapChoice].spd;
+  weapStat2.str.innerHTML   = weapons[weapChoice].str;
+  weapStat2.type            = weapons[weapChoice].type;
   
-  armorStat.defense.innerHTML  = armors[armorChoice].defense;
-  armorStat.health.innerHTML   = armors[armorChoice].health;
-  armorStat.magic.innerHTML    = armors[armorChoice].magic;
-  armorStat.name.innerHTML     = armors[armorChoice].name.trim();
-  armorStat.price.innerHTML    = armors[armorChoice].price;
-  armorStat.speed.innerHTML    = armors[armorChoice].speed;
-  armorStat.strength.innerHTML = armors[armorChoice].strength;
+  armorStat.def.innerHTML   = armors[armorChoice].def;
+  armorStat.hp.innerHTML    = armors[armorChoice].hp;
+  armorStat.mag.innerHTML   = armors[armorChoice].mag;
+  armorStat.name.innerHTML  = armors[armorChoice].name.trim();
+  armorStat.price.innerHTML = armors[armorChoice].price;
+  armorStat.spd.innerHTML   = armors[armorChoice].spd;
+  armorStat.str.innerHTML   = armors[armorChoice].str;
   
   first       = armorChoice;
   second      = armorChoice;
@@ -322,13 +320,13 @@ function items(){
     armorChoice = Math.floor(Math.random() * armors.length);
   }
   
-  armorStat1.defense.innerHTML  = armors[armorChoice].defense;
-  armorStat1.health.innerHTML   = armors[armorChoice].health;
-  armorStat1.magic.innerHTML    = armors[armorChoice].magic;
-  armorStat1.name.innerHTML     = armors[armorChoice].name.trim();
-  armorStat1.price.innerHTML    = armors[armorChoice].price;
-  armorStat1.speed.innerHTML    = armors[armorChoice].speed;
-  armorStat1.strength.innerHTML = armors[armorChoice].strength;
+  armorStat1.def.innerHTML   = armors[armorChoice].def;
+  armorStat1.hp.innerHTML    = armors[armorChoice].hp;
+  armorStat1.mag.innerHTML   = armors[armorChoice].mag;
+  armorStat1.name.innerHTML  = armors[armorChoice].name.trim();
+  armorStat1.price.innerHTML = armors[armorChoice].price;
+  armorStat1.spd.innerHTML   = armors[armorChoice].spd;
+  armorStat1.str.innerHTML   = armors[armorChoice].str;
   
   first          = armorChoice;
   armorChoice    = Math.floor(Math.random() * armors.length);
@@ -337,13 +335,13 @@ function items(){
      armorChoice  = Math.floor(Math.random() * armors.length);
   }
   
-  armorStat2.defense.innerHTML  = armors[armorChoice].defense;
-  armorStat2.health.innerHTML   = armors[armorChoice].health;
-  armorStat2.magic.innerHTML    = armors[armorChoice].magic;
-  armorStat2.name.innerHTML     = armors[armorChoice].name.trim();
-  armorStat2.price.innerHTML    = armors[armorChoice].price;
-  armorStat2.speed.innerHTML    = armors[armorChoice].speed;
-  armorStat2.strength.innerHTML = armors[armorChoice].strength;
+  armorStat2.def.innerHTML   = armors[armorChoice].def;
+  armorStat2.hp.innerHTML    = armors[armorChoice].hp;
+  armorStat2.mag.innerHTML   = armors[armorChoice].mag;
+  armorStat2.name.innerHTML  = armors[armorChoice].name.trim();
+  armorStat2.price.innerHTML = armors[armorChoice].price;
+  armorStat2.spd.innerHTML   = armors[armorChoice].spd;
+  armorStat2.str.innerHTML   = armors[armorChoice].str;
 }
 items();
 
@@ -352,28 +350,28 @@ items();
 window.addEventListener('load', () => {
   specs.forEach((spec) => {
     if(spec.attributes.name.value == 'type'){
-      spec.innerHTML = self.type.toUpperCase();
+      spec.innerHTML = self.name.toUpperCase();
     }
     else if(spec.attributes.name.value == 'defense'){
-      spec.innerHTML = self.defense;
+      spec.innerHTML = self.def;
     }
     else if(spec.attributes.name.value == 'health'){
-      self.health = self.maxHealth;
-      spec.innerHTML = self.health;
+      self.hp = self.maxHp;
+      spec.innerHTML = self.hp;
     }
     else if(spec.attributes.name.value == 'magic'){
-      spec.innerHTML = self.magic;
+      spec.innerHTML = self.mag;
     }
     else if(spec.attributes.name.value == 'speed'){
-      spec.innerHTML = self.speed;
+      spec.innerHTML = self.spd;
     }
     else if(spec.attributes.name.value == 'strength'){
-      spec.innerHTML = self.strength;
+      spec.innerHTML = self.str;
     }
   });
   
   equip.forEach((ment) => {
-    for(var i = 0; i < weapons.length; i++){
+    for(let i = 0; i < weapons.length; i++){
       if(self.weapon.toLowerCase() == weapons[i].name.toLowerCase()){
         wep = weapons[i];
       }
@@ -383,19 +381,19 @@ window.addEventListener('load', () => {
       ment.innerHTML = wep.name;
     }
     else if(ment.attributes.name.value == 'defense'){
-      ment.innerHTML = wep.defense;
+      ment.innerHTML = wep.def;
     }
     else if(ment.attributes.name.value == 'health'){
-      ment.innerHTML = wep.health;
+      ment.innerHTML = wep.hp;
     }
     else if(ment.attributes.name.value == 'magic'){
-      ment.innerHTML = wep.magic;
+      ment.innerHTML = wep.mag;
     }
     else if(ment.attributes.name.value == 'speed'){
-      ment.innerHTML = wep.speed;
+      ment.innerHTML = wep.spd;
     }
     else if(ment.attributes.name.value == 'strength'){
-      ment.innerHTML = wep.strength;
+      ment.innerHTML = wep.str;
     }
     else if(ment.attributes.name.value == 'type'){
       ment.innerHTML = wep.type;
@@ -403,7 +401,7 @@ window.addEventListener('load', () => {
   })
   
   equip1.forEach((ment) => {
-    for(var i = 0; i < armors.length; i++){
+    for(let i = 0; i < armors.length; i++){
       if(self.armor == armors[i].name){
         body = armors[i];
       }
@@ -413,19 +411,19 @@ window.addEventListener('load', () => {
       ment.innerHTML = body.name;
     }
     else if(ment.attributes.name.value == 'defense'){
-      ment.innerHTML = body.defense;
+      ment.innerHTML = body.def;
     }
     else if(ment.attributes.name.value == 'health'){
-      ment.innerHTML = body.health;
+      ment.innerHTML = body.hp;
     }
     else if(ment.attributes.name.value == 'magic'){
-      ment.innerHTML = body.magic;
+      ment.innerHTML = body.mag;
     }
     else if(ment.attributes.name.value == 'speed'){
-      ment.innerHTML = body.speed;
+      ment.innerHTML = body.spd;
     }
     else if(ment.attributes.name.value == 'strength'){
-      ment.innerHTML = body.strength;
+      ment.innerHTML = body.str;
     }
   })
 });
@@ -435,7 +433,7 @@ window.addEventListener('load', () => {
 //need to make forloops for this to be shorter
 //this is a event listener for portions with the select option
 selection.forEach((select) => {
-  var orgHTML = {};
+  let orgHTML = {};
   
   //this part is for when they buy something in the shop
   //this adds when select is clicked on, it will run this function
@@ -445,10 +443,10 @@ selection.forEach((select) => {
     
       
     if(e.target.attributes.name.value.toLowerCase() == 'armor'){
-      var owned = '';
+      let owned = '';
       console.log('This is some type of armor');
 
-      for(var i = 0; i < kit.length; i++){
+      for(let i = 0; i < kit.length; i++){
         if(armorStat.name.innerHTML.toLowerCase() == kit[i].toLowerCase()){
           owned = kit[i].toLowerCase();
         }
@@ -465,23 +463,23 @@ selection.forEach((select) => {
         localStorage.setItem('kit',JSON.stringify(kit));
         
         
-        var selected = [
+        let selected = [
           armorStat.name.innerHTML,
-          armorStat.defense.innerHTML,
-          armorStat.health.innerHTML,
-          armorStat.magic.innerHTML,
-          armorStat.speed.innerHTML,
-          armorStat.strength.innerHTML,
+          armorStat.def.innerHTML,
+          armorStat.hp.innerHTML,
+          armorStat.mag.innerHTML,
+          armorStat.spd.innerHTML,
+          armorStat.str.innerHTML,
         ]
-        for(var i = 0; i < equip1.length; i++){
+        for(let i = 0; i < equip1.length; i++){
           equip1[i].innerHTML = selected[i];
         }
         
-        orgHTML.defense  = armorStat.defense.innerHTML;
-        orgHTML.health   = armorStat.health.innerHTML;
-        orgHTML.magic    = armorStat.magic.innerHTML;
-        orgHTML.speed    = armorStat.speed.innerHTML;
-        orgHTML.strength = armorStat.strength.innerHTML;
+        orgHTML.def  = armorStat.def.innerHTML;
+        orgHTML.hp   = armorStat.hp.innerHTML;
+        orgHTML.mag    = armorStat.mag.innerHTML;
+        orgHTML.spd    = armorStat.spd.innerHTML;
+        orgHTML.str = armorStat.str.innerHTML;
          
         console.log(self);
         console.log('Kit', kit);
@@ -509,23 +507,23 @@ selection.forEach((select) => {
         localStorage.setItem('kit',JSON.stringify(kit));
         
         
-        var selected = [
+        let selected = [
           armorStat.name.innerHTML,
-          armorStat.defense.innerHTML,
-          armorStat.health.innerHTML,
-          armorStat.magic.innerHTML,
-          armorStat.speed.innerHTML,
-          armorStat.strength.innerHTML,
+          armorStat.def.innerHTML,
+          armorStat.hp.innerHTML,
+          armorStat.mag.innerHTML,
+          armorStat.spd.innerHTML,
+          armorStat.str.innerHTML,
         ]
-        for(var i = 0; i < equip1.length; i++){
+        for(let i = 0; i < equip1.length; i++){
           equip1[i].innerHTML = selected[i];
         }
         
-        orgHTML.defense  = armorStat.defense.innerHTML;
-        orgHTML.health   = armorStat.health.innerHTML;
-        orgHTML.magic    = armorStat.magic.innerHTML;
-        orgHTML.speed    = armorStat.speed.innerHTML;
-        orgHTML.strength = armorStat.strength.innerHTML;
+        orgHTML.def  = armorStat.def.innerHTML;
+        orgHTML.hp   = armorStat.hp.innerHTML;
+        orgHTML.mag    = armorStat.mag.innerHTML;
+        orgHTML.spd    = armorStat.spd.innerHTML;
+        orgHTML.str = armorStat.str.innerHTML;
          
         console.log(self);
         console.log('Kit', kit);
@@ -533,10 +531,10 @@ selection.forEach((select) => {
       
     }
     else if(e.target.attributes.name.value.toLowerCase() == 'armor1'){
-      var owned = '';
+      let owned = '';
       console.log('This is some type of armor');
       
-      for(var i = 0; i < kit.length; i++){
+      for(let i = 0; i < kit.length; i++){
         if(armorStat1.name.innerHTML.toLowerCase() == kit[i].toLowerCase()){
           owned = kit[i].toLowerCase();
         }
@@ -553,23 +551,23 @@ selection.forEach((select) => {
         localStorage.setItem('kit',JSON.stringify(kit));
         
         
-        var selected = [
+        let selected = [
           armorStat1.name.innerHTML,
-          armorStat1.defense.innerHTML,
-          armorStat1.health.innerHTML,
-          armorStat1.magic.innerHTML,
-          armorStat1.speed.innerHTML,
-          armorStat1.strength.innerHTML,
+          armorStat1.def.innerHTML,
+          armorStat1.hp.innerHTML,
+          armorStat1.mag.innerHTML,
+          armorStat1.spd.innerHTML,
+          armorStat1.str.innerHTML,
         ]
-        for(var i = 0; i < equip1.length; i++){
+        for(let i = 0; i < equip1.length; i++){
           equip1[i].innerHTML = selected[i];
         }
         
-        orgHTML.defense  = armorStat1.defense.innerHTML;
-        orgHTML.health   = armorStat1.health.innerHTML;
-        orgHTML.magic    = armorStat1.magic.innerHTML;
-        orgHTML.speed    = armorStat1.speed.innerHTML;
-        orgHTML.strength = armorStat1.strength.innerHTML;
+        orgHTML.def  = armorStat1.def.innerHTML;
+        orgHTML.hp   = armorStat1.hp.innerHTML;
+        orgHTML.mag    = armorStat1.mag.innerHTML;
+        orgHTML.spd    = armorStat1.spd.innerHTML;
+        orgHTML.str = armorStat1.str.innerHTML;
          
         console.log(self);
         console.log('Kit', kit);
@@ -596,23 +594,23 @@ selection.forEach((select) => {
         kit.push(armorStat1.name.innerHTML);
         localStorage.setItem('kit',JSON.stringify(kit));
         
-        var selected = [
+        let selected = [
           armorStat1.name.innerHTML,
-          armorStat1.defense.innerHTML,
-          armorStat1.health.innerHTML,
-          armorStat1.magic.innerHTML,
-          armorStat1.speed.innerHTML,
-          armorStat1.strength.innerHTML,
+          armorStat1.def.innerHTML,
+          armorStat1.hp.innerHTML,
+          armorStat1.mag.innerHTML,
+          armorStat1.spd.innerHTML,
+          armorStat1.str.innerHTML,
         ]
-        for(var i = 0; i < equip1.length; i++){
+        for(let i = 0; i < equip1.length; i++){
           equip1[i].innerHTML = selected[i];
         }
         
-        orgHTML.defense  = armorStat1.defense.innerHTML;
-        orgHTML.health   = armorStat1.health.innerHTML;
-        orgHTML.magic    = armorStat1.magic.innerHTML;
-        orgHTML.speed    = armorStat1.speed.innerHTML;
-        orgHTML.strength = armorStat1.strength.innerHTML;
+        orgHTML.def  = armorStat1.def.innerHTML;
+        orgHTML.hp   = armorStat1.hp.innerHTML;
+        orgHTML.mag    = armorStat1.mag.innerHTML;
+        orgHTML.spd    = armorStat1.spd.innerHTML;
+        orgHTML.str = armorStat1.str.innerHTML;
         
         console.log(self);
         console.log('Kit', kit);
@@ -620,10 +618,10 @@ selection.forEach((select) => {
       
     }
     else if(e.target.attributes.name.value.toLowerCase() == 'armor2'){
-      var owned = '';
+      let owned = '';
       console.log('This is some type of armor');
       
-      for(var i = 0; i < kit.length; i++){
+      for(let i = 0; i < kit.length; i++){
         if(armorStat2.name.innerHTML.toLowerCase() == kit[i].toLowerCase()){
           owned = kit[i].toLowerCase();
         }
@@ -640,23 +638,23 @@ selection.forEach((select) => {
         localStorage.setItem('kit',JSON.stringify(kit));
         
         
-        var selected = [
+        let selected = [
           armorStat2.name.innerHTML,
-          armorStat2.defense.innerHTML,
-          armorStat2.health.innerHTML,
-          armorStat2.magic.innerHTML,
-          armorStat2.speed.innerHTML,
-          armorStat2.strength.innerHTML,
+          armorStat2.def.innerHTML,
+          armorStat2.hp.innerHTML,
+          armorStat2.mag.innerHTML,
+          armorStat2.spd.innerHTML,
+          armorStat2.str.innerHTML,
         ]
-        for(var i = 0; i < equip1.length; i++){
+        for(let i = 0; i < equip1.length; i++){
           equip1[i].innerHTML = selected[i];
         }
         
-        orgHTML.defense  = armorStat2.defense.innerHTML;
-        orgHTML.health   = armorStat2.health.innerHTML;
-        orgHTML.magic    = armorStat2.magic.innerHTML;
-        orgHTML.speed    = armorStat2.speed.innerHTML;
-        orgHTML.strength = armorStat2.strength.innerHTML;
+        orgHTML.def  = armorStat2.def.innerHTML;
+        orgHTML.hp   = armorStat2.hp.innerHTML;
+        orgHTML.mag    = armorStat2.mag.innerHTML;
+        orgHTML.spd    = armorStat2.spd.innerHTML;
+        orgHTML.str = armorStat2.str.innerHTML;
          
         console.log(self);
         console.log('Kit', kit);
@@ -683,23 +681,23 @@ selection.forEach((select) => {
         kit.push(armorStat2.name.innerHTML);
         localStorage.setItem('kit',JSON.stringify(kit));
         
-        var selected = [
+        let selected = [
           armorStat2.name.innerHTML,
-          armorStat2.defense.innerHTML,
-          armorStat2.health.innerHTML,
-          armorStat2.magic.innerHTML,
-          armorStat2.speed.innerHTML,
-          armorStat2.strength.innerHTML,
+          armorStat2.def.innerHTML,
+          armorStat2.hp.innerHTML,
+          armorStat2.mag.innerHTML,
+          armorStat2.spd.innerHTML,
+          armorStat2.str.innerHTML,
         ]
-        for(var i = 0; i < equip1.length; i++){
+        for(let i = 0; i < equip1.length; i++){
           equip1[i].innerHTML = selected[i];
         }
         
-        orgHTML.defense  = armorStat2.defense.innerHTML;
-        orgHTML.health   = armorStat2.health.innerHTML;
-        orgHTML.magic    = armorStat2.magic.innerHTML;
-        orgHTML.speed    = armorStat2.speed.innerHTML;
-        orgHTML.strength = armorStat2.strength.innerHTML;
+        orgHTML.def  = armorStat2.def.innerHTML;
+        orgHTML.hp   = armorStat2.hp.innerHTML;
+        orgHTML.mag    = armorStat2.mag.innerHTML;
+        orgHTML.spd    = armorStat2.spd.innerHTML;
+        orgHTML.str = armorStat2.str.innerHTML;
         
         console.log(self);
         console.log('Kit', kit);
@@ -753,16 +751,16 @@ selection.forEach((select) => {
       
     }
     else if(e.target.attributes.name.value.toLowerCase() == 'weapon'){
-      var owned = '';
+      let owned = '';
       console.log('This is some type of weapon');
       
-      for(var i = 0; i < kit.length; i++){
+      for(let i = 0; i < kit.length; i++){
         if(weapStat.name.innerHTML.toLowerCase() == kit[i].toLowerCase()){
           owned = kit[i].toLowerCase();
         }
       }
       
-      if(self.type.toLowerCase() == 'werewolf'){
+      if(self.name.toLowerCase() == 'werewolf'){
         doc.extras.innerHTML = "You can't get any weapons";
       }
       else if(stealChan <= Math.random() && count <= 3 
@@ -776,31 +774,31 @@ selection.forEach((select) => {
         localStorage.setItem('kit',JSON.stringify(kit));
         
         equip[0].innerHTML = weapStat.name.innerHTML;
-        equip[1].innerHTML = weapStat.defense.innerHTML;
-        equip[2].innerHTML = weapStat.health.innerHTML;
-        equip[3].innerHTML = weapStat.magic.innerHTML;
-        equip[4].innerHTML = weapStat.speed.innerHTML;
-        equip[5].innerHTML = weapStat.strength.innerHTML;
+        equip[1].innerHTML = weapStat.def.innerHTML;
+        equip[2].innerHTML = weapStat.hp.innerHTML;
+        equip[3].innerHTML = weapStat.mag.innerHTML;
+        equip[4].innerHTML = weapStat.spd.innerHTML;
+        equip[5].innerHTML = weapStat.str.innerHTML;
         equip[6].innerHTML = weapStat.type;
         
-        var selected = [
+        let selected = [
           weapStat.name.innerHTML,
-          weapStat.defense.innerHTML,
-          weapStat.health.innerHTML,
-          weapStat.magic.innerHTML,
-          weapStat.speed.innerHTML,
-          weapStat.strength.innerHTML,
+          weapStat.def.innerHTML,
+          weapStat.hp.innerHTML,
+          weapStat.mag.innerHTML,
+          weapStat.spd.innerHTML,
+          weapStat.str.innerHTML,
           weapStat.type
         ]
-        for(var i = 0; i < equip.length; i++){
+        for(let i = 0; i < equip.length; i++){
           equip[i].innerHTML = selected[i];
         }
         
-        orgHTML.defense  = weapStat.defense.innerHTML;
-        orgHTML.health   = weapStat.health.innerHTML;
-        orgHTML.magic    = weapStat.magic.innerHTML;
-        orgHTML.speed    = weapStat.speed.innerHTML;
-        orgHTML.strength = weapStat.strength.innerHTML;
+        orgHTML.def  = weapStat.def.innerHTML;
+        orgHTML.hp   = weapStat.hp.innerHTML;
+        orgHTML.mag    = weapStat.mag.innerHTML;
+        orgHTML.spd    = weapStat.spd.innerHTML;
+        orgHTML.str = weapStat.str.innerHTML;
         orgHTML.type     = weapStat.type;
         
         console.log(self);
@@ -829,31 +827,31 @@ selection.forEach((select) => {
         localStorage.setItem('kit',JSON.stringify(kit));
         
         equip[0].innerHTML = weapStat.name.innerHTML;
-        equip[1].innerHTML = weapStat.defense.innerHTML;
-        equip[2].innerHTML = weapStat.health.innerHTML;
-        equip[3].innerHTML = weapStat.magic.innerHTML;
-        equip[4].innerHTML = weapStat.speed.innerHTML;
-        equip[5].innerHTML = weapStat.strength.innerHTML;
+        equip[1].innerHTML = weapStat.def.innerHTML;
+        equip[2].innerHTML = weapStat.hp.innerHTML;
+        equip[3].innerHTML = weapStat.mag.innerHTML;
+        equip[4].innerHTML = weapStat.spd.innerHTML;
+        equip[5].innerHTML = weapStat.str.innerHTML;
         equip[6].innerHTML = weapStat.type;
         
-        var selected = [
+        let selected = [
           weapStat.name.innerHTML,
-          weapStat.defense.innerHTML,
-          weapStat.health.innerHTML,
-          weapStat.magic.innerHTML,
-          weapStat.speed.innerHTML,
-          weapStat.strength.innerHTML,
+          weapStat.def.innerHTML,
+          weapStat.hp.innerHTML,
+          weapStat.mag.innerHTML,
+          weapStat.spd.innerHTML,
+          weapStat.str.innerHTML,
           weapStat.type
         ]
-        for(var i = 0; i < equip.length; i++){
+        for(let i = 0; i < equip.length; i++){
           equip[i].innerHTML = selected[i];
         }
         
-        orgHTML.defense  = weapStat.defense.innerHTML;
-        orgHTML.health   = weapStat.health.innerHTML;
-        orgHTML.magic    = weapStat.magic.innerHTML;
-        orgHTML.speed    = weapStat.speed.innerHTML;
-        orgHTML.strength = weapStat.strength.innerHTML;
+        orgHTML.def  = weapStat.def.innerHTML;
+        orgHTML.hp   = weapStat.hp.innerHTML;
+        orgHTML.mag    = weapStat.mag.innerHTML;
+        orgHTML.spd    = weapStat.spd.innerHTML;
+        orgHTML.str = weapStat.str.innerHTML;
         orgHTML.type     = weapStat.type;
         
         console.log(self);
@@ -861,16 +859,16 @@ selection.forEach((select) => {
       }
     }
     else if(e.target.attributes.name.value.toLowerCase() == 'weapon1'){
-      var owned = '';
+      let owned = '';
       console.log('This is some type of weapon');
       
-      for(var i = 0; i < kit.length; i++){
+      for(let i = 0; i < kit.length; i++){
         if(weapStat1.name.innerHTML.toLowerCase() == kit[i].toLowerCase()){
           owned = kit[i].toLowerCase();
         }
       }
       
-      if(self.type.toLowerCase() == 'werewolf'){
+      if(self.name.toLowerCase() == 'werewolf'){
         doc.extras.innerHTML = "You can't get any weapons";
       }
       else if(stealChan <= Math.random() && count <= 3 
@@ -884,31 +882,31 @@ selection.forEach((select) => {
         localStorage.setItem('kit',JSON.stringify(kit));
         
         equip[0].innerHTML = weapStat1.name.innerHTML;
-        equip[1].innerHTML = weapStat1.defense.innerHTML;
-        equip[2].innerHTML = weapStat1.health.innerHTML;
-        equip[3].innerHTML = weapStat1.magic.innerHTML;
-        equip[4].innerHTML = weapStat1.speed.innerHTML;
-        equip[5].innerHTML = weapStat1.strength.innerHTML;
+        equip[1].innerHTML = weapStat1.def.innerHTML;
+        equip[2].innerHTML = weapStat1.hp.innerHTML;
+        equip[3].innerHTML = weapStat1.mag.innerHTML;
+        equip[4].innerHTML = weapStat1.spd.innerHTML;
+        equip[5].innerHTML = weapStat1.str.innerHTML;
         equip[6].innerHTML = weapStat1.type;
         
-        var selected = [
+        let selected = [
           weapStat1.name.innerHTML,
-          weapStat1.defense.innerHTML,
-          weapStat1.health.innerHTML,
-          weapStat1.magic.innerHTML,
-          weapStat1.speed.innerHTML,
-          weapStat1.strength.innerHTML,
+          weapStat1.def.innerHTML,
+          weapStat1.hp.innerHTML,
+          weapStat1.mag.innerHTML,
+          weapStat1.spd.innerHTML,
+          weapStat1.str.innerHTML,
           weapStat1.type
         ]
-        for(var i = 0; i < equip.length; i++){
+        for(let i = 0; i < equip.length; i++){
           equip[i].innerHTML = selected[i];
         }
         
-        orgHTML.defense  = weapStat1.defense.innerHTML;
-        orgHTML.health   = weapStat1.health.innerHTML;
-        orgHTML.magic    = weapStat1.magic.innerHTML;
-        orgHTML.speed    = weapStat1.speed.innerHTML;
-        orgHTML.strength = weapStat1.strength.innerHTML;
+        orgHTML.def  = weapStat1.def.innerHTML;
+        orgHTML.hp   = weapStat1.hp.innerHTML;
+        orgHTML.mag    = weapStat1.mag.innerHTML;
+        orgHTML.spd    = weapStat1.spd.innerHTML;
+        orgHTML.str = weapStat1.str.innerHTML;
         orgHTML.type     = weapStat1.type;
         
         console.log(self);
@@ -936,24 +934,24 @@ selection.forEach((select) => {
         kit.push(weapStat1.name.innerHTML);
         localStorage.setItem('kit',JSON.stringify(kit));
         
-        var selected = [
+        let selected = [
           weapStat1.name.innerHTML,
-          weapStat1.defense.innerHTML,
-          weapStat1.health.innerHTML,
-          weapStat1.magic.innerHTML,
-          weapStat1.speed.innerHTML,
-          weapStat1.strength.innerHTML,
+          weapStat1.def.innerHTML,
+          weapStat1.hp.innerHTML,
+          weapStat1.mag.innerHTML,
+          weapStat1.spd.innerHTML,
+          weapStat1.str.innerHTML,
           weapStat1.type
         ]
-        for(var i = 0; i < equip.length; i++){
+        for(let i = 0; i < equip.length; i++){
           equip[i].innerHTML = selected[i];
         }
         
-        orgHTML.defense  = weapStat1.defense.innerHTML;
-        orgHTML.health   = weapStat1.health.innerHTML;
-        orgHTML.magic    = weapStat1.magic.innerHTML;
-        orgHTML.speed    = weapStat1.speed.innerHTML;
-        orgHTML.strength = weapStat1.strength.innerHTML;
+        orgHTML.def  = weapStat1.def.innerHTML;
+        orgHTML.hp   = weapStat1.hp.innerHTML;
+        orgHTML.mag    = weapStat1.mag.innerHTML;
+        orgHTML.spd    = weapStat1.spd.innerHTML;
+        orgHTML.str = weapStat1.str.innerHTML;
         orgHTML.type     = weapStat1.type;
         
         console.log(self);
@@ -961,16 +959,16 @@ selection.forEach((select) => {
       }
     }
     else if(e.target.attributes.name.value.toLowerCase() == 'weapon2'){
-      var owned = '';
+      let owned = '';
       console.log('This is some type of weapon');
       
-      for(var i = 0; i < kit.length; i++){
+      for(let i = 0; i < kit.length; i++){
         if(weapStat2.name.innerHTML.toLowerCase() == kit[i].toLowerCase()){
           owned = kit[i].toLowerCase();
         }
       }
       
-      if(self.type.toLowerCase() == 'werewolf'){
+      if(self.name.toLowerCase() == 'werewolf'){
         doc.extras.innerHTML = "You can't get any weapons";
       }
       else if(stealChan <= Math.random() && count <= 3 
@@ -984,31 +982,31 @@ selection.forEach((select) => {
         localStorage.setItem('kit',JSON.stringify(kit));
         
         equip[0].innerHTML = weapStat2.name.innerHTML;
-        equip[1].innerHTML = weapStat2.defense.innerHTML;
-        equip[2].innerHTML = weapStat2.health.innerHTML;
-        equip[3].innerHTML = weapStat2.magic.innerHTML;
-        equip[4].innerHTML = weapStat2.speed.innerHTML;
-        equip[5].innerHTML = weapStat2.strength.innerHTML;
+        equip[1].innerHTML = weapStat2.def.innerHTML;
+        equip[2].innerHTML = weapStat2.hp.innerHTML;
+        equip[3].innerHTML = weapStat2.mag.innerHTML;
+        equip[4].innerHTML = weapStat2.spd.innerHTML;
+        equip[5].innerHTML = weapStat2.str.innerHTML;
         equip[6].innerHTML = weapStat2.type;
         
-        var selected = [
+        let selected = [
           weapStat2.name.innerHTML,
-          weapStat2.defense.innerHTML,
-          weapStat2.health.innerHTML,
-          weapStat2.magic.innerHTML,
-          weapStat2.speed.innerHTML,
-          weapStat2.strength.innerHTML,
+          weapStat2.def.innerHTML,
+          weapStat2.hp.innerHTML,
+          weapStat2.mag.innerHTML,
+          weapStat2.spd.innerHTML,
+          weapStat2.str.innerHTML,
           weapStat2.type
         ]
-        for(var i = 0; i < equip.length; i++){
+        for(let i = 0; i < equip.length; i++){
           equip[i].innerHTML = selected[i];
         }
         
-        orgHTML.defense  = weapStat2.defense.innerHTML;
-        orgHTML.health   = weapStat2.health.innerHTML;
-        orgHTML.magic    = weapStat2.magic.innerHTML;
-        orgHTML.speed    = weapStat2.speed.innerHTML;
-        orgHTML.strength = weapStat2.strength.innerHTML;
+        orgHTML.def  = weapStat2.def.innerHTML;
+        orgHTML.hp   = weapStat2.hp.innerHTML;
+        orgHTML.mag    = weapStat2.mag.innerHTML;
+        orgHTML.spd    = weapStat2.spd.innerHTML;
+        orgHTML.str = weapStat2.str.innerHTML;
         orgHTML.type     = weapStat2.type;
         
         console.log(self);
@@ -1036,24 +1034,24 @@ selection.forEach((select) => {
         kit.push(weapStat2.name.innerHTML);
         localStorage.setItem('kit',JSON.stringify(kit));
         
-        var selected = [
+        let selected = [
           weapStat2.name.innerHTML,
-          weapStat2.defense.innerHTML,
-          weapStat2.health.innerHTML,
-          weapStat2.magic.innerHTML,
-          weapStat2.speed.innerHTML,
-          weapStat2.strength.innerHTML,
+          weapStat2.def.innerHTML,
+          weapStat2.hp.innerHTML,
+          weapStat2.mag.innerHTML,
+          weapStat2.spd.innerHTML,
+          weapStat2.str.innerHTML,
           weapStat2.type
         ]
-        for(var i = 0; i < equip.length; i++){
+        for(let i = 0; i < equip.length; i++){
           equip[i].innerHTML = selected[i];
         }
         
-        orgHTML.defense  = weapStat2.defense.innerHTML;
-        orgHTML.health   = weapStat2.health.innerHTML;
-        orgHTML.magic    = weapStat2.magic.innerHTML;
-        orgHTML.speed    = weapStat2.speed.innerHTML;
-        orgHTML.strength = weapStat2.strength.innerHTML;
+        orgHTML.def  = weapStat2.def.innerHTML;
+        orgHTML.hp   = weapStat2.hp.innerHTML;
+        orgHTML.mag    = weapStat2.mag.innerHTML;
+        orgHTML.spd    = weapStat2.spd.innerHTML;
+        orgHTML.str = weapStat2.str.innerHTML;
         orgHTML.type     = weapStat2.type;
         
         console.log(self);
@@ -1082,97 +1080,97 @@ selection.forEach((select) => {
   
   //this part is a comparision between weapons and armors
   select.addEventListener('mouseenter',(e) => {
-    var diff = 0;
+    let diff = 0;
     
     //this chunk does a comparison for both areas
     if(e.target.attributes.name.value.toLowerCase() == 'weapon'){
-      orgHTML.defense  = equip[1].innerHTML;
-      orgHTML.health   = equip[2].innerHTML;
-      orgHTML.magic    = equip[3].innerHTML;
-      orgHTML.speed    = equip[4].innerHTML;
-      orgHTML.strength = equip[5].innerHTML;
+      orgHTML.def  = equip[1].innerHTML;
+      orgHTML.hp   = equip[2].innerHTML;
+      orgHTML.mag    = equip[3].innerHTML;
+      orgHTML.spd    = equip[4].innerHTML;
+      orgHTML.str = equip[5].innerHTML;
       orgHTML.type     = equip[6].innerHTML;
       
       //this is for comparison between the weapon owned and the one hovering over
-      diff = JSON.parse(weapStat.defense.innerHTML) - JSON.parse(equip[1].innerHTML);
+      diff = JSON.parse(weapStat.def.innerHTML) - JSON.parse(equip[1].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip[1].innerHTML += ' (' + diff  + ')';
-      diff = JSON.parse(weapStat.health.innerHTML) - JSON.parse(equip[2].innerHTML);
+      diff = JSON.parse(weapStat.hp.innerHTML) - JSON.parse(equip[2].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip[2].innerHTML += ' (' + diff + ')';
-      diff = JSON.parse(weapStat.magic.innerHTML) - JSON.parse(equip[3].innerHTML);
+      diff = JSON.parse(weapStat.mag.innerHTML) - JSON.parse(equip[3].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip[3].innerHTML += ' (' + diff + ')';
-      diff = JSON.parse(weapStat.speed.innerHTML) - JSON.parse(equip[4].innerHTML);
+      diff = JSON.parse(weapStat.spd.innerHTML) - JSON.parse(equip[4].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip[4].innerHTML += ' (' + diff + ')';
-      diff = JSON.parse(weapStat.strength.innerHTML) - JSON.parse(equip[5].innerHTML);
+      diff = JSON.parse(weapStat.str.innerHTML) - JSON.parse(equip[5].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip[5].innerHTML += ' (' + diff + ')';
       equip[6].innerHTML += ' (' + weapStat.type + ')';
     }
     else if(e.target.attributes.name.value.toLowerCase() == 'weapon1'){
-      orgHTML.defense  = equip[1].innerHTML;
-      orgHTML.health   = equip[2].innerHTML;
-      orgHTML.magic    = equip[3].innerHTML;
-      orgHTML.speed    = equip[4].innerHTML;
-      orgHTML.strength = equip[5].innerHTML;
+      orgHTML.def  = equip[1].innerHTML;
+      orgHTML.hp   = equip[2].innerHTML;
+      orgHTML.mag    = equip[3].innerHTML;
+      orgHTML.spd    = equip[4].innerHTML;
+      orgHTML.str = equip[5].innerHTML;
       orgHTML.type     = equip[6].innerHTML;
       
       //working on making the comparison 
-      diff = JSON.parse(weapStat1.defense.innerHTML) - JSON.parse(equip[1].innerHTML);
+      diff = JSON.parse(weapStat1.def.innerHTML) - JSON.parse(equip[1].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip[1].innerHTML += ' (' + diff  + ')';
-      diff = JSON.parse(weapStat1.health.innerHTML) - JSON.parse(equip[2].innerHTML);
+      diff = JSON.parse(weapStat1.hp.innerHTML) - JSON.parse(equip[2].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip[2].innerHTML += ' (' + diff + ')';
-      diff = JSON.parse(weapStat1.magic.innerHTML) - JSON.parse(equip[3].innerHTML);
+      diff = JSON.parse(weapStat1.mag.innerHTML) - JSON.parse(equip[3].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip[3].innerHTML += ' (' + diff + ')';
-      diff = JSON.parse(weapStat1.speed.innerHTML) - JSON.parse(equip[4].innerHTML);
+      diff = JSON.parse(weapStat1.spd.innerHTML) - JSON.parse(equip[4].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip[4].innerHTML += ' (' + diff + ')';
-      diff = JSON.parse(weapStat1.strength.innerHTML) - JSON.parse(equip[5].innerHTML);
+      diff = JSON.parse(weapStat1.str.innerHTML) - JSON.parse(equip[5].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip[5].innerHTML += ' (' + diff + ')';
       equip[6].innerHTML += ' (' + weapStat1.type + ')';
     }
     else if(e.target.attributes.name.value.toLowerCase() == 'weapon2'){
-      orgHTML.defense  = equip[1].innerHTML;
-      orgHTML.health   = equip[2].innerHTML;
-      orgHTML.magic    = equip[3].innerHTML;
-      orgHTML.speed    = equip[4].innerHTML;
-      orgHTML.strength = equip[5].innerHTML;
+      orgHTML.def  = equip[1].innerHTML;
+      orgHTML.hp   = equip[2].innerHTML;
+      orgHTML.mag    = equip[3].innerHTML;
+      orgHTML.spd    = equip[4].innerHTML;
+      orgHTML.str = equip[5].innerHTML;
       orgHTML.type     = equip[6].innerHTML;
       
       //working on making the comparison 
-      diff = JSON.parse(weapStat2.defense.innerHTML) - JSON.parse(equip[1].innerHTML);
+      diff = JSON.parse(weapStat2.def.innerHTML) - JSON.parse(equip[1].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip[1].innerHTML += ' (' + diff  + ')';
-      diff = JSON.parse(weapStat2.health.innerHTML) - JSON.parse(equip[2].innerHTML);
+      diff = JSON.parse(weapStat2.hp.innerHTML) - JSON.parse(equip[2].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip[2].innerHTML += ' (' + diff + ')';
-      diff = JSON.parse(weapStat2.magic.innerHTML) - JSON.parse(equip[3].innerHTML);
+      diff = JSON.parse(weapStat2.mag.innerHTML) - JSON.parse(equip[3].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip[3].innerHTML += ' (' + diff + ')';
-      diff = JSON.parse(weapStat2.speed.innerHTML) - JSON.parse(equip[4].innerHTML);
+      diff = JSON.parse(weapStat2.spd.innerHTML) - JSON.parse(equip[4].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip[4].innerHTML += ' (' + diff + ')';
-      diff = JSON.parse(weapStat2.strength.innerHTML) - JSON.parse(equip[5].innerHTML);
+      diff = JSON.parse(weapStat2.str.innerHTML) - JSON.parse(equip[5].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip[5].innerHTML += ' (' + diff + ')';
@@ -1180,88 +1178,88 @@ selection.forEach((select) => {
     }
     
     if(e.target.attributes.name.value.toLowerCase() == 'armor'){
-      orgHTML.defense  = equip1[1].innerHTML;
-      orgHTML.health   = equip1[2].innerHTML;
-      orgHTML.magic    = equip1[3].innerHTML;
-      orgHTML.speed    = equip1[4].innerHTML;
-      orgHTML.strength = equip1[5].innerHTML;
+      orgHTML.def  = equip1[1].innerHTML;
+      orgHTML.hp   = equip1[2].innerHTML;
+      orgHTML.mag    = equip1[3].innerHTML;
+      orgHTML.spd    = equip1[4].innerHTML;
+      orgHTML.str = equip1[5].innerHTML;
       
       //working on making the comparison 
-      diff = JSON.parse(armorStat.defense.innerHTML) - JSON.parse(equip1[1].innerHTML);
+      diff = JSON.parse(armorStat.def.innerHTML) - JSON.parse(equip1[1].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip1[1].innerHTML += ' (' + diff  + ')';
-      diff = JSON.parse(armorStat.health.innerHTML) - JSON.parse(equip1[2].innerHTML);
+      diff = JSON.parse(armorStat.hp.innerHTML) - JSON.parse(equip1[2].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip1[2].innerHTML += ' (' + diff + ')';
-      diff = JSON.parse(armorStat.magic.innerHTML) - JSON.parse(equip1[3].innerHTML);
+      diff = JSON.parse(armorStat.mag.innerHTML) - JSON.parse(equip1[3].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip1[3].innerHTML += ' (' + diff + ')';
-      diff = JSON.parse(armorStat.speed.innerHTML) - JSON.parse(equip1[4].innerHTML);
+      diff = JSON.parse(armorStat.spd.innerHTML) - JSON.parse(equip1[4].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip1[4].innerHTML += ' (' + diff + ')';
-      diff = JSON.parse(armorStat.strength.innerHTML) - JSON.parse(equip1[5].innerHTML);
+      diff = JSON.parse(armorStat.str.innerHTML) - JSON.parse(equip1[5].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip1[5].innerHTML += ' (' + diff + ')';
     }
     else if(e.target.attributes.name.value.toLowerCase() == 'armor1'){
-      orgHTML.defense  = equip1[1].innerHTML;
-      orgHTML.health   = equip1[2].innerHTML;
-      orgHTML.magic    = equip1[3].innerHTML;
-      orgHTML.speed    = equip1[4].innerHTML;
-      orgHTML.strength = equip1[5].innerHTML;
+      orgHTML.def  = equip1[1].innerHTML;
+      orgHTML.hp   = equip1[2].innerHTML;
+      orgHTML.mag    = equip1[3].innerHTML;
+      orgHTML.spd    = equip1[4].innerHTML;
+      orgHTML.str = equip1[5].innerHTML;
       
       //working on making the comparison 
-      diff = JSON.parse(armorStat1.defense.innerHTML) - JSON.parse(equip1[1].innerHTML);
+      diff = JSON.parse(armorStat1.def.innerHTML) - JSON.parse(equip1[1].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip1[1].innerHTML += ' (' + diff  + ')';
-      diff = JSON.parse(armorStat1.health.innerHTML) - JSON.parse(equip1[2].innerHTML);
+      diff = JSON.parse(armorStat1.hp.innerHTML) - JSON.parse(equip1[2].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip1[2].innerHTML += ' (' + diff + ')';
-      diff = JSON.parse(armorStat1.magic.innerHTML) - JSON.parse(equip1[3].innerHTML);
+      diff = JSON.parse(armorStat1.mag.innerHTML) - JSON.parse(equip1[3].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip1[3].innerHTML += ' (' + diff + ')';
-      diff = JSON.parse(armorStat1.speed.innerHTML) - JSON.parse(equip1[4].innerHTML);
+      diff = JSON.parse(armorStat1.spd.innerHTML) - JSON.parse(equip1[4].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip1[4].innerHTML += ' (' + diff + ')';
-      diff = JSON.parse(armorStat1.strength.innerHTML) - JSON.parse(equip1[5].innerHTML);
+      diff = JSON.parse(armorStat1.str.innerHTML) - JSON.parse(equip1[5].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip1[5].innerHTML += ' (' + diff + ')';
     }
     else if(e.target.attributes.name.value.toLowerCase() == 'armor2'){
-      orgHTML.defense  = equip1[1].innerHTML;
-      orgHTML.health   = equip1[2].innerHTML;
-      orgHTML.magic    = equip1[3].innerHTML;
-      orgHTML.speed    = equip1[4].innerHTML;
-      orgHTML.strength = equip1[5].innerHTML;
+      orgHTML.def  = equip1[1].innerHTML;
+      orgHTML.hp   = equip1[2].innerHTML;
+      orgHTML.mag    = equip1[3].innerHTML;
+      orgHTML.spd    = equip1[4].innerHTML;
+      orgHTML.str = equip1[5].innerHTML;
       
       
-      diff = JSON.parse(armorStat2.defense.innerHTML) - JSON.parse(equip1[1].innerHTML);
+      diff = JSON.parse(armorStat2.def.innerHTML) - JSON.parse(equip1[1].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip1[1].innerHTML += ' (' + diff  + ')';
-      diff = JSON.parse(armorStat2.health.innerHTML) - JSON.parse(equip1[2].innerHTML);
+      diff = JSON.parse(armorStat2.hp.innerHTML) - JSON.parse(equip1[2].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip1[2].innerHTML += ' (' + diff + ')';
-      diff = JSON.parse(armorStat2.magic.innerHTML) - JSON.parse(equip1[3].innerHTML);
+      diff = JSON.parse(armorStat2.mag.innerHTML) - JSON.parse(equip1[3].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip1[3].innerHTML += ' (' + diff + ')';
-      diff = JSON.parse(armorStat2.speed.innerHTML) - JSON.parse(equip1[4].innerHTML);
+      diff = JSON.parse(armorStat2.spd.innerHTML) - JSON.parse(equip1[4].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip1[4].innerHTML += ' (' + diff + ')';
-      diff = JSON.parse(armorStat2.strength.innerHTML) - JSON.parse(equip1[5].innerHTML);
+      diff = JSON.parse(armorStat2.str.innerHTML) - JSON.parse(equip1[5].innerHTML);
       if(diff > 0) diff = '+' + diff;
       
       equip1[5].innerHTML += ' (' + diff + ')';
@@ -1271,87 +1269,87 @@ selection.forEach((select) => {
   //this part removes the newly added html
   select.addEventListener('mouseleave',(e) => {
     if(e.target.attributes.name.value.toLowerCase() == 'weapon'){
-      var selected = [
+      let selected = [
         0,
-        orgHTML.defense,
-        orgHTML.health,
-        orgHTML.magic,
-        orgHTML.speed,
-        orgHTML.strength,
+        orgHTML.def,
+        orgHTML.hp,
+        orgHTML.mag,
+        orgHTML.spd,
+        orgHTML.str,
         orgHTML.type,
       ];
-      for(var i = 1; i < equip.length; i++){
+      for(let i = 1; i < equip.length; i++){
         equip[i].innerHTML = selected[i];
       }
     }
     else if(e.target.attributes.name.value.toLowerCase() == 'weapon1'){
-      var selected = [
+      let selected = [
         0,
-        orgHTML.defense,
-        orgHTML.health,
-        orgHTML.magic,
-        orgHTML.speed,
-        orgHTML.strength,
+        orgHTML.def,
+        orgHTML.hp,
+        orgHTML.mag,
+        orgHTML.spd,
+        orgHTML.str,
         orgHTML.type,
       ];
-      for(var i = 1; i < equip.length; i++){
+      for(let i = 1; i < equip.length; i++){
         equip[i].innerHTML = selected[i];
       }
     }
     else if(e.target.attributes.name.value.toLowerCase() == 'weapon2'){
-      var selected = [
+      let selected = [
         0,
-        orgHTML.defense,
-        orgHTML.health,
-        orgHTML.magic,
-        orgHTML.speed,
-        orgHTML.strength,
+        orgHTML.def,
+        orgHTML.hp,
+        orgHTML.mag,
+        orgHTML.spd,
+        orgHTML.str,
         orgHTML.type,
       ];
-      for(var i = 1; i < equip.length; i++){
+      for(let i = 1; i < equip.length; i++){
         equip[i].innerHTML = selected[i];
       }
     }
     
     if(e.target.attributes.name.value.toLowerCase() == 'armor'){
-      var selected = [
+      let selected = [
         0,
-        orgHTML.defense,
-        orgHTML.health,
-        orgHTML.magic,
-        orgHTML.speed,
-        orgHTML.strength,
+        orgHTML.def,
+        orgHTML.hp,
+        orgHTML.mag,
+        orgHTML.spd,
+        orgHTML.str,
         orgHTML.type,
       ];
-      for(var i = 1; i < equip1.length; i++){
+      for(let i = 1; i < equip1.length; i++){
         equip1[i].innerHTML = selected[i];
       }
     }
     else if(e.target.attributes.name.value.toLowerCase() == 'armor1'){
-      var selected = [
+      let selected = [
         0,
-        orgHTML.defense,
-        orgHTML.health,
-        orgHTML.magic,
-        orgHTML.speed,
-        orgHTML.strength,
+        orgHTML.def,
+        orgHTML.hp,
+        orgHTML.mag,
+        orgHTML.spd,
+        orgHTML.str,
         orgHTML.type,
       ];
-      for(var i = 1; i < equip1.length; i++){
+      for(let i = 1; i < equip1.length; i++){
         equip1[i].innerHTML = selected[i];
       }
     }
     else if(e.target.attributes.name.value.toLowerCase() == 'armor2'){
-      var selected = [
+      let selected = [
         0,
-        orgHTML.defense,
-        orgHTML.health,
-        orgHTML.magic,
-        orgHTML.speed,
-        orgHTML.strength,
+        orgHTML.def,
+        orgHTML.hp,
+        orgHTML.mag,
+        orgHTML.spd,
+        orgHTML.str,
         orgHTML.type,
       ];
-      for(var i = 1; i < equip1.length; i++){
+      for(let i = 1; i < equip1.length; i++){
         equip1[i].innerHTML = selected[i];
       }
     }

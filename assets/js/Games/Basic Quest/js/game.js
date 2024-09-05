@@ -33,7 +33,7 @@ let timeout;
 
 //Abilities-----------------------------------------------//
 //this sets all abilities to false so theyre not active from start of game
-let abilities = {
+let abilitiesOwned = {
   //these are revive abilities
   aflife: false,
   deadA:  false,
@@ -90,6 +90,8 @@ let abilities = {
 
 let flask  = JSON.parse(localStorage.getItem('flask'));
 let gold   = JSON.parse(localStorage.getItem('gold'));
+// itemsA are the armors the player owns
+// itemsW are the weapons the player owns
 let itemsA = [];
 let itemsW = [];
 let kit    = JSON.parse(localStorage.getItem('kit'));
@@ -149,19 +151,20 @@ let btns = {
 let p1    = JSON.parse(localStorage.getItem('race'));
 console.log(p1);
 console.log(JSON.parse(localStorage.getItem('race')));
+
 let slain = JSON.parse(localStorage.getItem('kills'));
-let self = {};
+let self;
 let ability   = [];
 let equipment = {
-  defense: 0,
-  maxHealth: 0,
-  magic: 0,
-  speed: 0,
-  strength: 0,
+  def: 0,
+  maxHp: 0,
+  mag: 0,
+  spd: 0,
+  str: 0,
 };
 
 
-const story      = [
+let story      = [
   'You see a stranger in the distance',
   'A enemy appeared!',
   "There's a merchant selling items!",
@@ -174,19 +177,18 @@ let events     = {
 };
 //difficulty modifier for amount of enemies slain that increases enemy defense
 let difficulty = {
-  defense: 0,
+  def: 0,
 };
 
 //This function brings all the stats into play and updates everything after you come back from the shop
-function Init(type,defense,health,maxHealth,magic,speed,strength,armor,weapon,currency,ability1,ability2,ability3){
-  //let loc just checks current location of player 
+function Init(name, def, hp, maxHp, mag, spd, str, armor, weapon, currency, ability1, ability2, ability3){
+  //var loc just checks current location of player 
   let loc = localStorage.getItem('location').toLowerCase();
   console.log(loc);
   
   //this runs through to ses if player is in a shop and gets a greeting
   doc.actions.innerHTML = greetings.welcome;
-  if(loc == 'shops'
-  || loc == 'shop'){
+  if(loc == 'shops' || loc == 'shop'){
     doc.actions.innerHTML = greetings.shop;
   }
   //shows amount of flasks owned
@@ -194,155 +196,152 @@ function Init(type,defense,health,maxHealth,magic,speed,strength,armor,weapon,cu
   
   //instead of using let "p1", now we use let "self" for the player
   self = {
-    type: p1.type.trim(),
+    name: p1.name.trim(),
     armor: p1.armor,
     ability1:p1.ability1,
     ability2:p1.ability2,
     ability3:p1.ability3,
-    defense: p1.defense,
+    def: p1.def,
     gold: p1.currency,
-    health: p1.health,
-    maxHealth: p1.maxHealth,
-    magic: p1.magic,
-    speed: p1.speed,
-    strength: p1.strength,
+    hp: p1.hp,
+    maxHp: p1.maxHp,
+    mag: p1.mag,
+    spd: p1.spd,
+    str: p1.str,
     weapon: p1.weapon,
   };
+  console.log(self);
   
-  ability.push(self.ability1.toLowerCase());
-  ability.push(self.ability2.toLowerCase());
-  ability.push(self.ability3.toLowerCase());
+  ability.push(self.ability1.name.toLowerCase());
+  ability.push(self.ability2.name.toLowerCase());
+  ability.push(self.ability3.name.toLowerCase());
   
-  //this checks to see if self has some abilities or not
+  // This for loop is checking to see what abilites the player has, setting to true and applying them during the character creation
   for(let i = 0; i < ability.length; i++){
     if(ability[i] == 'hopelessromantic'){
-      abilities.hopRom = true;
+      abilitiesOwned.hopRom = true;
     }
     if(ability[i] == 'suffering'){
-      abilities.suffering = true;
+      abilitiesOwned.suffering = true;
     }
     if(ability[i] == 'buffalopower'){
-      abilities.buffPow = true;
+      abilitiesOwned.buffPow = true;
     }
     if(ability[i] == 'abysssurvivor'){
-      abilities.abyssSurv = true;
+      abilitiesOwned.abyssSurv = true;
     }
     if(ability[i] == 'crossfaded'){
-      abilities.xfaded = true;
+      abilitiesOwned.xfaded = true;
     }
     if(ability[i] == 'cursedsoul'){
-      abilities.cursSol = true;
+      abilitiesOwned.cursSol = true;
     }
     if(ability[i] == 'canceredblood'){
-      abilities.cancBlo = true;
+      abilitiesOwned.cancBlo = true;
     }
     if(ability[i] == "devil'sman"){
-      abilities.devsMan = true;
+      abilitiesOwned.devsMan = true;
     }
     if(ability[i] == 'nsowm'){
-      abilities.nsowm = true;
+      abilitiesOwned.nsowm = true;
     }
     if(ability[i] == 'onemanarmy'){
-      abilities.OMA = true;
+      abilitiesOwned.OMA = true;
     }
     if(ability[i] == 'exoticgent'){
-      abilities.exoGen = true;
+      abilitiesOwned.exoGen = true;
     }
     if(ability[i] == 'royalblood'){
-      abilities.royBlo = true;
+      abilitiesOwned.royBlo = true;
     }
     if(ability[i] == 'fan'){
-      abilities.FAN = true;
+      abilitiesOwned.FAN = true;
     }
     if(ability[i] == 'shoppingspree'){
-      abilities.shopSpre = true; 
+      abilitiesOwned.shopSpre = true; 
     }
     if(ability[i] == 'hellfire'){
-      abilities.hellfire = true;
+      abilitiesOwned.hellfire = true;
     }
     if(ability[i] == 'phasewalker'){
-      abilities.phaseWalk = true;
+      abilitiesOwned.phaseWalk = true;
     }
     if(ability[i] == 'medic!'){
-      abilities.medic = true;
+      abilitiesOwned.medic = true;
     }
     if(ability[i] == 'sodaflask'){
-      abilities.sodaF = true;
+      abilitiesOwned.sodaF = true;
     }
     if(ability[i] == 'bloodthirsty'){
-      abilities.blodThirs = true;
+      abilitiesOwned.blodThirs = true;
     }
     if(ability[i] == 'bromptoncocktail'){
-      abilities.brompTail = true;
+      abilitiesOwned.brompTail = true;
     }
     if(ability[i] == 'corpseshaker'){
-      abilities.corspe = true;
+      abilitiesOwned.corspe = true;
     }
     if(ability[i] == 'myvodka!'){
-      abilities.vodka = true;
+      abilitiesOwned.vodka = true;
     }
   }
   
-  if(abilities.hopRom === true){
-    self.maxHealth = Math.floor(self.maxHealth * 0.5);
-    self.health    = self.maxHealth;
+  if(abilitiesOwned.hopRom === true){
+    self.maxHp = Math.floor(self.maxHp * 0.5);
+    self.hp    = self.maxHp;
   }
   
-  if(abilities.nsowm     === true && flask.max != flask.heal){
+  if(abilitiesOwned.nsowm     === true && flask.max != flask.heal){
     flask.max += 3;
   }
-  if(abilities.phaseWalk === true && flask.max != flask.heal){
+  if(abilitiesOwned.phaseWalk === true && flask.max != flask.heal){
     flask.max -= Math.floor(flask.max * 0.5);
   }
   
-  //these for loops go through the equipments and adds the stats to equipment
+  // These for loops go through the equipments and adds the stats to equipment
   for(let i = 0; i < armors.length; i++){
     if(self.armor.toLowerCase() == armors[i].name.toLowerCase()){
-      equipment.defense     += armors[i].defense;
-      equipment.maxHealth   += armors[i].health;
-      equipment.magic       += armors[i].magic;
-      equipment.speed       += armors[i].speed;
-      equipment.strength    += armors[i].strength;
-      
-      // console.log('Armor',armors[i]);
+      equipment.def     += armors[i].def;
+      equipment.maxHp   += armors[i].hp;
+      equipment.mag       += armors[i].mag;
+      equipment.spd       += armors[i].spd;
+      equipment.str    += armors[i].str;
     }
   }
   for(let j = 0; j < weapons.length; j++){
     if(self.weapon.toLowerCase() == weapons[j].name.toLowerCase()){
-      equipment.defense     += weapons[j].defense;
-      equipment.maxHealth   += weapons[j].health;
-      equipment.magic       += weapons[j].magic;
-      equipment.speed       += weapons[j].speed;
-      equipment.strength    += weapons[j].strength;
-      
-      // console.log('Weapon',weapons[j]);
+      equipment.def     += weapons[j].def;
+      equipment.maxHp   += weapons[j].hp;
+      equipment.mag       += weapons[j].mag;
+      equipment.spd       += weapons[j].spd;
+      equipment.str    += weapons[j].str;
     }
   }
   
   //all these functions check for their abilities and sets them 
-  if(abilities.cursSol == true){
-    self.maxHealth += 10;
-    self.defense--;
-    self.magic--;
-    self.speed--;
-    self.strength--;
+  if(abilitiesOwned.cursSol == true){
+    self.maxHp += 10;
+    self.def--;
+    self.mag--;
+    self.spd--;
+    self.str--;
   }
-  if(abilities.devsMan == true){
-    self.maxHealth -= 10;
-    self.defense++;
-    self.magic++;
-    self.speed++;
-    self.strength++;
+  if(abilitiesOwned.devsMan == true){
+    self.maxHp -= 10;
+    self.def++;
+    self.mag++;
+    self.spd++;
+    self.str++;
   }
   
-  if(abilities.cancBlo == true){
-    self.strength += 4;
-    self.magic    += 4;
+  if(abilitiesOwned.cancBlo == true){
+    self.str += 4;
+    self.mag    += 4;
     
     setInterval(() => {
-      self.health--;
-      doc.hp.innerHTML = self.health;
-      if(self.health <= 0){
+      self.hp--;
+      doc.hp.innerHTML = self.hp;
+      if(self.hp <= 0){
         gameOver();
       }
     },5000);
@@ -350,23 +349,22 @@ function Init(type,defense,health,maxHealth,magic,speed,strength,armor,weapon,cu
   
   //this checks to see if the ability is active and decreases max health
   //when returning from kit, health gets increased again because kit is another 'location' 
-  if(abilities.OMA == true){
-    self.maxHealth -= Math.floor(self.maxHealth * 0.25);
+  if(abilitiesOwned.OMA == true){
+    self.maxHp -= Math.floor(self.maxHp * 0.25);
   }
   
   //This part just adds the equipment stats////////////////////
-  
-  self.defense   += equipment.defense;
-  self.maxHealth += equipment.maxHealth;
-  self.magic     += equipment.magic;
-  self.speed     += equipment.speed;
-  self.strength  += equipment.strength;
-  self.health     = Math.floor(self.maxHealth);
+  self.def   += equipment.def;
+  self.maxHp += equipment.maxHp;
+  self.mag   += equipment.mag;
+  self.spd   += equipment.spd;
+  self.str   += equipment.str;
+  self.hp = Math.floor(self.maxHp);
   /////////////////////////////////////////////////////////////
 
   //////////Stuff to put on the HTML///////////////////////////
-  doc.species.innerHTML = self.type.toUpperCase();
-  doc.hp.innerHTML      = self.health;
+  doc.species.innerHTML = self.name.toUpperCase();
+  doc.hp.innerHTML      = self.hp;
   doc.armor.innerHTML   = self.armor;
   doc.weapon.innerHTML  = self.weapon;
   doc.gold.innerHTML    = gold.owned;
@@ -375,7 +373,7 @@ function Init(type,defense,health,maxHealth,magic,speed,strength,armor,weapon,cu
   
   
   //This is to seperate the armors from weapons
-  for(i = 0; i < kit.length; i++){
+  for(let i = 0; i < kit.length; i++){
     for(let o = 0; o < armors.length; o++){
       if(kit[i].toLowerCase() == armors[o].name.toLowerCase()){
         itemsA.push(kit[i]);
@@ -388,91 +386,91 @@ function Init(type,defense,health,maxHealth,magic,speed,strength,armor,weapon,cu
     }
   }
   
-  //enemies difficulty increase stats
+  // The more slain enemies, the higher the difficulty becomes with this for loop (i.e. it just increases hp, dmg, and def)
   for(let z = 0; z < enemies.length; z++){
     if(slain > 100){
       if(enemies[z].type.toLowerCase() == 'elf'){
-        enemies[z].magic  += 30;
+        enemies[z].mag  += 30;
       }
       else{
-        enemies[z].strength  += 30;
+        enemies[z].str  += 30;
       }
-      enemies[z].maxHealth += 50;
-      enemies[z].defense   += 20;
+      enemies[z].maxHp += 50;
+      enemies[z].def   += 20;
       
-      enemies[z].health = enemies[z].maxHealth;
+      enemies[z].hp = enemies[z].maxHp;
     }
     else if(slain > 50){
       if(enemies[z].type.toLowerCase() == 'elf'){
-        enemies[z].magic  += 20;
+        enemies[z].mag  += 20;
       }
       else{
-        enemies[z].strength  += 20;
+        enemies[z].str  += 20;
       }
-      enemies[z].maxHealth += 20;
-      enemies[z].defense   += 10;
+      enemies[z].maxHp += 20;
+      enemies[z].def   += 10;
       
-      enemies[z].health = enemies[z].maxHealth;
+      enemies[z].hp = enemies[z].maxHp;
     }
     else if(slain > 30){
       if(enemies[z].type.toLowerCase() == 'elf'){
-        enemies[z].magic  += 10;
+        enemies[z].mag  += 10;
       }
       else{
-        enemies[z].strength  += 10;
+        enemies[z].str  += 10;
       }
-      enemies[z].maxHealth += 10;
-      enemies[z].defense   += 5;
+      enemies[z].maxHp += 10;
+      enemies[z].def   += 5;
       
-      enemies[z].health = enemies[z].maxHealth;
+      enemies[z].hp = enemies[z].maxHp;
     }
     else if(slain > 15){
       if(enemies[z].type.toLowerCase() == 'elf'){
-        enemies[z].magic  += 5;
+        enemies[z].mag  += 5;
       }
       else{
-        enemies[z].strength  += 5;
+        enemies[z].str  += 5;
       }
-      enemies[z].maxHealth += 5;
-      enemies[z].defense   += 2.5;
+      enemies[z].maxHp += 5;
+      enemies[z].def   += 2.5;
       
-      enemies[z].health = enemies[z].maxHealth;
+      enemies[z].hp = enemies[z].maxHp;
     }
     else if(slain < 15){
       if(enemies[z].type.toLowerCase() == 'elf'){
-        enemies[z].magic  += 5;
+        enemies[z].mag  += 5;
       }
       else{
-        enemies[z].strength  -= 5;
+        enemies[z].str  -= 5;
       }
-      enemies[z].maxHealth -= 10;
-      enemies[z].defense   -= 5;
+      enemies[z].maxHp -= 10;
+      enemies[z].def   -= 5;
       
-      if(enemies[z].strength <= 0){
-        enemies[z].strength = 1;
+      if(enemies[z].str <= 0){
+        enemies[z].str = 1;
       }
-      if(enemies[z].defense <= 1){
-        enemies[z].defense = 1;
+      if(enemies[z].def <= 1){
+        enemies[z].def = 1;
       }
-      if(enemies[z].maxHealth <= 0){
-        enemies[z].maxHealth = 5;
+      if(enemies[z].maxHp <= 0){
+        enemies[z].maxHp = 5;
       }
       
-      enemies[z].health = enemies[z].maxHealth;
+      enemies[z].hp = enemies[z].maxHp;
     }
   }
-  difficulty.defense += 2.5;
+  difficulty.def += 2.5;
   
-  //this just puts the health on the html doc if you come back from your kit
+  // This just puts the health on the html doc when you come back from the kit page
   if(loc == 'kit'){
-    self.health      = p1.health;
-    doc.hp.innerHTML = self.health;
+    self.hp          = p1.hp;
+    doc.hp.innerHTML = self.hp;
   }
   
   console.log('Player',self);
   
 }
-Init(self.type,self.defense,self.health,self.maxHealth,self.magic,self.speed,self.strength,self.armor,self.weapon,self.gold,self.ability1,self.ability2,self.ability3);
+Init(p1.name, p1.def,p1.hp, p1.maxHp, p1.mag, p1.spd, p1.str, p1.armor, p1.weapon, p1.gold, p1.ability1, p1.ability2, p1.ability3);
 
 
 //this just sets the enemies up if loaded from the kit
@@ -482,15 +480,13 @@ window.addEventListener('load',() => {
   
   if(loc == 'kit'){
     console.log('Kit confirmed...');
-    if(en == undefined
-    || en == null){
-      
-    }
-    else{
+    if(en == undefined || en == null){
+
+    } else{
       enemy = JSON.parse(localStorage.getItem('recEnemy'));
       doc.actions.innerHTML = 'A ' + enemy.type.toUpperCase() + ' appeared!';
       enemyDocSpecies.innerHTML = enemy.type.toUpperCase();
-      enemyDocHp.innerHTML      = enemy.health;
+      enemyDocHp.innerHTML      = enemy.hp;
     }
     
     
@@ -523,7 +519,7 @@ function run(action){
   let chance2 = 0.10;
   
   //if the dice give a shop for the next event it takes you to shop
-  if(abilities.shopSpre == true){
+  if(abilitiesOwned.shopSpre == true){
     chance  -= 0.1;
     chance2 -= 0.1;
   }
@@ -532,20 +528,18 @@ function run(action){
   if(doc.actions.innerHTML == greetings.welcome
   || doc.actions.innerHTML == doc.click){
     doc.actions.innerHTML = doc.click;
-  }
-  else{
+  } else{
     //this checks to see if you healed
     if(action == btns.heal){
-      if(abilities.medic === true){
+      if(abilitiesOwned.medic === true){
         //this makes it so the ability gives the extra 10% health
-        flask.heal =  Math.floor(Math.random() * self.maxHealth + self.maxHealth / 2);
+        flask.heal =  Math.floor(Math.random() * self.maxHp + self.maxHp / 2);
         flask.heal += Math.floor(flask.heal * 0.1);
-      }
-      else{
-        flask.heal = Math.floor(Math.random() * self.maxHealth + self.maxHealth / 2);
+      } else{
+        flask.heal = Math.floor(Math.random() * self.maxHp + self.maxHp / 2);
       }
       
-      if(abilities.brompTail == true){
+      if(abilitiesOwned.brompTail == true){
         flask.heal = Math.floor(flask.heal * 0.25);
       }
       
@@ -557,26 +551,24 @@ function run(action){
         doc.extras.innerHTML = 'You have no more flasks';
         
         remove();
-      }
-      else if(self.health >= self.maxHealth){
-        self.health      = Math.floor(self.maxHealth);
-        doc.hp.innerHTML = self.health;
+      } else if(self.hp >= self.maxHp){
+        self.hp      = Math.floor(self.maxHp);
+        doc.hp.innerHTML = self.hp;
         
         doc.extras.style.height     = 'auto';
         doc.extras.style.visibility = 'visible';
         doc.extras.innerHTML        = 'You have full health';
         
         remove();
-      }
-      else{
+      } else{
         console.log('Healed ' + flask.heal);
-        self.health += flask.heal;
+        self.hp += flask.heal;
         
         //You get rid of one from the owned and add it to empty
-        if(abilities.xfaded === true && random <= 0.10){
+        if(abilitiesOwned.xfaded === true && random <= 0.10){
           flask.amount = flask.amount;
         }
-        else if(abilities.sodaF === true && random <= 0.15){
+        else if(abilitiesOwned.sodaF === true && random <= 0.15){
           flask.amount = flask.amount;
         }
         else{
@@ -584,11 +576,11 @@ function run(action){
           flask.empty++;
         }
         
-        if(self.health >= self.maxHealth){
-          self.health = Math.floor(self.maxHealth);
+        if(self.hp >= self.maxHp){
+          self.hp = Math.floor(self.maxHp);
         }
         
-        doc.hp.innerHTML     = self.health;
+        doc.hp.innerHTML     = self.hp;
         doc.flasks.innerHTML = flask.amount;
         
         if(flask.amount <= 0){
@@ -601,23 +593,23 @@ function run(action){
       doc.actions.innerHTML = events.enemy;
       
       run();
-    }
-    else if(doc.actions.innerHTML == events.enemy){
+
+    } else if(doc.actions.innerHTML == events.enemy){
       clearTimeout(timeout);
       
       timeout = setTimeout(() => {
         generateEnemy();
       },2500);
-    }
-    else if(doc.actions.innerHTML == events.stranger){
+
+    } else if(doc.actions.innerHTML == events.stranger){
       if(random2 <= chance){
         clearTimeout(timeout);
         
         timeout = setTimeout(() => {
           generateEnemy();
         },1000);
-      }
-      else{
+
+      } else{
         random2 = Math.random() * 1;
         
         actions.forEach((action) => {
@@ -627,35 +619,35 @@ function run(action){
         console.log('Stranger danger!');
         doc.actions.innerHTML = events.merchant;
         
-        self.defense   -= equipment.defense;
-        self.maxHealth -= equipment.maxHealth;
-        self.magic     -= equipment.magic;
-        self.speed     -= equipment.speed;
-        self.strength  -= equipment.strength;
+        self.def   -= equipment.def;
+        self.maxHp -= equipment.maxHp;
+        self.mag   -= equipment.mag;
+        self.spd   -= equipment.spd;
+        self.str   -= equipment.str;
         
-        if(abilities.hopRom === true){
-          self.maxHealth  = Math.floor(self.maxHealth / 0.5);
+        if(abilitiesOwned.hopRom === true){
+          self.maxHp  = Math.floor(self.maxHp / 0.5);
         }
-        if(abilities.cursSol == true){
-          self.maxHealth -= 10;
-          self.defense++;
-          self.magic++;
-          self.speed++;
-          self.strength++;
+        if(abilitiesOwned.cursSol == true){
+          self.maxHp -= 10;
+          self.def++;
+          self.mag++;
+          self.spd++;
+          self.str++;
         }
-        if(abilities.devsMan == true){
-          self.maxHealth += 10;
-          self.defense--;
-          self.magic--;
-          self.speed--;
-          self.strength--;
+        if(abilitiesOwned.devsMan == true){
+          self.maxHp += 10;
+          self.def--;
+          self.mag--;
+          self.spd--;
+          self.str--;
         }
-        if(abilities.cancBlo == true){
-          self.strength -= 4;
-          self.magic    -= 4;
+        if(abilitiesOwned.cancBlo == true){
+          self.str -= 4;
+          self.mag -= 4;
         }
-        if(abilities.OMA == true){
-          self.maxHealth = Math.ceil(self.maxHealth / 0.75);
+        if(abilitiesOwned.OMA == true){
+          self.maxHp = Math.ceil(self.maxHp / 0.75);
         }
         
         flask.heal = flask.max;
@@ -672,22 +664,19 @@ function run(action){
           setTimeout(() => {
             window.location.href = 'shop.html';
           },3000);
-        }
-        else if(random2 <= 0.50){
+        } else if(random2 <= 0.50){
           console.log('Going to the abilities');
           setTimeout(() => {
             window.location.href = 'abilitiesShop.html';
           },3000);
-        }
-        else{
+        } else{
           console.log('Going to the stats');
           setTimeout(() => {
             window.location.href = 'statsShop.html';
           },3000);
         }
       }
-    }
-    else if(doc.actions.innerHTML == events.merchant){
+    } else if(doc.actions.innerHTML == events.merchant){
       if(random2 <= chance2){
         random2 = Math.random() * 1;
         
@@ -696,39 +685,38 @@ function run(action){
         });
         
         console.log('Fenny: "Gottem coach!"');
-        self.defense   -= equipment.defense;
-        self.maxHealth -= equipment.maxHealth;
-        self.magic     -= equipment.magic;
-        self.speed     -= equipment.speed;
-        self.strength  -= equipment.strength;
+        self.def   -= equipment.def;
+        self.maxHp -= equipment.maxHp;
+        self.mag   -= equipment.mag;
+        self.spd   -= equipment.spd;
+        self.str   -= equipment.str;
         
-        if(abilities.hopRom === true){
-          self.maxHealth  = Math.floor(self.maxHealth / 0.5);
+        if(abilitiesOwned.hopRom === true){
+          self.maxHp  = Math.floor(self.maxHp / 0.5);
         }
-        if(abilities.cursSol == true){
-          self.maxHealth -= 10;
-          self.defense++;
-          self.magic++;
-          self.speed++;
-          self.strength++;
+        if(abilitiesOwned.cursSol == true){
+          self.maxHp -= 10;
+          self.def++;
+          self.mag++;
+          self.spd++;
+          self.str++;
         }
-        if(abilities.devsMan == true){
-          self.maxHealth += 10;
-          self.defense--;
-          self.magic--;
-          self.speed--;
-          self.strength--;
+        if(abilitiesOwned.devsMan == true){
+          self.maxHp += 10;
+          self.def--;
+          self.mag--;
+          self.spd--;
+          self.str--;
         }
-        if(abilities.cancBlo == true){
-          self.strength -= 4;
-          self.magic    -= 4;
+        if(abilitiesOwned.cancBlo == true){
+          self.str -= 4;
+          self.mag    -= 4;
         }
-        if(abilities.OMA == true){
-          self.maxHealth = Math.ceil(self.maxHealth / 0.75);
+        if(abilitiesOwned.OMA == true){
+          self.maxHp = Math.ceil(self.maxHp / 0.75);
         }
         
         flask.heal = flask.max;
-        
         
         localStorage.setItem('gold',JSON.stringify(gold));
         localStorage.setItem('flask',JSON.stringify(flask));
@@ -743,81 +731,74 @@ function run(action){
           setTimeout(() => {
             window.location.href = 'shop.html';
           },3000);
-        }
-        else if(random2 <= 0.8 && random2 > 0.5){
+        } else if(random2 <= 0.8 && random2 > 0.5){
           console.log('Going to the abilities');
           setTimeout(() => {
             window.location.href = 'abilitiesShop.html';
-          },3000);
-        }
-        else{
+          }, 3000);
+        } else{
           console.log('Going to the stats');
           setTimeout(() => {
             window.location.href = 'statsShop.html';
-          },3000);
+          }, 3000);
         }
+      } else{
+          generateEnemy();
       }
-      else{
-        generateEnemy();
-      }
-    }
-    else if(doc.actions.innerHTML == 'A ' + enemy.type.toUpperCase() + ' appeared!'){
-        if(enemy.health > 0){
-          if(action == btns.magic
-          || action == btns.attack){
+    } else if(doc.actions.innerHTML == 'A ' + enemy.type.toUpperCase() + ' appeared!'){
+        if(enemy.hp > 0){
+          if(action == btns.mag || action == btns.attack){
             //do something w/spd at some point
-            if(self.speed > enemy.speed){
+            if(self.spd > enemy.spd){
               doc.extras.innerHTML = '';
               attack(action);
-              if(enemy.health > 0){
+
+              if(enemy.hp > 0){
                 enemyAttack(action);
               }
-            }
-            //no difference
-            else{
-              doc.extras.innerHTML = '';
-              attack(action);
-              if(enemy.health >= 0){
-                enemyAttack(action);
-              }
+            } else{
+                doc.extras.innerHTML = '';
+                attack(action);
+                
+                if(enemy.hp >= 0){
+                  enemyAttack(action);
+                }
             }
             
-            if(enemy.health <= 0){
-              enemy.health = 0;
+            if(enemy.hp <= 0){
+              enemy.hp = 0;
               slain++;
               localStorage.setItem('kills',slain);
               
               enemyDocSpecies.innerHTML = '';
-              enemyDocHp.innerHTML      = enemy.health;
+              enemyDocHp.innerHTML      = enemy.hp;
               
               generateTreasure();
-              enemy.health = enemy.maxHealth;
+              enemy.hp = enemy.maxHp;
               
               damage = 0;
               
-              if(abilities.blodThirs == true){
-                self.health += 5;
-                if(self.health > self.maxHealth){
-                  self.health = self.maxHealth;
+              if(abilitiesOwned.blodThirs == true){
+                self.hp += 5;
+                if(self.hp > self.maxHp){
+                  self.hp = self.maxHp;
                 }
-                doc.hp.innerHTML = self.health;
+                doc.hp.innerHTML = self.hp;
               }
               
               doc.actions.innerHTML = story[random];
               run();
             }
-          }
-          else if(action == btns.defend){
-            doc.extras.innerHTML = '';
-            enemyAttack(action);
-          }
-          else{
-            doc.extras.innerHTML = '';
-            //need to run when hitting btn heal
-            enemyAttack(action);
+          } else if(action == btns.defend){
+              doc.extras.innerHTML = '';
+              enemyAttack(action);
+          } else{
+              doc.extras.innerHTML = '';
+              //need to run when hitting btn heal
+              enemyAttack(action);
           }
         }
-        if(self.health <= 0){
+        if(self.hp <= 0){
           gameOver();
         }
       }
@@ -845,7 +826,7 @@ function enemyAttack(action){
       console.log('mgkblood');
       mgkBlood = true;
     }
-    if(ability[i] == 'lmfs' && self.health <= Math.ceil(self.maxHealth * 0.25)){
+    if(ability[i] == 'lmfs' && self.hp <= Math.ceil(self.maxHp * 0.25)){
       console.log('Ability: LMFS');
       lmfs = true;
     }
@@ -855,53 +836,53 @@ function enemyAttack(action){
   }
   
   //this decreases self def by 50% if ability:suffering, is true
-  if(abilities.suffering === true && self.health <= Math.ceil(self.maxHealth * 0.25)){
-    self.defense *= 0.5;
+  if(abilitiesOwned.suffering === true && self.hp <= Math.ceil(self.maxHp * 0.25)){
+    self.def *= 0.5;
   }
   
-  if(abilities.OMA == true && self.health <= Math.ceil(self.maxHealth * 0.25)){
-    self.defense += Math.floor(self.defense / 0.5);
+  if(abilitiesOwned.OMA == true && self.hp <= Math.ceil(self.maxHp * 0.25)){
+    self.def += Math.floor(self.def / 0.5);
   }
   
   if(lmfs == true){
-    self.defense /= 0.5;
+    self.def /= 0.5;
   }
   
   
   if(action == btns.attack
-  || action == btns.magic){
+  || action == btns.mag){
     if(random < 0.4){
-      if(enemy.magic > self.magic){
-        damage = Math.floor(enemy.magic * 0.5);
+      if(enemy.mag > self.mag){
+        damage = Math.floor(enemy.mag * 0.5);
       }
-      else if(enemy.magic == self.magic){
+      else if(enemy.mag == self.mag){
         damage = 1;
       }
       else{
-        damage = Math.floor(enemy.magic * 0.2);
+        damage = Math.floor(enemy.mag * 0.2);
       }
       
       if(mgkBlood == true){
         damage -= Math.floor(damage * 0.1);
       }
-      if(abilities.FAN == true){
+      if(abilitiesOwned.FAN == true){
         damage -= Math.floor(damage * 0.05);
       }
     }
     //fix up enemy damage using player's defense
     else{
-      damage = Math.floor(enemy.strength * 1.5 / self.defense);
+      damage = Math.floor(enemy.str * 1.5 / self.def);
     }
   }
   else if(action == btns.defend){
     //This will make the enemy only do half dmg when player uses defend
-    damage = Math.floor((enemy.strength / self.defense) * 0.5)
+    damage = Math.floor((enemy.str / self.def) * 0.5)
   }
   else if(action == btns.run){
     //make it so they can run away
   }
   else if(action == btns.heal){
-    damage = Math.floor(enemy.strength * 0.4);
+    damage = Math.floor(enemy.str * 0.4);
   }
   
   //this'll split the enemy atk in half
@@ -912,15 +893,15 @@ function enemyAttack(action){
   }
   
   //this increases self def by 50% if ability:suffering, is true
-  if(abilities.suffering === true && self.health <= Math.ceil(self.maxHealth * 0.25)){
-    self.defense /= 0.5;
+  if(abilitiesOwned.suffering === true && self.hp <= Math.ceil(self.maxHp * 0.25)){
+    self.def /= 0.5;
   }
   
-  if(abilities.buffPow === true){
+  if(abilitiesOwned.buffPow === true){
     damage -= Math.floor(damage * 0.05)
   }
   
-  if(abilities.abyssSurv === true){
+  if(abilitiesOwned.abyssSurv === true){
     if(enemy.type.toLowerCase() == 'abyss walker'){
       damage = Math.floor(damage * 0.75);
     }
@@ -930,25 +911,25 @@ function enemyAttack(action){
     damage = 0;
   }
   
-  if(abilities.xfaded == true){
+  if(abilitiesOwned.xfaded == true){
     damage += Math.floor(damage * 0.1);
   }
   
-  if(abilities.OMA == true && self.health <= Math.ceil(self.maxHealth * 0.25)){
-    self.defense = Math.floor(self.defense * 0.5);
+  if(abilitiesOwned.OMA == true && self.hp <= Math.ceil(self.maxHp * 0.25)){
+    self.def = Math.floor(self.def * 0.5);
   }
   
-  if(abilities.royBlo == true){
+  if(abilitiesOwned.royBlo == true){
     damage += Math.floor(damage * 0.05);
   }
   
   if(lmfs == true){
-    self.defense *= 0.5;
+    self.def *= 0.5;
   }
   
   
-  self.health          -= Math.floor(damage);
-  doc.hp.innerHTML      = self.health;
+  self.hp          -= Math.floor(damage);
+  doc.hp.innerHTML      = self.hp;
   if(action == btns.heal){
     doc.extras.innerHTML += 'Enemy did ' + damage + 'pts of damage'; 
   }
@@ -1055,9 +1036,9 @@ function attack(action){
     if(ability[i] == 'dragonslayer'){
       dragonSlayer = true;
     }
-    if(ability[i] == 'rampage' && self.health <= 7){
+    if(ability[i] == 'rampage' && self.hp <= 7){
       console.log('Ability: RAMPAGE');
-      self.strength /= 0.5;
+      self.str /= 0.5;
       rampage = true;
     }
     if(ability[i] == 'deathstare' && random >= 0.95){
@@ -1073,28 +1054,28 @@ function attack(action){
   if(eagle == true){
     chance -= 0.12;
   }
-  if(abilities.OMA == true && self.health <= Math.ceil(self.maxHealth * 0.25)){
-    self.strength += Math.floor(self.strength / 0.5);
+  if(abilitiesOwned.OMA == true && self.hp <= Math.ceil(self.maxHp * 0.25)){
+    self.str += Math.floor(self.str / 0.5);
   }
   
   if(action == btns.magic){
     //this is a crt mgk atk 
     //working on mgk crt atk
-    if(self.magic > enemy.magic
+    if(self.mag > enemy.mag
     && random > chance){
-      damage = Math.floor(self.magic * 2.5);
+      damage = Math.floor(self.mag * 2.5);
       doc.extras.innerHTML = 'Critical magic damage dealt: ';
     }
-    else if(self.magic > enemy.magic){
-      damage = Math.floor(self.magic * 1.25);
+    else if(self.mag > enemy.mag){
+      damage = Math.floor(self.mag * 1.25);
       doc.extras.innerHTML = 'Magic damage dealt: ';
     }
     else{
-      damage = Math.floor(self.magic * 0.7);
+      damage = Math.floor(self.mag * 0.7);
       doc.extras.innerHTML = 'Weak magic damage dealt: ';
     }
     
-    if(abilities.FAN == true){
+    if(abilitiesOwned.FAN == true){
       damage += Math.floor(damage * 0.2);
     }
   }
@@ -1102,11 +1083,11 @@ function attack(action){
     //Non-crt atk
     if(random < chance){
     //working on the attack dmg 
-      if(enemy.defense > 5){
-        damage = Math.floor(self.strength * 10 / enemy.defense);
+      if(enemy.def > 5){
+        damage = Math.floor(self.str * 10 / enemy.def);
       }
-      else if(enemy.defense <= 5){
-        damage = Math.floor(self.strength * 5 / enemy.defense);
+      else if(enemy.def <= 5){
+        damage = Math.floor(self.str * 5 / enemy.def);
       }
       
       if(damage <= 0){
@@ -1116,12 +1097,12 @@ function attack(action){
     }
     //crt atk
     else if(random >= chance){
-      if(enemy.defense > 5){
-        damage = Math.floor(self.strength * 20 / enemy.defense);
+      if(enemy.def > 5){
+        damage = Math.floor(self.str * 20 / enemy.def);
         console.log('crt ' + damage);
       }
-      else if(enemy.defense <= 5){
-        damage = Math.floor(self.strength * 10 / enemy.defense);
+      else if(enemy.def <= 5){
+        damage = Math.floor(self.str * 10 / enemy.def);
         console.log('crt weak ' + damage);
       }
       
@@ -1138,7 +1119,7 @@ function attack(action){
   //this is to remove the abilities after use(rampage)
   //increases DMG by 10% if ability was a weapons mastery
   if(rampage == true){
-    self.strength /= 0.5
+    self.str /= 0.5
   }
   if(mastery == true
   || mgkmstry == true){
@@ -1176,49 +1157,49 @@ function attack(action){
     damage += damage * 0.05;
   }
   
-  if(abilities.suffering === true && self.health <= Math.ceil(self.maxHealth * 0.25)){
+  if(abilitiesOwned.suffering === true && self.hp <= Math.ceil(self.maxHp * 0.25)){
     damage += damage * 0.75;
   }
   
-  if(abilities.buffPow === true){
+  if(abilitiesOwned.buffPow === true){
     damage += damage * 0.1;
   }
   
-  if(abilities.abyssSurv == true){
+  if(abilitiesOwned.abyssSurv == true){
     if(enemy.type.toLowerCase() == 'abyss walker'){
       damage += damage * 0.1;
     }
   }
   
-  if(abilities.xfaded == true){
+  if(abilitiesOwned.xfaded == true){
     damage += damage * 0.1;
   }
   
-  if(abilities.OMA == true && self.health <= Math.ceil(self.maxHealth * 0.25)){
-    self.strength = Math.floor(self.strength * 0.5);
+  if(abilitiesOwned.OMA == true && self.hp <= Math.ceil(self.maxHp * 0.25)){
+    self.str = Math.floor(self.str * 0.5);
   }
   
-  if(abilities.exoGen == true){
-    for(let i = 0; i < hectics.length; i++){
+  if(abilitiesOwned.exoGen == true){
+    for(var i = 0; i < hectics.length; i++){
       if(enemy.type.toLowerCase() == hectics[i].type.toLowerCase()){
         damage += damage * 0.05;
       }
     }
   }
   
-  if(abilities.hellfire == true){
+  if(abilitiesOwned.hellfire == true){
     damage += damage * 0.1;
   }
   
   if(deathStare == true){
-    damage = enemy.health;
+    damage = enemy.hp;
   }
   
   console.log('After Damage:',damage);
   doc.extras.innerHTML += Math.ceil(damage);
   
-  enemy.health        -= Math.ceil(damage);
-  enemyDocHp.innerHTML = enemy.health;
+  enemy.hp        -= Math.ceil(damage);
+  enemyDocHp.innerHTML = enemy.hp;
   
   remove();
   
@@ -1235,21 +1216,20 @@ function generateEnemy(action){
   if(random <= 0.96){
     enemy = enemies[random2];
     // console.log('You called the enemies');
-  }
-  else if(0.96 < random
-  || slain > 50 && random > 0.90
-  || slain > 100 && random > 0.80){
-    //This'll spawn one of the hectic
-    enemy = hectics[random3];
-    // console.log('You called the ' + enemy.type);
+  } else if(0.96 < random
+    || slain > 50 && random > 0.90
+    || slain > 100 && random > 0.80){
+      //This'll spawn one of the hectic
+      enemy = hectics[random3];
+      // console.log('You called the ' + enemy.type);
   }
   
   
   console.log('Enemy:', enemy);
-  //HTML stuff right here, showing who the enemy is, saying who it is and their health
+  // HTML stuff right here, showing who the enemy is, saying who it is and their health
   doc.actions.innerHTML     = 'A ' + enemy.type.toUpperCase() + ' appeared!';
   enemyDocSpecies.innerHTML = enemy.type.toUpperCase();
-  enemyDocHp.innerHTML      = enemy.health;
+  enemyDocHp.innerHTML      = enemy.hp;
   
 }
 
@@ -1262,7 +1242,7 @@ function generateTreasure(){
   let chance2  = 0.15;
   let flaskCha = 0.2;
   
-  if(abilities.vodka === true){
+  if(abilitiesOwned.vodka === true){
     chance  += 0.1;
     chance2 += 0.1;
   }
@@ -1278,7 +1258,7 @@ function generateTreasure(){
   }
   
   //this'll increase the gold you get and the chance to find items
-  if(abilities.corspe == true){
+  if(abilitiesOwned.corspe == true){
     randomG += Math.floor(randomG * 0.1);
     chance  += 0.5;
     chance2 += 0.5;
@@ -1291,7 +1271,7 @@ function generateTreasure(){
   doc.extras.innerHTML = 'You found ' + randomG + ' gold!';
   
   //this chance is for weapons
-  if(self.type.toLowerCase() == 'werewolf'
+  if(self.name.toLowerCase() == 'werewolf'
   && random <= chance){
     doc.extras.innerHTML = "You found a weapon but can't carry it...";
   }
@@ -1335,28 +1315,28 @@ function gameOver(){
   
   for(let i = 0; i < ability.length; i++){
     if(ability[i] === 'tbtfm' && random <= 0.1){
-      abilities.tbtfm = true;
+      abilitiesOwned.tbtfm = true;
     }
     if(ability[i] === 'sunsinger' && random <= 0.05){
-      abilities.sunSin = true;
+      abilitiesOwned.sunSin = true;
     }
     if(ability[i] === 'afterlife' && random <= 0.3){
-      abilities.aflife = true;
+      abilitiesOwned.aflife = true;
     }
     if(ability[i] === 'deadagain' && random <= 0.1){
-      abilities.deadA = true;
+      abilitiesOwned.deadA = true;
     }
     if(ability[i] == 'rebornagain' && random <= 0.1){
-      abilities.reborn = true;
+      abilitiesOwned.reborn = true;
     }
   }
   
   //something wrong with gameover
-  if(abilities.sunSin == true && self.health <= 0){
+  if(abilitiesOwned.sunSin == true && self.hp <= 0){
     flask.amount          = flask.max;
     flask.empty           = 0;
-    self.health           = self.maxHealth;
-    doc.hp.innerHTML      = self.health;
+    self.hp           = self.maxHp;
+    doc.hp.innerHTML      = self.hp;
     doc.flasks.innerHTML  = flask.amount;
     doc.actions.innerHTML = 'The sun sang to your blood';
     let time = setInterval(() => {
@@ -1368,49 +1348,49 @@ function gameOver(){
       doc.actions.innerHTML = 'A ' + enemy.type.toUpperCase() + ' appeared!'; 
     },2400);
   }
-  else if(abilities.deadA  == true && self.health <= 0){
-    self.health = 1;
+  else if(abilitiesOwned.deadA  == true && self.hp <= 0){
+    self.hp = 1;
     flask.amount++;
     
     doc.extras.innerHTML = "You're dead again...";
-    doc.hp.innerHTML     = self.health;
+    doc.hp.innerHTML     = self.hp;
     doc.flasks.innerHTML = flask.amount;
   }
-  else if(abilities.reborn == true && self.health <= 0){
-    self.health = self.maxHealth;
+  else if(abilitiesOwned.reborn == true && self.hp <= 0){
+    self.hp = self.maxHp;
     
     doc.extras.innerHTML = "You're reborn...";
-    doc.hp.innerHTML     = self.health;
+    doc.hp.innerHTML     = self.hp;
   }
-  else if(abilities.tbtfm  == true && self.health <= 0){
-    enemy.health = 0;
-    self.health  = self.maxHealth;
+  else if(abilitiesOwned.tbtfm  == true && self.hp <= 0){
+    enemy.hp = 0;
+    self.hp  = self.maxHp;
     
     run();
   }
-  else if(abilities.aflife == true && self.health <= 0){
+  else if(abilitiesOwned.aflife == true && self.hp <= 0){
     doc.extras.innerHTML = "You're reborn Archangel...";
     
     self.type      = 'Archangel';
-    self.defense   = 2;
-    self.health    = 40;
-    self.maxHealth = 40;
-    self.magic     = 5;
-    self.speed     = 2;
-    self.strength  = 9;
+    self.def   = 2;
+    self.hp    = 40;
+    self.maxHp = 40;
+    self.mag     = 5;
+    self.spd     = 2;
+    self.str  = 9;
     self.ability1  = "Devil'sMan";
     self.ability2  = 'Suffering';
     self.ability3  = 'Hellfire';
     
-    doc.hp.innerHTML      = self.health;
+    doc.hp.innerHTML      = self.hp;
     doc.species.innerHTML = self.type;
     
     console.log(self);
   }
   else{
-    self.health = 0;
+    self.hp = 0;
     
-    doc.hp.innerHTML      = self.health;
+    doc.hp.innerHTML      = self.hp;
     doc.actions.innerHTML = 'Game Over! You killed ' + slain + ' enemies';
     
     localStorage.setItem('kills', 0);
@@ -1434,35 +1414,35 @@ doc.start.addEventListener('click',() => {
 });
 
 doc.kit.addEventListener('click'  ,() => {
-  self.defense   -= equipment.defense;
-  self.maxHealth -= equipment.maxHealth;
-  self.magic     -= equipment.magic;
-  self.speed     -= equipment.speed;
-  self.strength  -= equipment.strength;
+  self.def   -= equipment.def;
+  self.maxHp -= equipment.maxHp;
+  self.mag   -= equipment.mag;
+  self.spd   -= equipment.spd;
+  self.str   -= equipment.str;
   
-  if(abilities.hopRom === true){
-    self.maxHealth  = Math.floor(self.maxHealth / 0.5);
+  if(abilitiesOwned.hopRom === true){
+    self.maxHp  = Math.floor(self.maxHp / 0.5);
   }
-  if(abilities.cursSol == true){
-    self.maxHealth -= 10;
-    self.defense++;
-    self.magic++;
-    self.speed++;
-    self.strength++;
+  if(abilitiesOwned.cursSol == true){
+    self.maxHp -= 10;
+    self.def++;
+    self.mag++;
+    self.spd++;
+    self.str++;
   }
-  if(abilities.devsMan == true){
-    self.maxHealth += 10;
-    self.defense--;
-    self.magic--;
-    self.speed--;
-    self.strength--;
+  if(abilitiesOwned.devsMan == true){
+    self.maxHp += 10;
+    self.def--;
+    self.mag--;
+    self.spd--;
+    self.str--;
   }
-  if(abilities.cancBlo == true){
-    self.strength -= 4;
-    self.magic    -= 4;
+  if(abilitiesOwned.cancBlo == true){
+    self.str -= 4;
+    self.mag -= 4;
   }
-  if(abilities.OMA == true){
-    self.maxHealth = Math.ceil(self.maxHealth / 0.75);
+  if(abilitiesOwned.OMA == true){
+    self.maxHp = Math.ceil(self.maxHp / 0.75);
   }
   
   flask.heal = flask.max;

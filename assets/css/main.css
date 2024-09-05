@@ -48,6 +48,10 @@ h1{
 */
 #bottom{
   margin-bottom:0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex-direction: row-reverse;
 }
 
 #bottom .container{
@@ -58,9 +62,8 @@ h1{
   margin-top:50px;
   margin-bottom:50px;
 }
-.container ul{
-  text-align:center;
-}
+
+
 .container .btn-outline-info{
   border:1px solid #55ACEE;
   color:#55ACEE;
@@ -89,7 +92,6 @@ h1{
 }
 
 /*--------------------------------------------------*/
-
 /*
   --This is for the navs--
 */
@@ -105,12 +107,14 @@ h1{
   color:#FF9900!important;
 }
 
+.container ul{
+  /* text-align:center; */
+}
 
 .navbar-brand{
   font-weight:bold;
   text-align:center;
   font-size:30pt;
-  /*text-shadow: 2px 1px 15px black;*/
   text-shadow:1px 1px 4px black; 
   color:#fff!important;
 }
@@ -120,15 +124,14 @@ h1{
 } 
 
 /*-------------------------------------------*/
-
 /*
   --This is for the about part only, nothing else--
 */
 #about-j{
-  margin-top:400px;
   margin-bottom: 100px;
   position:relative;
   z-index:1;
+  padding: 20px;
 }
 
 .about-feature{
@@ -144,16 +147,14 @@ h1{
 }
 
 /*------------------------------------*/
-
 /*
   --For Font Awesome Icons--
 */
 .fa-wolf-pack-battalion{
   color:#B26B00;
 }
+
 /* ------------------------- */
-
-
 /* Showcase (The top part with the nav and jumbotron) */
 #showcase {
   color:black;
@@ -167,7 +168,7 @@ h1{
   font-size:20pt;
 }
 #showcase .container {
-  margin-top: -360vh;
+  margin-top: -265vh;
 }
 #showcase .container ul{
   padding-left:20px;
@@ -185,7 +186,6 @@ h1{
   background:transparent;
   width: 100%;
   position: relative;
-  margin-top: 93.5vh;
   cursor:default;
   box-shadow:none;
   padding:0;
@@ -207,10 +207,6 @@ h1{
 }
 
 /*------------------------------------*/
-
-
-
-
 /* Footer */
 footer{
   margin-top: 100px;
@@ -306,7 +302,7 @@ footer{
 
 /* ------------------------------------ */
 
-/* need to make a btn for the navbar */
+/* This section off is for all the response medias */
 /* @media (max-width: 320px){
   .jumbo-1{
     margin-top:0;

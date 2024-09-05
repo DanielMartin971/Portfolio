@@ -1,3 +1,8 @@
+// Flask is the healing system in the game, we have a set amount of 3 to start with
+// The color for some reason couldnt be set in CSS so we set it in JS
+// We set a empty amount just in case so player cannot constantly heal while having 0 amounts of flasks
+// Also a set max so player cannot have infinite heals
+let flask = {
 
 
 let flask = {
@@ -12,6 +17,9 @@ let gold  = {
   spent: 0,
 };
 
+// Stat is the stats of a player; def, hp, mag, spd, str
+// We always set to 0 for overlapping issues when using localStorage
+let stat = {
 let stat = {
   defense: 0,
   health:  0,
@@ -20,9 +28,12 @@ let stat = {
   strength:0,
 };
 
+// We have an array that keeps all weapons and armor collected throughout the game
+let kit = [];
 let kit = [];
 
 //this grabs the btn prompt from start and makes this to an array length with all names
+let races = document.querySelectorAll('[name]');
 let races = document.querySelectorAll('[name]');
 //console.log(races.length);
 // console.log(races.toLowerCase);
@@ -283,41 +294,40 @@ stat = {
 };
 
 
-//fuction constructor to call the character choosen by player
+//fuction to call the character choosen by player
 function species(race){
   let type = race;
-  // console.log(type);
-  // console.log(type.name + " This should be the type name");
-
   
-  for(let i = 0; i < types.length; i++){
-    if(type === types[i].type.toLowerCase().trim()){
-      gold.owned = types[i].gold;
-      kit.push(types[i].weapon);
-      kit.push(types[i].armor);
-      console.log(types[i].weapon, "this is the weapon you got");
+  // Loop through characters array to get the chosen character and their stats
+  for(let i = 0; i < characters.length; i++){
+    // We set the character name to lowercase just in case if there is a mixed upperCase letter and trim to get rid of whitespace
+    if(type === characters[i].name.toLowerCase().trim()){
+      // These 3 lines of code setup the gold amount from chosen character, their weapon and armor choice
+      gold.owned = characters[i].gold;
+      kit.push(characters[i].weapon);
+      kit.push(characters[i].armor);
       
-      //This sets all the local storage to setup player's stuff
+      //This sets all the local storage to setup player's traits
       localStorage.setItem('flask',JSON.stringify(flask));
-      localStorage.setItem('race',JSON.stringify(types[i]));
+      localStorage.setItem('race',JSON.stringify(characters[i]));
       localStorage.setItem('kit',JSON.stringify(kit));
       localStorage.setItem('gold',JSON.stringify(gold));
       localStorage.setItem('kills',0);
       localStorage.setItem('stat',JSON.stringify(stat));
-      localStorage.setItem('location',"main");
+      localStorage.setItem('location',"main");      
       
-      
-      //This just changes the page to the actual game
+      // We change window location to the game html after selecting character
       window.location.href = 'game.html';
     }
   }
 }
 
+// Function that collects all characters and when one is selected we grab that name and run function species()
 races.forEach((race) => {
   race.addEventListener('click',(e) => {
     species(e.target.name.toLowerCase());
-    // console.log("You have selected this race: " + race.name);
   });
 });
+
 
 
