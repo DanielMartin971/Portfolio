@@ -1,7 +1,6 @@
 //this checks to see if the player came from the quest or the shop and makes the shop btn visible
 
 let loc = localStorage.getItem('location').toLowerCase();
-let loc = localStorage.getItem('location').toLowerCase();
 window.addEventListener('load',() => {
   if(loc == 'shop'
   || loc == 'shopkit'
@@ -13,8 +12,6 @@ window.addEventListener('load',() => {
 
 let gold  = JSON.parse(localStorage.getItem('gold'));
 let flask = JSON.parse(localStorage.getItem('flask'));
-let gold  = JSON.parse(localStorage.getItem('gold'));
-let flask = JSON.parse(localStorage.getItem('flask'));
 
 let self   = JSON.parse(localStorage.getItem('race'));
 let specs  = document.querySelectorAll('.self li span');
@@ -22,14 +19,7 @@ let equip  = document.querySelectorAll('.equipment li span');
 let equip1 = document.querySelectorAll('.equipment1 li span');
 let wep;
 let body;
-let self   = JSON.parse(localStorage.getItem('race'));
-let specs  = document.querySelectorAll('.self li span');
-let equip  = document.querySelectorAll('.equipment li span');
-let equip1 = document.querySelectorAll('.equipment1 li span');
-let wep;
-let body;
 
-let doc = {
 let doc = {
   body:   document.querySelector('body'),
   extras: document.getElementById('extras'),
@@ -47,18 +37,11 @@ doc.extras.innerHTML        = 'Welcome to your kit!';
 
 let kit = JSON.parse(localStorage.getItem('kit'));
 
-let kit = JSON.parse(localStorage.getItem('kit'));
-
-let itemsA = [];
-let itemsW = [];
 // We set the items to blank for the moment when building the array; A = armors, W = weapons
 let itemsA = [];
 let itemsW = [];
 
 //This loop seperates the kit by armor and weapon and pushes them into the correct arrays
-for(let i = 0; i < kit.length; i++){
-  for(let o = 0; o < armors.length; o++){
-//This loop seperates the kit by armor and weapon
 for(let i = 0; i < kit.length; i++){
   for(let o = 0; o < armors.length; o++){
     if(kit[i].toLowerCase() == armors[o].name.toLowerCase()){
@@ -78,9 +61,6 @@ console.log('Kit Armors',itemsA,',','Kit Weapons',itemsW);
 doc.gold.innerHTML  = gold.owned;
 doc.flask.innerHTML = flask.amount;
 
-
-let timeout;
-
 let timeout;
 
 function remove(){
@@ -88,44 +68,28 @@ function remove(){
     doc.extras.style.visibility = 'hidden';
   }, 3000);
 }
-remove();
-
 // showKit displays all items owned onto the HTML seperating them into the respected lists
 remove();
 
 // This function just displays all the weapons and armor on the page for the player to see
 function showKit(){
   for(let i = 0; i < itemsA.length; i++){
-  for(let i = 0; i < itemsA.length; i++){
     doc.listA.innerHTML += '<li>' + itemsA[i] + '</li>';
-  }
-  
-  for(let i = 0; i < itemsW.length; i++){
-  for(let i = 0; i < itemsW.length; i++){
-    doc.listW.innerHTML += '<li>' + itemsW[i] + '</li>';
-  }
-  
+  }  
 }
 showKit();
 
-let ownArms = document.querySelectorAll('.listA li');
-let ownWeps = document.querySelectorAll('.listW li');
 // These 2 variables select all the armor and weapons that the player owns
 let ownArms = document.querySelectorAll('.listA li');
 let ownWeps = document.querySelectorAll('.listW li');
 
-
-let orgHTML = {};
 let orgHTML = {};
 ownArms.forEach((item) => {
   // When the mouse touches a item, it displays the stat differences to what you have equipped at the moment
   item.addEventListener('mouseenter',(e) => {
     let diff      = 0;
     let armorStat = {};
-    let diff      = 0;
-    let armorStat = {};
     
-    for(let i = 0; i < armors.length; i++){
     for(let i = 0; i < armors.length; i++){
       if(e.target.innerHTML.toLowerCase() == armors[i].name.toLowerCase()){
         armorStat.name     = armors[i].name;
@@ -171,9 +135,7 @@ ownArms.forEach((item) => {
   
   item.addEventListener('click',(e) => {
     let armorStat = {};
-    let armorStat = {};
     
-    for(let i = 0; i < armors.length; i++){
     for(let i = 0; i < armors.length; i++){
       if(e.target.innerHTML.toLowerCase() == armors[i].name.toLowerCase()){
         armorStat.name = armors[i].name;
@@ -221,10 +183,7 @@ ownWeps.forEach((item) => {
   item.addEventListener('mouseenter',(e) => {
     let diff      = 0;
     let wepStat = {};
-    let diff      = 0;
-    let wepStat = {};
     
-    for(let i = 0; i < weapons.length; i++){
     for(let i = 0; i < weapons.length; i++){
       if(e.target.innerHTML.toLowerCase() == weapons[i].name.toLowerCase()){
         wepStat.name = weapons[i].name;
@@ -273,9 +232,7 @@ ownWeps.forEach((item) => {
   
   item.addEventListener('click',(e) => {
     let wepStat = {};
-    let wepStat = {};
     
-    for(let i = 0; i < weapons.length; i++){
     for(let i = 0; i < weapons.length; i++){
       if(e.target.innerHTML.toLowerCase() == weapons[i].name.toLowerCase()){
         wepStat.name = weapons[i].name;
@@ -288,7 +245,7 @@ ownWeps.forEach((item) => {
         break;
       }
     }
-    let selected = [
+
     let selected = [
       wepStat.name,
       JSON.parse(wepStat.def),
@@ -299,7 +256,6 @@ ownWeps.forEach((item) => {
       wepStat.type,
     ];
     
-    for(let i = 0; i < equip.length; i++){
     for(let i = 0; i < equip.length; i++){
       equip[i].innerHTML = selected[i];
     }
@@ -319,7 +275,6 @@ ownWeps.forEach((item) => {
   
   item.addEventListener('mouseleave',(e) => {
     let org = [
-    let org = [
     orgHTML.name,
     JSON.parse(orgHTML.def),
     JSON.parse(orgHTML.hp),
@@ -329,7 +284,6 @@ ownWeps.forEach((item) => {
     orgHTML.type
   ];
   
-    for(let i = 0; i < equip.length; i++){
     for(let i = 0; i < equip.length; i++){
       equip[i].innerHTML = org[i];
     }
@@ -342,7 +296,6 @@ ownWeps.forEach((item) => {
 doc.quest.addEventListener('click', () => {
   doc.extras.style.visibility = 'visible';
   doc.extras.innerHTML = 'Leaving for the quest';
-  let loc = localStorage.getItem('location').toLowerCase();
   let loc = localStorage.getItem('location').toLowerCase();
   
   setInterval(() => {
@@ -419,7 +372,6 @@ window.addEventListener('load', () => {
   
   equip.forEach((ment) => {
     for(let i = 0; i < weapons.length; i++){
-    for(let i = 0; i < weapons.length; i++){
       if(self.weapon.toLowerCase() == weapons[i].name.toLowerCase()){
         wep = weapons[i];
       }
@@ -449,7 +401,6 @@ window.addEventListener('load', () => {
   });
   
   equip1.forEach((ment) => {
-    for(let i = 0; i < armors.length; i++){
     for(let i = 0; i < armors.length; i++){
       if(self.armor == armors[i].name){
         body = armors[i];

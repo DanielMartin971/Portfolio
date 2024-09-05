@@ -3,9 +3,6 @@
 // We set a empty amount just in case so player cannot constantly heal while having 0 amounts of flasks
 // Also a set max so player cannot have infinite heals
 let flask = {
-
-
-let flask = {
   amount: 3,
   color: document.querySelector('.flask'),
   empty: 0,
@@ -20,7 +17,6 @@ let gold  = {
 // Stat is the stats of a player; def, hp, mag, spd, str
 // We always set to 0 for overlapping issues when using localStorage
 let stat = {
-let stat = {
   defense: 0,
   health:  0,
   magic:   0,
@@ -30,10 +26,8 @@ let stat = {
 
 // We have an array that keeps all weapons and armor collected throughout the game
 let kit = [];
-let kit = [];
 
 //this grabs the btn prompt from start and makes this to an array length with all names
-let races = document.querySelectorAll('[name]');
 let races = document.querySelectorAll('[name]');
 //console.log(races.length);
 // console.log(races.toLowerCase);
