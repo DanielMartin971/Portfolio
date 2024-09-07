@@ -75,6 +75,7 @@ let abilitiesOwned = {
   --April 18th 2018 -- ability works, shop works
   --May   9th  2018 -- adding other shops
   --May   14th 2018 -- testing
+  --Sep   6th  2024 -- changes the es5 and updated to es6
 
 */
 
@@ -149,8 +150,8 @@ let btns = {
 
 //sets player, kills, abilites and equipment is reset to 0 per reset and coming back from kit
 let p1    = JSON.parse(localStorage.getItem('race'));
-console.log(p1);
-console.log(JSON.parse(localStorage.getItem('race')));
+// console.log(p1);
+// console.log(JSON.parse(localStorage.getItem('race')));
 
 let slain = JSON.parse(localStorage.getItem('kills'));
 let self;
@@ -182,9 +183,9 @@ let difficulty = {
 
 //This function brings all the stats into play and updates everything after you come back from the shop
 function Init(name, def, hp, maxHp, mag, spd, str, armor, weapon, currency, ability1, ability2, ability3){
-  //var loc just checks current location of player 
+  //loc just checks current location of player 
   let loc = localStorage.getItem('location').toLowerCase();
-  console.log(loc);
+  // console.log(loc);
   
   //this runs through to ses if player is in a shop and gets a greeting
   doc.actions.innerHTML = greetings.welcome;
@@ -210,7 +211,7 @@ function Init(name, def, hp, maxHp, mag, spd, str, armor, weapon, currency, abil
     str: p1.str,
     weapon: p1.weapon,
   };
-  console.log(self);
+  // console.log(self);
   
   ability.push(self.ability1.name.toLowerCase());
   ability.push(self.ability2.name.toLowerCase());
@@ -291,7 +292,7 @@ function Init(name, def, hp, maxHp, mag, spd, str, armor, weapon, currency, abil
     self.hp    = self.maxHp;
   }
   
-  if(abilitiesOwned.nsowm     === true && flask.max != flask.heal){
+  if(abilitiesOwned.nsowm === true && flask.max != flask.heal){
     flask.max += 3;
   }
   if(abilitiesOwned.phaseWalk === true && flask.max != flask.heal){
@@ -301,20 +302,20 @@ function Init(name, def, hp, maxHp, mag, spd, str, armor, weapon, currency, abil
   // These for loops go through the equipments and adds the stats to equipment
   for(let i = 0; i < armors.length; i++){
     if(self.armor.toLowerCase() == armors[i].name.toLowerCase()){
-      equipment.def     += armors[i].def;
-      equipment.maxHp   += armors[i].hp;
-      equipment.mag       += armors[i].mag;
-      equipment.spd       += armors[i].spd;
-      equipment.str    += armors[i].str;
+      equipment.def   += armors[i].def;
+      equipment.maxHp += armors[i].hp;
+      equipment.mag   += armors[i].mag;
+      equipment.spd   += armors[i].spd;
+      equipment.str   += armors[i].str;
     }
   }
   for(let j = 0; j < weapons.length; j++){
     if(self.weapon.toLowerCase() == weapons[j].name.toLowerCase()){
-      equipment.def     += weapons[j].def;
-      equipment.maxHp   += weapons[j].hp;
-      equipment.mag       += weapons[j].mag;
-      equipment.spd       += weapons[j].spd;
-      equipment.str    += weapons[j].str;
+      equipment.def   += weapons[j].def;
+      equipment.maxHp += weapons[j].hp;
+      equipment.mag   += weapons[j].mag;
+      equipment.spd   += weapons[j].spd;
+      equipment.str   += weapons[j].str;
     }
   }
   
@@ -336,7 +337,7 @@ function Init(name, def, hp, maxHp, mag, spd, str, armor, weapon, currency, abil
   
   if(abilitiesOwned.cancBlo == true){
     self.str += 4;
-    self.mag    += 4;
+    self.mag += 4;
     
     setInterval(() => {
       self.hp--;
@@ -359,7 +360,7 @@ function Init(name, def, hp, maxHp, mag, spd, str, armor, weapon, currency, abil
   self.mag   += equipment.mag;
   self.spd   += equipment.spd;
   self.str   += equipment.str;
-  self.hp = Math.floor(self.maxHp);
+  self.hp     = Math.floor(self.maxHp);
   /////////////////////////////////////////////////////////////
 
   //////////Stuff to put on the HTML///////////////////////////
@@ -467,7 +468,7 @@ function Init(name, def, hp, maxHp, mag, spd, str, armor, weapon, currency, abil
     doc.hp.innerHTML = self.hp;
   }
   
-  console.log('Player',self);
+  // console.log('Player',self);
   
 }
 Init(p1.name, p1.def,p1.hp, p1.maxHp, p1.mag, p1.spd, p1.str, p1.armor, p1.weapon, p1.gold, p1.ability1, p1.ability2, p1.ability3);
@@ -747,7 +748,8 @@ function run(action){
       }
     } else if(doc.actions.innerHTML == 'A ' + enemy.type.toUpperCase() + ' appeared!'){
         if(enemy.hp > 0){
-          if(action == btns.mag || action == btns.attack){
+          if(action == btns.magic || action == btns.attack){
+            console.log('are we even calling: ',action);
             //do something w/spd at some point
             if(self.spd > enemy.spd){
               doc.extras.innerHTML = '';
@@ -850,7 +852,7 @@ function enemyAttack(action){
   
   
   if(action == btns.attack
-  || action == btns.mag){
+  || action == btns.magic){
     if(random < 0.4){
       if(enemy.mag > self.mag){
         damage = Math.floor(enemy.mag * 0.5);
@@ -929,7 +931,7 @@ function enemyAttack(action){
   
   
   self.hp          -= Math.floor(damage);
-  doc.hp.innerHTML      = self.hp;
+  doc.hp.innerHTML  = self.hp;
   if(action == btns.heal){
     doc.extras.innerHTML += 'Enemy did ' + damage + 'pts of damage'; 
   }
@@ -948,8 +950,10 @@ function enemyAttack(action){
 
 //norm & crt atk are good, mgk needs fixing
 function attack(action){
+  console.log("We're calling player attack");
   doc.extras.style.height     = 'auto';
   doc.extras.style.visibility = 'visible';
+  console.log('This is the action ',action);
   
   const random    = Math.random() * 1;
   let chance      = 0.92;
@@ -1059,10 +1063,11 @@ function attack(action){
   }
   
   if(action == btns.magic){
+    console.log('calling magic');
     //this is a crt mgk atk 
     //working on mgk crt atk
     if(self.mag > enemy.mag
-    && random > chance){
+    && random >= chance){
       damage = Math.floor(self.mag * 2.5);
       doc.extras.innerHTML = 'Critical magic damage dealt: ';
     }
@@ -1078,6 +1083,11 @@ function attack(action){
     if(abilitiesOwned.FAN == true){
       damage += Math.floor(damage * 0.2);
     }
+
+    if(damage <= 0){
+      damage = 1;
+    }
+    doc.extras.innerHTML += 'Magical damage dealt: ';
   }
   else if(action == btns.attack){
     //Non-crt atk
@@ -1198,7 +1208,7 @@ function attack(action){
   console.log('After Damage:',damage);
   doc.extras.innerHTML += Math.ceil(damage);
   
-  enemy.hp        -= Math.ceil(damage);
+  enemy.hp            -= Math.ceil(damage);
   enemyDocHp.innerHTML = enemy.hp;
   
   remove();
@@ -1459,7 +1469,7 @@ doc.kit.addEventListener('click'  ,() => {
 
 actions.forEach((action) => {
   action.addEventListener('click',(e) => {
-    // console.log(btns[e.target.attributes.name.value]);
+    // console.log('Were callling: ',btns[e.target.attributes.name.value]);
     run(btns[e.target.attributes.name.value]);
   });
 });

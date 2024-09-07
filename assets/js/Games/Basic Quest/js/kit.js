@@ -44,17 +44,16 @@ let itemsW = [];
 //This loop seperates the kit by armor and weapon and pushes them into the correct arrays
 for(let i = 0; i < kit.length; i++){
   for(let o = 0; o < armors.length; o++){
-    if(kit[i].toLowerCase() == armors[o].name.toLowerCase()){
+    if(kit[i].toLowerCase().trim() == armors[o].name.toLowerCase().trim()){
       itemsA.push(kit[i]);
     }
   }
   for(let z = 0; z < weapons.length; z++){
-    if(kit[i].toLowerCase() == weapons[z].name.toLowerCase()){
+    if(kit[i].toLowerCase().trim() == weapons[z].name.toLowerCase().trim()){
       itemsW.push(kit[i]);
     }
   }
 }
-  
 console.log('Kit Armors',itemsA,',','Kit Weapons',itemsW);
 
 doc.gold.innerHTML  = gold.owned;
@@ -75,6 +74,9 @@ function showKit(){
   for(let i = 0; i < itemsA.length; i++){
     doc.listA.innerHTML += '<li>' + itemsA[i] + '</li>';
   }  
+  for(let i = 0; i < itemsW.length; i++){
+    doc.listW.innerHTML += '<li>' + itemsW[i] + '</li>';
+  } 
 }
 showKit();
 
@@ -90,13 +92,13 @@ ownArms.forEach((item) => {
     let armorStat = {};
     
     for(let i = 0; i < armors.length; i++){
-      if(e.target.innerHTML.toLowerCase() == armors[i].name.toLowerCase()){
-        armorStat.name     = armors[i].name;
+      if(e.target.innerHTML.toLowerCase().trim() == armors[i].name.toLowerCase().trim()){
+        armorStat.name = armors[i].name;
         armorStat.def  = armors[i].def;
         armorStat.hp   = armors[i].hp;
-        armorStat.mag    = armors[i].mag;
-        armorStat.spd    = armors[i].spd;
-        armorStat.str = armors[i].str;
+        armorStat.mag  = armors[i].mag;
+        armorStat.spd  = armors[i].spd;
+        armorStat.str  = armors[i].str;
         break;
       }
     }
@@ -136,7 +138,7 @@ ownArms.forEach((item) => {
     let armorStat = {};
     
     for(let i = 0; i < armors.length; i++){
-      if(e.target.innerHTML.toLowerCase() == armors[i].name.toLowerCase()){
+      if(e.target.innerHTML.toLowerCase().trim() == armors[i].name.toLowerCase().trim()){
         armorStat.name = armors[i].name;
         armorStat.def  = armors[i].def;
         armorStat.hp   = armors[i].hp;
@@ -184,8 +186,8 @@ ownWeps.forEach((item) => {
     let wepStat = {};
     
     for(let i = 0; i < weapons.length; i++){
-      if(e.target.innerHTML.toLowerCase() == weapons[i].name.toLowerCase()){
-        wepStat.name = weapons[i].name;
+      if(e.target.innerHTML.toLowerCase().trim() == weapons[i].name.toLowerCase().trim()){
+        wepStat.name = weapons[i].name.trim();
         wepStat.def  = weapons[i].def;
         wepStat.hp   = weapons[i].hp;
         wepStat.mag  = weapons[i].mag;
@@ -233,7 +235,7 @@ ownWeps.forEach((item) => {
     let wepStat = {};
     
     for(let i = 0; i < weapons.length; i++){
-      if(e.target.innerHTML.toLowerCase() == weapons[i].name.toLowerCase()){
+      if(e.target.innerHTML.toLowerCase().trim() == weapons[i].name.toLowerCase().trim()){
         wepStat.name = weapons[i].name;
         wepStat.def  = weapons[i].def;
         wepStat.hp   = weapons[i].hp;
@@ -371,7 +373,7 @@ window.addEventListener('load', () => {
   
   equip.forEach((ment) => {
     for(let i = 0; i < weapons.length; i++){
-      if(self.weapon.toLowerCase() == weapons[i].name.toLowerCase()){
+      if(self.weapon.toLowerCase().trim() == weapons[i].name.toLowerCase().trim()){
         wep = weapons[i];
       }
     }
@@ -401,12 +403,12 @@ window.addEventListener('load', () => {
   
   equip1.forEach((ment) => {
     for(let i = 0; i < armors.length; i++){
-      if(self.armor == armors[i].name){
+      if(self.armor.toLowerCase().trim() == armors[i].name.toLowerCase().trim()){
         body = armors[i];
       }
     }
     
-    if(ment.attributes.name.value == 'type'){
+    if(ment.attributes.name.value == 'name'){
       ment.innerHTML = body.name;
     }
     else if(ment.attributes.name.value == 'defense'){

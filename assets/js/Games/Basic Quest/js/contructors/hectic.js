@@ -23,4 +23,4 @@ const knightTom = new Hectic('Knight Tom',100,30,1,2,20);
 const mereCat = new Hectic('MereCat',9,125,10,11,30);
 const watcher = new Hectic('Watcher',5,200,10,3,15);
 
-console.log(hectics);
+// console.log(hectics);
