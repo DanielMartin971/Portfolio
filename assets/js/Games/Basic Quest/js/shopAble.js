@@ -1,3 +1,4 @@
+
 localStorage.setItem('location','shop');
 
 let gold  = JSON.parse(localStorage.getItem('gold'));
@@ -20,9 +21,9 @@ doc.extras.style.visibility = 'visible';
 doc.extras.innerHTML = 'Welcome to the abilites shop!';
 
 let ability = [
-  self.ability1.name.toLowerCase(),
-  self.ability2.name.toLowerCase(),
-  self.ability3.name.toLowerCase(),
+  self.ability1.toLowerCase(),
+  self.ability2.toLowerCase(),
+  self.ability3.toLowerCase(),
 ];
 
 //BuffaloPower
@@ -30,13 +31,13 @@ let buffPow = false;
 //Charmisma
 let charm   = false;
 //BeingDumbComesInHandy
-let bDch    = false;
+let bdch    = false;
 //CheapShot
 let cheapy  = false;
 //CrossFaded
 let xfaded  = false;
 //ExoticGent
-let exoGEN  = false;
+let exoGen  = false;
 //RoyalBlood
 let royBlo  = false;
 //SharedTrade
@@ -47,7 +48,7 @@ for(let i = 0; i < ability.length; i++){
     charm = true;
   }
   if(ability[i] == 'bdch'){
-    bDch = true;
+    bdch = true;
   }
   if(ability[i] == 'buffalopower'){
     buffPow = true;
@@ -62,7 +63,7 @@ for(let i = 0; i < ability.length; i++){
     nsowm = true;
   }
   if(ability[i] == 'exoticgent'){
-    exoGEN = true;
+    exoGen = true;
   }
   if(ability[i] == 'royalblood'){
     royBlo = true;
@@ -75,7 +76,6 @@ for(let i = 0; i < ability.length; i++){
   }
 }
 
-// We put the abilities onto the HTML page with these 3 variables
 let ableStat1 = {
   price: document.querySelector("[name=price1]"),
   name:  document.querySelector("[name=name1]"),
@@ -95,7 +95,7 @@ let ableStat3 = {
 const selection = document.querySelectorAll('.selection button');
 let kit         = JSON.parse(localStorage.getItem('kit'));
 
-let timeout;
+var timeout;
 function remove(){
   clearTimeout(timeout);
   timeout = setTimeout(() => {
@@ -106,19 +106,20 @@ remove();
 
 function init(){
   doc.input.style.width = '210px';
+  
   doc.gold.innerHTML  = gold.owned;
   doc.flask.innerHTML = flask.amount;
   
   //this part decreases shop prices by 10% if they have the ability
   if(charm === true){
-    for(let i = 0; i < abilities.length; i++){
+    for(var i = 0; i < abilities.length; i++){
       abilities[i].price -= abilities[i].price * 0.1;
     }
   }
   /////////////////////////////////////////////////////////////////
   //this part decreases shop prices by 5% if they have the ability
-  if(bDch === true){
-    for(let i = 0; i < abilities.length; i++){
+  if(bdch === true){
+    for(var i = 0; i < abilities.length; i++){
       abilities[i].price -= Math.floor(abilities[i].price * 0.05);
     }
   }
@@ -127,7 +128,7 @@ function init(){
   if(buffPow === true
   || cheapy  === true
   || xfaded  === true){
-    for(let i = 0; i < abilities.length; i++){
+    for(var i = 0; i < abilities.length; i++){
       abilities[i].price += Math.floor(abilities[i].price * 0.1);
     }
     if(buffPow === true){
@@ -141,22 +142,22 @@ function init(){
   }
   ////////////////////////////////////////////////////////////////
   //this part increases the prices by 15%
-  if(exoGEN === true){
-    for(let i = 0; i < abilities.length; i++){
+  if(exoGen === true){
+    for(var i = 0; i < abilities.length; i++){
       abilities[i].price -= Math.floor(abilities[i].price * 0.15);
     }
   }
   /////////////////////////////////////////////////////////////
   //this part increases the prices by 20%
   if(royBlo === true){
-    for(let i = 0; i < abilities.length; i++){
+    for(var i = 0; i < abilities.length; i++){
       abilities[i].price -= Math.floor(abilities[i].price * 0.2);
     }
   }
   /////////////////////////////////////////////////////////////
   //this part increases the prices by 40%
   if(shaeTre === true){
-    for(let i = 0; i < abilities.length; i++){
+    for(var i = 0; i < abilities.length; i++){
       abilities[i].price -= Math.floor(abilities[i].price * 0.4);
     }
   }
@@ -192,7 +193,7 @@ function init(){
 }
 init();
 
-let selected = '';
+var selected = '';
 function choice(item){
   console.log('you called choice()');
   console.log(item);
@@ -214,7 +215,7 @@ window.addEventListener('load', () => {
       spec.innerHTML = self.def;
     }
     else if(spec.attributes.name.value == 'health'){
-      self.hp = self.maxHp;
+      self.health = self.maxHp;
       spec.innerHTML = self.hp;
     }
     else if(spec.attributes.name.value == 'magic'){
@@ -227,13 +228,13 @@ window.addEventListener('load', () => {
       spec.innerHTML = self.str;
     }
     else if(spec.attributes.name.value == 'ability1'){
-      spec.innerHTML = self.ability1.name;
+      spec.innerHTML = self.ability1;
     }
     else if(spec.attributes.name.value == 'ability2'){
-      spec.innerHTML = self.ability2.name;
+      spec.innerHTML = self.ability2;
     }
     else if(spec.attributes.name.value == 'ability3'){
-      spec.innerHTML = self.ability3.name;
+      spec.innerHTML = self.ability3;
     }
   });
   
@@ -255,26 +256,27 @@ selection.forEach((select) => {
         || ableStat1.name.innerHTML == ability[1]
         || ableStat1.name.innerHTML == ability[2]){
           doc.extras.innerHTML = 'You already own this item';
-        } else{
-            console.log('Selected:',selected);
-            gold.owned -= JSON.parse(ableStat1.price.innerHTML);
-            gold.spent += JSON.parse(ableStat1.price.innerHTML);
-            //this is if he selected ability1 to trade out
-            if(selected == 'ability1'){
-              self.ability1 = ableStat1.name.innerHTML;
-            }
-            //this is if he selected ability2 to trade out
-            //what
-            else if(selected == 'ability2'){
-              self.ability2 = ableStat1.name.innerHTML;
-            }
-            //this is if he selected ability3 to trade out
-            else if(selected == 'ability3'){
-              self.ability3 = ableStat1.name.innerHTML;
-            }
-            select.style.visibility = 'hidden';
-            doc.input.style.visibility  = 'visible';
-            doc.submit.style.visibility = 'visible';
+        }
+        else{
+          console.log('Selected:',selected);
+          gold.owned -= JSON.parse(ableStat1.price.innerHTML);
+          gold.spent += JSON.parse(ableStat1.price.innerHTML);
+          //this is if he selected ability1 to trade out
+          if(selected == 'ability1'){
+            self.ability1 = ableStat1.name.innerHTML;
+          }
+          //this is if he selected ability2 to trade out
+          //what
+          else if(selected == 'ability2'){
+            self.ability2 = ableStat1.name.innerHTML;
+          }
+          //this is if he selected ability3 to trade out
+          else if(selected == 'ability3'){
+            self.ability3 = ableStat1.name.innerHTML;
+          }
+          select.style.visibility = 'hidden';
+          doc.input.style.visibility  = 'visible';
+          doc.submit.style.visibility = 'visible';
         }
         
         
@@ -378,7 +380,7 @@ selection.forEach((select) => {
         }
       });
     
-      for(let i = 0; i < ability.length; i++){
+      for(var i = 0; i < ability.length; i++){
         if(ability[i] == 'nsowm'
         || ability[i] == 'phasewalker'){
           flask.heal = 0;
@@ -395,10 +397,10 @@ selection.forEach((select) => {
 });
 
 doc.submit.addEventListener('click',() => {
-  let item = '';
-  let arr  = ['ability1','ability2','ability3'];
+  var item = '';
+  var arr  = ['ability1','ability2','ability3'];
   
-  for(let i = 0; i < 3; i++){
+  for(var i = 0; i < 3; i++){
     if(doc.input.value.toLowerCase() == arr[i]){
       doc.extras.innerHTML = '';
       item = doc.input.value.toLowerCase();

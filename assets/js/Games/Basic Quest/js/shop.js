@@ -85,10 +85,12 @@ for(let i = 0; i < ability.length; i++){
   
 if(buffPow == true){
   doc.extras.innerHTML = 'You damned buffalos...';
-} else if(cheapy == true){
-    doc.extras.innerHTML = "You're a cheapshot, I hate your kind";
-} else{
-    doc.extras.innerHTML = 'Welcome to the shop!';
+}
+else if(cheapy == true){
+  doc.extras.innerHTML = "You're a cheapshot, I hate your kind";
+}
+else{
+  doc.extras.innerHTML = 'Welcome to the shop!';
 }
 //working on stealing BYOG
 
@@ -168,6 +170,7 @@ for(i = 0; i < kit.length; i++){
   
 console.log('Kit Armors',itemsA,',','Kit Weapons',itemsW);
 
+// This just puts the gold and flasks that the player owns on the page
 doc.gold.innerHTML  = gold.owned;
 doc.flask.innerHTML = flask.amount;
 
@@ -262,14 +265,15 @@ function items(){
   }
   /////////////////////////////////////////////////////////////
   
+  // This just checks what youve selected and then puts it on the page
   weapStat.def.innerHTML   = weapons[weapChoice].def;
   weapStat.hp.innerHTML    = weapons[weapChoice].hp;
-  weapStat.mag.innerHTML   = weapons[weapChoice].mag;
-  weapStat.name.innerHTML  = weapons[weapChoice].name.trim();
-  weapStat.price.innerHTML = weapons[weapChoice].price;
-  weapStat.spd.innerHTML   = weapons[weapChoice].spd;
-  weapStat.str.innerHTML   = weapons[weapChoice].str;
-  weapStat.type            = weapons[weapChoice].type;
+  weapStat.mag.innerHTML     = weapons[weapChoice].mag;
+  weapStat.name.innerHTML      = weapons[weapChoice].name.trim();
+  weapStat.price.innerHTML     = weapons[weapChoice].price;
+  weapStat.spd.innerHTML     = weapons[weapChoice].spd;
+  weapStat.str.innerHTML  = weapons[weapChoice].str;
+  weapStat.type                = weapons[weapChoice].type;
   
   first        = weapChoice;
   second       = weapChoice;
@@ -281,12 +285,12 @@ function items(){
   
   weapStat1.def.innerHTML   = weapons[weapChoice].def;
   weapStat1.hp.innerHTML    = weapons[weapChoice].hp;
-  weapStat1.mag.innerHTML   = weapons[weapChoice].mag;
-  weapStat1.name.innerHTML  = weapons[weapChoice].name.trim();
-  weapStat1.price.innerHTML = weapons[weapChoice].price;
-  weapStat1.spd.innerHTML   = weapons[weapChoice].spd;
-  weapStat1.str.innerHTML   = weapons[weapChoice].str;
-  weapStat1.type            = weapons[weapChoice].type;
+  weapStat1.mag.innerHTML     = weapons[weapChoice].mag;
+  weapStat1.name.innerHTML      = weapons[weapChoice].name.trim();
+  weapStat1.price.innerHTML     = weapons[weapChoice].price;
+  weapStat1.spd.innerHTML     = weapons[weapChoice].spd;
+  weapStat1.str.innerHTML  = weapons[weapChoice].str;
+  weapStat1.type                = weapons[weapChoice].type;
   
   first       = weapChoice;
   weapChoice  = Math.floor(Math.random() * weapons.length);
@@ -297,20 +301,20 @@ function items(){
   
   weapStat2.def.innerHTML   = weapons[weapChoice].def;
   weapStat2.hp.innerHTML    = weapons[weapChoice].hp;
-  weapStat2.mag.innerHTML   = weapons[weapChoice].mag;
-  weapStat2.name.innerHTML  = weapons[weapChoice].name.trim();
-  weapStat2.price.innerHTML = weapons[weapChoice].price;
-  weapStat2.spd.innerHTML   = weapons[weapChoice].spd;
-  weapStat2.str.innerHTML   = weapons[weapChoice].str;
-  weapStat2.type            = weapons[weapChoice].type;
+  weapStat2.mag.innerHTML     = weapons[weapChoice].mag;
+  weapStat2.name.innerHTML      = weapons[weapChoice].name.trim();
+  weapStat2.price.innerHTML     = weapons[weapChoice].price;
+  weapStat2.spd.innerHTML     = weapons[weapChoice].spd;
+  weapStat2.str.innerHTML  = weapons[weapChoice].str;
+  weapStat2.type                = weapons[weapChoice].type;
   
-  armorStat.def.innerHTML   = armors[armorChoice].def;
-  armorStat.hp.innerHTML    = armors[armorChoice].hp;
-  armorStat.mag.innerHTML   = armors[armorChoice].mag;
-  armorStat.name.innerHTML  = armors[armorChoice].name.trim();
-  armorStat.price.innerHTML = armors[armorChoice].price;
-  armorStat.spd.innerHTML   = armors[armorChoice].spd;
-  armorStat.str.innerHTML   = armors[armorChoice].str;
+  armorStat.def.innerHTML  = armors[armorChoice].def;
+  armorStat.hp.innerHTML   = armors[armorChoice].hp;
+  armorStat.mag.innerHTML    = armors[armorChoice].mag;
+  armorStat.name.innerHTML     = armors[armorChoice].name.trim();
+  armorStat.price.innerHTML    = armors[armorChoice].price;
+  armorStat.spd.innerHTML    = armors[armorChoice].spd;
+  armorStat.str.innerHTML = armors[armorChoice].str;
   
   first       = armorChoice;
   second      = armorChoice;
@@ -320,13 +324,13 @@ function items(){
     armorChoice = Math.floor(Math.random() * armors.length);
   }
   
-  armorStat1.def.innerHTML   = armors[armorChoice].def;
-  armorStat1.hp.innerHTML    = armors[armorChoice].hp;
-  armorStat1.mag.innerHTML   = armors[armorChoice].mag;
-  armorStat1.name.innerHTML  = armors[armorChoice].name.trim();
-  armorStat1.price.innerHTML = armors[armorChoice].price;
-  armorStat1.spd.innerHTML   = armors[armorChoice].spd;
-  armorStat1.str.innerHTML   = armors[armorChoice].str;
+  armorStat1.def.innerHTML  = armors[armorChoice].def;
+  armorStat1.hp.innerHTML   = armors[armorChoice].hp;
+  armorStat1.mag.innerHTML    = armors[armorChoice].mag;
+  armorStat1.name.innerHTML     = armors[armorChoice].name.trim();
+  armorStat1.price.innerHTML    = armors[armorChoice].price;
+  armorStat1.spd.innerHTML    = armors[armorChoice].spd;
+  armorStat1.str.innerHTML = armors[armorChoice].str;
   
   first          = armorChoice;
   armorChoice    = Math.floor(Math.random() * armors.length);
@@ -335,13 +339,13 @@ function items(){
      armorChoice  = Math.floor(Math.random() * armors.length);
   }
   
-  armorStat2.def.innerHTML   = armors[armorChoice].def;
-  armorStat2.hp.innerHTML    = armors[armorChoice].hp;
-  armorStat2.mag.innerHTML   = armors[armorChoice].mag;
-  armorStat2.name.innerHTML  = armors[armorChoice].name.trim();
-  armorStat2.price.innerHTML = armors[armorChoice].price;
-  armorStat2.spd.innerHTML   = armors[armorChoice].spd;
-  armorStat2.str.innerHTML   = armors[armorChoice].str;
+  armorStat2.def.innerHTML  = armors[armorChoice].def;
+  armorStat2.hp.innerHTML   = armors[armorChoice].hp;
+  armorStat2.mag.innerHTML    = armors[armorChoice].mag;
+  armorStat2.name.innerHTML     = armors[armorChoice].name.trim();
+  armorStat2.price.innerHTML    = armors[armorChoice].price;
+  armorStat2.spd.innerHTML    = armors[armorChoice].spd;
+  armorStat2.str.innerHTML = armors[armorChoice].str;
 }
 items();
 

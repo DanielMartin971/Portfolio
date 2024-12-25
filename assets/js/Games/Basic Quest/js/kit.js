@@ -1,6 +1,7 @@
+
 //this checks to see if the player came from the quest or the shop and makes the shop btn visible
 
-let loc = localStorage.getItem('location').toLowerCase();
+var loc = localStorage.getItem('location').toLowerCase();
 window.addEventListener('load',() => {
   if(loc == 'shop'
   || loc == 'shopkit'
@@ -10,17 +11,17 @@ window.addEventListener('load',() => {
   }
 });
 
-let gold  = JSON.parse(localStorage.getItem('gold'));
-let flask = JSON.parse(localStorage.getItem('flask'));
+var gold  = JSON.parse(localStorage.getItem('gold'));
+var flask = JSON.parse(localStorage.getItem('flask'));
 
-let self   = JSON.parse(localStorage.getItem('race'));
-let specs  = document.querySelectorAll('.self li span');
-let equip  = document.querySelectorAll('.equipment li span');
-let equip1 = document.querySelectorAll('.equipment1 li span');
-let wep;
-let body;
+self   = JSON.parse(localStorage.getItem('race'));
+var specs  = document.querySelectorAll('.self li span');
+var equip  = document.querySelectorAll('.equipment li span');
+var equip1 = document.querySelectorAll('.equipment1 li span');
+var wep;
+var body;
 
-let doc = {
+var doc = {
   body:   document.querySelector('body'),
   extras: document.getElementById('extras'),
   flask:  document.querySelector('#flask'),
@@ -34,134 +35,135 @@ doc.body.style.overflow     = 'auto';
 doc.extras.style.height     = 'auto';
 doc.extras.style.visibility = 'visible';
 doc.extras.innerHTML        = 'Welcome to your kit!';
+remove();
 
-let kit = JSON.parse(localStorage.getItem('kit'));
+var kit = JSON.parse(localStorage.getItem('kit'));
 
-// We set the items to blank for the moment when building the array; A = armors, W = weapons
-let itemsA = [];
-let itemsW = [];
+var itemsA = [];
+var itemsW = [];
 
-//This loop seperates the kit by armor and weapon and pushes them into the correct arrays
-for(let i = 0; i < kit.length; i++){
-  for(let o = 0; o < armors.length; o++){
-    if(kit[i].toLowerCase().trim() == armors[o].name.toLowerCase().trim()){
+//This loop seperates the kit by armor and weapon
+for(i = 0; i < kit.length; i++){
+  for(var o = 0; o < armors.length; o++){
+    if(kit[i].toLowerCase() == armors[o].name.toLowerCase()){
       itemsA.push(kit[i]);
     }
   }
-  for(let z = 0; z < weapons.length; z++){
-    if(kit[i].toLowerCase().trim() == weapons[z].name.toLowerCase().trim()){
+  for(var z = 0; z < weapons.length; z++){
+    if(kit[i].toLowerCase() == weapons[z].name.toLowerCase()){
       itemsW.push(kit[i]);
     }
   }
 }
+  
 console.log('Kit Armors',itemsA,',','Kit Weapons',itemsW);
 
 doc.gold.innerHTML  = gold.owned;
 doc.flask.innerHTML = flask.amount;
 
-let timeout;
 
+var timeout;
 function remove(){
+  clearTimeout(timeout);
   timeout = setTimeout(() => {
     doc.extras.style.visibility = 'hidden';
   }, 3000);
 }
-// showKit displays all items owned onto the HTML seperating them into the respected lists
-remove();
 
-// This function just displays all the weapons and armor on the page for the player to see
 function showKit(){
-  for(let i = 0; i < itemsA.length; i++){
+  for(var i = 0; i < itemsA.length; i++){
     doc.listA.innerHTML += '<li>' + itemsA[i] + '</li>';
-  }  
-  for(let i = 0; i < itemsW.length; i++){
+  }
+  
+  for(var i = 0; i < itemsW.length; i++){
     doc.listW.innerHTML += '<li>' + itemsW[i] + '</li>';
-  } 
+  }
+  
 }
 showKit();
 
-// These 2 variables select all the armor and weapons that the player owns
-let ownArms = document.querySelectorAll('.listA li');
-let ownWeps = document.querySelectorAll('.listW li');
+var ownArms = document.querySelectorAll('.listA li');
+var ownWeps = document.querySelectorAll('.listW li');
 
-let orgHTML = {};
+
+var orgHTML = {};
 ownArms.forEach((item) => {
-  // When the mouse touches a item, it displays the stat differences to what you have equipped at the moment
+  
   item.addEventListener('mouseenter',(e) => {
-    let diff      = 0;
-    let armorStat = {};
+    var diff      = 0;
+    var armorStat = {};
     
-    for(let i = 0; i < armors.length; i++){
-      if(e.target.innerHTML.toLowerCase().trim() == armors[i].name.toLowerCase().trim()){
-        armorStat.name = armors[i].name;
-        armorStat.def  = armors[i].def;
-        armorStat.hp   = armors[i].hp;
-        armorStat.mag  = armors[i].mag;
-        armorStat.spd  = armors[i].spd;
-        armorStat.str  = armors[i].str;
+    for(var i = 0; i < armors.length; i++){
+      if(e.target.innerHTML.toLowerCase() == armors[i].name.toLowerCase()){
+        armorStat.name     = armors[i].name;
+        armorStat.defense  = armors[i].defense;
+        armorStat.health   = armors[i].health;
+        armorStat.magic    = armors[i].magic;
+        armorStat.speed    = armors[i].speed;
+        armorStat.strength = armors[i].strength;
         break;
       }
     }
     
-    orgHTML.name = equip1[0].innerHTML;
-    orgHTML.def  = equip1[1].innerHTML;
-    orgHTML.hp   = equip1[2].innerHTML;
-    orgHTML.mag  = equip1[3].innerHTML;
-    orgHTML.spd  = equip1[4].innerHTML;
-    orgHTML.str  = equip1[5].innerHTML;
+    orgHTML.name     = equip1[0].innerHTML;
+    orgHTML.defense  = equip1[1].innerHTML;
+    orgHTML.health   = equip1[2].innerHTML;
+    orgHTML.magic    = equip1[3].innerHTML;
+    orgHTML.speed    = equip1[4].innerHTML;
+    orgHTML.strength = equip1[5].innerHTML;
     
-    //this is for comparison between the weapon owned and the one hovering over
+    // This is for comparison between the weapon owned and the one hovering over
     equip1[0].innerHTML += ' (' + armorStat.name + ')';
-    diff = JSON.parse(armorStat.def) - JSON.parse(equip1[1].innerHTML);
+    diff = JSON.parse(armorStat.defense) - JSON.parse(equip1[1].innerHTML);
     if(diff > 0) diff = '+' + diff;
     
     equip1[1].innerHTML += ' (' + diff  + ')';
-    diff = JSON.parse(armorStat.hp) - JSON.parse(equip1[2].innerHTML);
+    diff = JSON.parse(armorStat.health) - JSON.parse(equip1[2].innerHTML);
     if(diff > 0) diff = '+' + diff;
     
     equip1[2].innerHTML += ' (' + diff + ')';
-    diff = JSON.parse(armorStat.mag) - JSON.parse(equip1[3].innerHTML);
+    diff = JSON.parse(armorStat.magic) - JSON.parse(equip1[3].innerHTML);
     if(diff > 0) diff = '+' + diff;
     
     equip1[3].innerHTML += ' (' + diff + ')';
-    diff = JSON.parse(armorStat.spd) - JSON.parse(equip1[4].innerHTML);
+    diff = JSON.parse(armorStat.speed) - JSON.parse(equip1[4].innerHTML);
     if(diff > 0) diff = '+' + diff;
     
     equip1[4].innerHTML += ' (' + diff + ')';
-    diff = JSON.parse(armorStat.str) - JSON.parse(equip1[5].innerHTML);
+    diff = JSON.parse(armorStat.strength) - JSON.parse(equip1[5].innerHTML);
     if(diff > 0) diff = '+' + diff;
     
     equip1[5].innerHTML += ' (' + diff + ')';
   });
   
   item.addEventListener('click',(e) => {
-    let armorStat = {};
+    var armorStat = {};
     
-    for(let i = 0; i < armors.length; i++){
-      if(e.target.innerHTML.toLowerCase().trim() == armors[i].name.toLowerCase().trim()){
-        armorStat.name = armors[i].name;
-        armorStat.def  = armors[i].def;
-        armorStat.hp   = armors[i].hp;
-        armorStat.mag  = armors[i].mag;
-        armorStat.spd  = armors[i].spd;
-        armorStat.str  = armors[i].str;
+    for(var i = 0; i < armors.length; i++){
+      if(e.target.innerHTML.toLowerCase() == armors[i].name.toLowerCase()){
+        armorStat.name     = armors[i].name;
+        armorStat.defense  = armors[i].defense;
+        armorStat.health   = armors[i].health;
+        armorStat.magic    = armors[i].magic;
+        armorStat.speed    = armors[i].speed;
+        armorStat.strength = armors[i].strength;
         break;
       }
     }
     
     equip1[0].innerHTML = armorStat.name;
-    equip1[1].innerHTML = armorStat.def;
-    equip1[2].innerHTML = armorStat.hp;
-    equip1[3].innerHTML = armorStat.mag;
-    equip1[4].innerHTML = armorStat.spd;
-    equip1[5].innerHTML = armorStat.str;
+    equip1[1].innerHTML = armorStat.defense;
+    equip1[2].innerHTML = armorStat.health;
+    equip1[3].innerHTML = armorStat.magic;
+    equip1[4].innerHTML = armorStat.speed;
+    equip1[5].innerHTML = armorStat.strength;
     
-    orgHTML.name = armorStat.name;
-    orgHTML.def  = armorStat.def;
-    orgHTML.hp   = armorStat.hp;
-    orgHTML.mag  = armorStat.mag;
-    orgHTML.spd  = armorStat.spd;
-    orgHTML.str  = armorStat.str;
+    orgHTML.name     = armorStat.name;
+    orgHTML.defense  = armorStat.defense;
+    orgHTML.health   = armorStat.health;
+    orgHTML.magic    = armorStat.magic;
+    orgHTML.speed    = armorStat.speed;
+    orgHTML.strength = armorStat.strength;
     
     self.armor = armorStat.name;
     localStorage.setItem('race',JSON.stringify(self));
@@ -170,11 +172,11 @@ ownArms.forEach((item) => {
   
   item.addEventListener('mouseleave',(e) => {
     equip1[0].innerHTML = orgHTML.name;
-    equip1[1].innerHTML = orgHTML.def;
-    equip1[2].innerHTML = orgHTML.hp;
-    equip1[3].innerHTML = orgHTML.mag;
-    equip1[4].innerHTML = orgHTML.spd;
-    equip1[5].innerHTML = orgHTML.str;
+    equip1[1].innerHTML = orgHTML.defense;
+    equip1[2].innerHTML = orgHTML.health;
+    equip1[3].innerHTML = orgHTML.magic;
+    equip1[4].innerHTML = orgHTML.speed;
+    equip1[5].innerHTML = orgHTML.strength;
   });
   
 });
@@ -182,49 +184,49 @@ ownArms.forEach((item) => {
 ownWeps.forEach((item) => {
   
   item.addEventListener('mouseenter',(e) => {
-    let diff      = 0;
-    let wepStat = {};
+    var diff      = 0;
+    var wepStat = {};
     
-    for(let i = 0; i < weapons.length; i++){
-      if(e.target.innerHTML.toLowerCase().trim() == weapons[i].name.toLowerCase().trim()){
-        wepStat.name = weapons[i].name.trim();
-        wepStat.def  = weapons[i].def;
-        wepStat.hp   = weapons[i].hp;
-        wepStat.mag  = weapons[i].mag;
-        wepStat.spd  = weapons[i].spd;
-        wepStat.str  = weapons[i].str;
-        wepStat.type = weapons[i].type;
+    for(var i = 0; i < weapons.length; i++){
+      if(e.target.innerHTML.toLowerCase() == weapons[i].name.toLowerCase()){
+        wepStat.name     = weapons[i].name;
+        wepStat.defense  = weapons[i].defense;
+        wepStat.health   = weapons[i].health;
+        wepStat.magic    = weapons[i].magic;
+        wepStat.speed    = weapons[i].speed;
+        wepStat.strength = weapons[i].strength;
+        wepStat.type     = weapons[i].type;
         break;
       }
     }
     
-    orgHTML.name = equip[0].innerHTML;
-    orgHTML.def  = equip[1].innerHTML;
-    orgHTML.hp   = equip[2].innerHTML;
-    orgHTML.mag  = equip[3].innerHTML;
-    orgHTML.spd  = equip[4].innerHTML;
-    orgHTML.str  = equip[5].innerHTML;
-    orgHTML.type = equip[6].innerHTML;
+    orgHTML.name     = equip[0].innerHTML;
+    orgHTML.defense  = equip[1].innerHTML;
+    orgHTML.health   = equip[2].innerHTML;
+    orgHTML.magic    = equip[3].innerHTML;
+    orgHTML.speed    = equip[4].innerHTML;
+    orgHTML.strength = equip[5].innerHTML;
+    orgHTML.type     = equip[6].innerHTML;
     
-    //this is for comparison between the weapon owned and the one hovering over
+    // This is for comparison between the weapon owned and the one hovering over
     equip[0].innerHTML += ' (' + wepStat.name + ')';
-    diff = JSON.parse(wepStat.def) - JSON.parse(equip[1].innerHTML);
+    diff = JSON.parse(wepStat.defense) - JSON.parse(equip[1].innerHTML);
     if(diff > 0) diff = '+' + diff;
     
     equip[1].innerHTML += ' (' + diff  + ')';
-    diff = JSON.parse(wepStat.hp) - JSON.parse(equip[2].innerHTML);
+    diff = JSON.parse(wepStat.health) - JSON.parse(equip[2].innerHTML);
     if(diff > 0) diff = '+' + diff;
     
     equip[2].innerHTML += ' (' + diff + ')';
-    diff = JSON.parse(wepStat.mag) - JSON.parse(equip[3].innerHTML);
+    diff = JSON.parse(wepStat.magic) - JSON.parse(equip[3].innerHTML);
     if(diff > 0) diff = '+' + diff;
     
     equip[3].innerHTML += ' (' + diff + ')';
-    diff = JSON.parse(wepStat.spd) - JSON.parse(equip[4].innerHTML);
+    diff = JSON.parse(wepStat.speed) - JSON.parse(equip[4].innerHTML);
     if(diff > 0) diff = '+' + diff;
     
     equip[4].innerHTML += ' (' + diff + ')';
-    diff = JSON.parse(wepStat.str) - JSON.parse(equip[5].innerHTML);
+    diff = JSON.parse(wepStat.strength) - JSON.parse(equip[5].innerHTML);
     if(diff > 0) diff = '+' + diff;
     
     equip[5].innerHTML += ' (' + diff + ')';
@@ -232,42 +234,41 @@ ownWeps.forEach((item) => {
   });
   
   item.addEventListener('click',(e) => {
-    let wepStat = {};
+    var wepStat = {};
     
-    for(let i = 0; i < weapons.length; i++){
-      if(e.target.innerHTML.toLowerCase().trim() == weapons[i].name.toLowerCase().trim()){
-        wepStat.name = weapons[i].name;
-        wepStat.def  = weapons[i].def;
-        wepStat.hp   = weapons[i].hp;
-        wepStat.mag  = weapons[i].mag;
-        wepStat.spd  = weapons[i].spd;
-        wepStat.str  = weapons[i].str;
-        wepStat.type = weapons[i].type;
+    for(var i = 0; i < weapons.length; i++){
+      if(e.target.innerHTML.toLowerCase() == weapons[i].name.toLowerCase()){
+        wepStat.name     = weapons[i].name;
+        wepStat.defense  = weapons[i].defense;
+        wepStat.health   = weapons[i].health;
+        wepStat.magic    = weapons[i].magic;
+        wepStat.speed    = weapons[i].speed;
+        wepStat.strength = weapons[i].strength;
+        wepStat.type     = weapons[i].type;
         break;
       }
     }
-
-    let selected = [
+    var selected = [
       wepStat.name,
-      JSON.parse(wepStat.def),
-      JSON.parse(wepStat.hp),
-      JSON.parse(wepStat.mag),
-      JSON.parse(wepStat.spd),
-      JSON.parse(wepStat.str),
+      JSON.parse(wepStat.defense),
+      JSON.parse(wepStat.health),
+      JSON.parse(wepStat.magic),
+      JSON.parse(wepStat.speed),
+      JSON.parse(wepStat.strength),
       wepStat.type,
     ];
     
-    for(let i = 0; i < equip.length; i++){
+    for(var i = 0; i < equip.length; i++){
       equip[i].innerHTML = selected[i];
     }
     
-    orgHTML.name = wepStat.name;
-    orgHTML.def  = wepStat.def;
-    orgHTML.hp   = wepStat.hp;
-    orgHTML.mag  = wepStat.mag;
-    orgHTML.spd  = wepStat.spd;
-    orgHTML.str  = wepStat.str;
-    orgHTML.type = wepStat.type;
+    orgHTML.name     = wepStat.name;
+    orgHTML.defense  = wepStat.defense;
+    orgHTML.health   = wepStat.health;
+    orgHTML.magic    = wepStat.magic;
+    orgHTML.speed    = wepStat.speed;
+    orgHTML.strength = wepStat.strength;
+    orgHTML.type     = wepStat.type;
     
     self.weapon = wepStat.name;
     localStorage.setItem('race',JSON.stringify(self));
@@ -275,29 +276,28 @@ ownWeps.forEach((item) => {
   });
   
   item.addEventListener('mouseleave',(e) => {
-    let org = [
+    var org = [
     orgHTML.name,
-    JSON.parse(orgHTML.def),
-    JSON.parse(orgHTML.hp),
-    JSON.parse(orgHTML.mag),
-    JSON.parse(orgHTML.spd),
-    JSON.parse(orgHTML.str),
+    JSON.parse(orgHTML.defense),
+    JSON.parse(orgHTML.health),
+    JSON.parse(orgHTML.magic),
+    JSON.parse(orgHTML.speed),
+    JSON.parse(orgHTML.strength),
     orgHTML.type
   ];
   
-    for(let i = 0; i < equip.length; i++){
+    for(var i = 0; i < equip.length; i++){
       equip[i].innerHTML = org[i];
     }
   });
   
 });
 
-
-//these are for the btns and return you to either the game or the shop
+// These are for the btns and return you to either the game or the shop
 doc.quest.addEventListener('click', () => {
   doc.extras.style.visibility = 'visible';
   doc.extras.innerHTML = 'Leaving for the quest';
-  let loc = localStorage.getItem('location').toLowerCase();
+  var loc = localStorage.getItem('location').toLowerCase();
   
   setInterval(() => {
     doc.extras.innerHTML += '.';
@@ -347,8 +347,6 @@ doc.shop.addEventListener( 'click', () => {
   }
   remove();
 });
-
-
 window.addEventListener('load', () => {
   specs.forEach((spec) => {
     if(spec.attributes.name.value == 'type'){
@@ -372,8 +370,8 @@ window.addEventListener('load', () => {
   });
   
   equip.forEach((ment) => {
-    for(let i = 0; i < weapons.length; i++){
-      if(self.weapon.toLowerCase().trim() == weapons[i].name.toLowerCase().trim()){
+    for(var i = 0; i < weapons.length; i++){
+      if(self.weapon.toLowerCase() == weapons[i].name.toLowerCase()){
         wep = weapons[i];
       }
     }
@@ -382,19 +380,19 @@ window.addEventListener('load', () => {
       ment.innerHTML = wep.name;
     }
     else if(ment.attributes.name.value == 'defense'){
-      ment.innerHTML = wep.def;
+      ment.innerHTML = wep.defense;
     }
     else if(ment.attributes.name.value == 'health'){
-      ment.innerHTML = wep.hp;
+      ment.innerHTML = wep.health;
     }
     else if(ment.attributes.name.value == 'magic'){
-      ment.innerHTML = wep.mag;
+      ment.innerHTML = wep.magic;
     }
     else if(ment.attributes.name.value == 'speed'){
-      ment.innerHTML = wep.spd;
+      ment.innerHTML = wep.speed;
     }
     else if(ment.attributes.name.value == 'strength'){
-      ment.innerHTML = wep.str;
+      ment.innerHTML = wep.strength;
     }
     else if(ment.attributes.name.value == 'type'){
       ment.innerHTML = wep.type;
@@ -402,29 +400,29 @@ window.addEventListener('load', () => {
   });
   
   equip1.forEach((ment) => {
-    for(let i = 0; i < armors.length; i++){
-      if(self.armor.toLowerCase().trim() == armors[i].name.toLowerCase().trim()){
+    for(var i = 0; i < armors.length; i++){
+      if(self.armor == armors[i].name){
         body = armors[i];
       }
     }
     
-    if(ment.attributes.name.value == 'name'){
+    if(ment.attributes.name.value == 'type'){
       ment.innerHTML = body.name;
     }
     else if(ment.attributes.name.value == 'defense'){
-      ment.innerHTML = body.def;
+      ment.innerHTML = body.defense;
     }
     else if(ment.attributes.name.value == 'health'){
-      ment.innerHTML = body.hp;
+      ment.innerHTML = body.health;
     }
     else if(ment.attributes.name.value == 'magic'){
-      ment.innerHTML = body.mag;
+      ment.innerHTML = body.magic;
     }
     else if(ment.attributes.name.value == 'speed'){
-      ment.innerHTML = body.spd;
+      ment.innerHTML = body.speed;
     }
     else if(ment.attributes.name.value == 'strength'){
-      ment.innerHTML = body.str;
+      ment.innerHTML = body.strength;
     }
   });
-})
+});

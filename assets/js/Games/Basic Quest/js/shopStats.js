@@ -1,3 +1,4 @@
+
 localStorage.setItem('location','shopS');
 
 let gold  = JSON.parse(localStorage.getItem('gold'));
@@ -18,14 +19,15 @@ doc.extras.style.height     = 'auto';
 doc.extras.style.visibility = 'visible';
 
 doc.extras.innerHTML = 'Welcome to the shop!';
+remove();
 
-let kit = JSON.parse(localStorage.getItem('kit'));
+var kit = JSON.parse(localStorage.getItem('kit'));
 
 doc.gold.innerHTML  = gold.owned;
 
 const selection = document.querySelectorAll('tbody button');
 
-let timeout;
+var timeout;
 function remove(){
   clearTimeout(timeout);
   timeout = setTimeout(() => {
@@ -33,7 +35,7 @@ function remove(){
     doc.extras.innerHTML = '';
   }, 3000);
 }
-remove();
+
 
 
 doc.leave.addEventListener('click', () => {
@@ -85,7 +87,7 @@ selection.forEach((select) => {
     }
     else{
       if(e.target.attributes.name.value.toLowerCase() == 'defense'){
-        if(stat.def >= 5){
+        if(stat.defense >= 5){
           doc.extras.innerHTML = "You can't increase that stat anymore";
           self.def = self.def;
         }
@@ -98,7 +100,7 @@ selection.forEach((select) => {
         }
     }
       else if(e.target.attributes.name.value.toLowerCase() == 'health'){
-        if(stat.hp >= 5){
+        if(stat.health >= 5){
           doc.extras.innerHTML = "You can't increase that stat anymore";
           self.hp = self.maxHp;
         }
@@ -106,12 +108,12 @@ selection.forEach((select) => {
           gold.owned -= 5000;
           gold.spent += 5000;
           self.maxHp++;
-          stat.hp++;
+          stat.health++;
           doc.extras.innerHTML = "You increased your health";
         }
       }
       else if(e.target.attributes.name.value.toLowerCase() == 'magic'){
-        if(stat.mag >= 5){
+        if(stat.magic >= 5){
           doc.extras.innerHTML = "You can't increase that stat anymore";
           self.mag = self.mag;
         }
@@ -119,12 +121,12 @@ selection.forEach((select) => {
           gold.owned -= 5000;
           gold.spent += 5000;
           self.mag++;
-          stat.mag++;
+          stat.magic++;
           doc.extras.innerHTML = "You increased your magic";
         }
       }
       else if(e.target.attributes.name.value.toLowerCase() == 'speed'){
-        if(stat.spd >= 5){
+        if(stat.speed >= 5){
           doc.extras.innerHTML = "You can't increase that stat anymore";
           self.spd = self.spd;
         }
@@ -132,13 +134,13 @@ selection.forEach((select) => {
           gold.owned -= 5000;
           gold.spent += 5000;
           self.spd++;
-          stat.spd++;
+          stat.speed++;
           doc.extras.innerHTML = "You increased your speed";
         }
       }
       else if(e.target.attributes.name.value.toLowerCase() == 'strength'){
         if(gold.owned < 5000){doc.extras.innerHTML = "You don't have enough gold";}
-        else if(stat.str >= 5){
+        else if(stat.strength >= 5){
           doc.extras.innerHTML = "You can't increase that stat anymore";
           self.str = self.str;
         }
@@ -146,7 +148,7 @@ selection.forEach((select) => {
           gold.owned -= 5000;
           gold.spent += 5000;
           self.str++;
-          stat.str++;
+          stat.strength++;
           
           doc.extras.innerHTML = "You increased your strength";
         }
@@ -161,8 +163,8 @@ selection.forEach((select) => {
           spec.innerHTML = self.def;
         }
         else if(spec.attributes.name.value == 'health'){
-          self.hp = self.maxHp;
-          spec.innerHTML = self.hp;
+          self.health = self.maxHp;
+          spec.innerHTML = self.health;
         }
         else if(spec.attributes.name.value == 'magic'){
           spec.innerHTML = self.mag;
@@ -195,8 +197,8 @@ window.addEventListener('load', () => {
       spec.innerHTML = self.def;
     }
     else if(spec.attributes.name.value == 'health'){
-      self.hp = self.maxHp;
-      spec.innerHTML = self.hp;
+      self.health = self.maxHp;
+      spec.innerHTML = self.health;
     }
     else if(spec.attributes.name.value == 'magic'){
       spec.innerHTML = self.mag;
